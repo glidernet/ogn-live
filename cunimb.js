@@ -21,9 +21,9 @@ var vallmaron = true;
 var vallmaroff = true;
 var lside = 0;		// 0=right 1=left
 var infowindow = new google.maps.InfoWindow();
-var online = new Array();	//         ([cn,alt*1,cn+"_"+ps,colcn,afdif]);
-var offline = new Array();	//         ([cn,alt*1,cn+"_"+ps,colcn,afdif]);
-var receivers = new Array();
+var online = [];	//         ([cn,alt*1,cn+"_"+ps,colcn,afdif]);
+var offline = [];	//         ([cn,alt*1,cn+"_"+ps,colcn,afdif]);
+var receivers = [];
 var all=0;
 var pathl=30;		// path length 5' (30points)
 var unit="m";		// metric units
@@ -48,7 +48,7 @@ var hnew = false;
 selrec = "";
 var ftype=["unknown","Glider/MotorGlider","Tow Plane","Helicopter","Parachute","Drop Plane","Hand Glider","Para Glider","Plane","Jet","UFO","Balloon","Airship","Drone","Static Object"];
 var ftypec=["_b","","_g","_r","_b","_b","_p","_p","_b","_b","_b","_b","_b","_b","_b"];
-var taska = new Array();
+var taska = [];
 var initialResolution = 2 * Math.PI * 6378137 / 256;  // == 156543.0339
 var originShift = 2 * Math.PI * 6378137 / 2.0; // == 20037508.34
 var m2ft={"m":1, "i":3.2808};
@@ -1043,7 +1043,7 @@ function taskclic() {	document.getElementById("chfile").click(); }
 function task(cont) {
 	     	var res = JSON.parse(cont);
       	var tc,tn,ltp;
-      	var tp = new Array();
+      	var tp = [];
       	var tasks= res.tasks;
       	for(var i= 0; i < tasks.length; i++) {
      			tn = tasks[i].name || "task"+i;
