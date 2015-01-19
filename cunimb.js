@@ -433,7 +433,7 @@ function afftab() {
 		}
 	dlistd +="</TABLE>";
   document.getElementById("dtlist").innerHTML = dlistd;
-  if (aflist === true) document.getElementById("onoff").innerHTML = onoffaff + affcpt;;
+  if (aflist === true) document.getElementById("onoff").innerHTML = onoffaff + affcpt;
 
 }
 
@@ -441,10 +441,10 @@ function ASC(a,b){
 a=a[tricol];
 b=b[tricol];
 if(a > b)
-      return 1
+      return 1;
    if(a < b)
-      return -1
-   return 0
+      return -1;
+   return 0;
  }
 
 
@@ -1036,7 +1036,7 @@ function rempl(po, c) {
 	hl= thl.substring(0,po) + c + thl.substring(po+1);
 	thl = hl.replace(/ /g,'');
 	if (thl === '') hashl=''; else hashl= "&l="+thl;
-};
+}
 
 function taskclic() {	document.getElementById("chfile").click(); }
 
@@ -1224,7 +1224,7 @@ function initialize()
 	draggableCursor: 'default',
 	draggingCursor: 'default'
 	//mapTypeId: google.maps.MapTypeId.TERRAIN
-  }
+  };
   map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
 
   //map.mapTypes.set('RELIEF' , RELIEF);
@@ -1365,7 +1365,7 @@ function initialize()
         var lonc = clickedLocation.lng();
         var alon = (lonc>=0?"E":"W") + " " + dec2dms(lonc);
 
-        var positionalRequest = { 'locations': locations }
+        var positionalRequest = { 'locations': locations };
 
         elevator.getElevationForLocations(positionalRequest, function(results, status) {
           if (status == google.maps.ElevationStatus.OK) {
