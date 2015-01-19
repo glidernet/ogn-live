@@ -76,7 +76,7 @@ function op(maxw) {
 	d.style.display='block';
   d.style.width = maxw + 'px';
   d.style.height = maxw + 'px';
-  tmop = setTimeout('cp()', 15000);
+  tmop = setTimeout(cp, 15000);
 	}
 
 function chunit() {			// change units
@@ -615,12 +615,12 @@ function checkrec() {
 	          	visible: vrecl
 	          });
 	    	}
-	    setTimeout('checkrec()', 120000);
+	    setTimeout(checkrec, 120000);
 			}
 		else
 			{
 			selrec =	"<option value='_error_'>Error</option>";
-			setTimeout('checkrec()', 20000);
+			setTimeout(checkrec, 20000);
 			}
 		reclbox();
 		});
@@ -1013,7 +1013,7 @@ function gesmark()
 	      }         // fin du for (var i = 0; i < planeurs.length; i++)
 	      // tri et affichage du tableau
 	      afftab();
-	      tmgm = setTimeout('gesmark()', 10000);
+	      tmgm = setTimeout(gesmark, 10000);
 	    });
 
   }
@@ -1024,7 +1024,7 @@ function wd()	{
 		gesmark();
 	}
 	w=0;
-	tmwd = setTimeout('wd()', 30000);
+	tmwd = setTimeout(wd, 30000);
 }
 
 function rehash() {
@@ -1503,6 +1503,6 @@ function initialize()
 
 	rehash();
 	checkrec();
-	tmwd = setTimeout('wd()', 30000);
+	tmwd = setTimeout(wd, 30000);
 	gesmark();
   }
