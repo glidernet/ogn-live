@@ -1044,13 +1044,13 @@ function task(cont) {
 	     	var res = JSON.parse(cont);
       	var tc,tn,ltp;
       	var tp = new Array();
-      	var tasks= res['tasks'];
+      	var tasks= res.tasks;
       	for(var i= 0; i < tasks.length; i++) {
-     			tn = tasks[i]['name'] || "task"+i;
-     			tc = tasks[i]['color'] || "FFFFFF";
+     			tn = tasks[i].name || "task"+i;
+     			tc = tasks[i].color || "FFFFFF";
      			tp.length=0;
-     			for (var ii=0; ii< tasks[i]['legs'].length; ii++) {
-     				if (typeof tasks[i]['legs'][ii][1] == 'undefined') {		// circle
+     			for (var ii=0; ii< tasks[i].legs.length; ii++) {
+     				if (typeof tasks[i].legs[ii][1] == 'undefined') {		// circle
      					aatCircle = new google.maps.Circle({
       					strokeColor: '#'+tc,
       					strokeOpacity: 0.5,
@@ -1059,11 +1059,11 @@ function task(cont) {
       					fillOpacity: 0.1,
       					map: map,
       					center: ltp,
-      					radius: tasks[i]['legs'][ii][0]
+      					radius: tasks[i].legs[ii][0]
     						});
     					taska.push(aatCircle);
      				} else {
-     					ltp=new google.maps.LatLng(tasks[i]['legs'][ii][0],tasks[i]['legs'][ii][1]);
+     					ltp=new google.maps.LatLng(tasks[i].legs[ii][0], tasks[i].legs[ii][1]);
      					tp.push(ltp);
      					}
      			}
@@ -1118,16 +1118,16 @@ function initialize()
 	}
 
 	// parameter c=lat,lon (center of the map)
-	if (typeof(parh['c']) != 'undefined') {
-		cent=parh['c'].split(',');
+	if (typeof(parh.c) != 'undefined') {
+		cent=parh.c.split(',');
 		vlat=parseFloat(cent[0]);
 		vlon=parseFloat(cent[1]);
 		hashc= "c="+vlat.toFixed(5)+","+vlon.toFixed(5);
 	}
 
 	// parameter o=1 (display offline)
-	if (typeof(parh['o']) != 'undefined') {
-		if (parh['o']==1) { all=1; hasho="&o=1";}
+	if (typeof(parh.o) != 'undefined') {
+		if (parh.o==1) { all=1; hasho="&o=1";}
 	}
 
   	/*
@@ -1233,9 +1233,9 @@ function initialize()
 	var tmid = { "r" : "ROADMAP", "t" : "TERRAIN", "s": "SATELLITE", "h": "HYBRID"};
 
 	// parameter m= map type
-	if (typeof(parh['m']) != 'undefined') {
-		mid = tmid[parh['m']];
-		hashm="&m="+parh['m'];
+	if (typeof(parh.m) != 'undefined') {
+		mid = tmid[parh.m];
+		hashm="&m="+parh.m;
 	}
 
 	map.setMapTypeId(google.maps.MapTypeId[mid]);
@@ -1275,7 +1275,7 @@ function initialize()
         });
 
 	// parameter z=  zoom level
-	if (typeof(parh['z']) != 'undefined') map.setZoom(parseInt(parh['z']));
+	if (typeof(parh.z) != 'undefined') map.setZoom(parseInt(parh.z));
 	else {
   	var southWest = new google.maps.LatLng(vlatmin, vlonmin);
   	var northEast = new google.maps.LatLng(vlatmax, vlonmax);
@@ -1390,8 +1390,8 @@ function initialize()
 	document.getElementById("menu").innerHTML = "<TABLE class=\"tt\"><TR><TD><INPUT type=\"checkbox\" id=\"hnewbox\" onChange='javascript : hidenew();'> Hide new gliders<BR><INPUT type=\"checkbox\" id=\"offl\" onChange='javascript : lineoff();'"+ ((all === 0)?" checked":"") +"> Ignore Offline<HR><INPUT type=\"checkbox\" id=\"boundsbox\" onChange='javascript : bounds();'"+ ((bound === true)?" checked":"") +"> Bounds<BR><TABLE cellspacing=\"0\" cellpading=\"0\"><TR align=\"center\"><TD colspan=\"2\"><INPUT type=\"text\" id=\"latmax\" name=\"latmax\" size=\"7\" value=\""+amax+"\"></TD></TR><TR align=\"center\"><TD><INPUT type=\"text\" id=\"lonmin\" name=\"lonmin\" size=\"7\" value=\""+omin+"\"></TD><TD><INPUT type=\"text\" id=\"lonmax\" name=\"lonmax\" size=\"7\" value=\""+omax+"\"></TD></TR><TR align=\"center\"><TD colspan=\"2\"><INPUT type=\"text\" id=\"latmin\" name=\"latmin\" size=\"7\" value=\""+amin+"\"></TD></TR></TABLE><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<INPUT type=\"button\" onclick=\"settomap()\" value=\"Set to map\"><BR><INPUT type=\"checkbox\" id=\"astmbox\" onChange='javascript : astm();'> Auto Set to map<HR>..:: Layers ::..<BR><INPUT type=\"checkbox\" id=\"weabox\" onChange=\"javascript : wea();\"> Weather <BR><INPUT type=\"checkbox\" id=\"clobox\" onChange=\"javascript : clo();\"> Clouds <BR><INPUT type=\"checkbox\" id=\"winbox\" onChange=\"javascript : wind();\"> Wind <BR><INPUT type=\"checkbox\" id=\"prebox\" onChange=\"javascript : pres();\"> Pressure <BR><INPUT type=\"checkbox\" id=\"aspbox\" onChange=\"javascript : asp();\"> AirSpaces <A HREF=\"http://www.openaip.net\" target=\"_blank\" style=\"font-size:10px;\">( openaip.net )</A><BR><INPUT type=\"checkbox\" id=\"aptbox\" onChange=\"javascript : apt();\"> Airports <A HREF=\"http://www.openaip.net\" target=\"_blank\" style=\"font-size:10px;\">( openaip.net )</A><BR><INPUT type=\"checkbox\" id=\"reclbox\" onChange=\"javascript : reclbox();\"> Receivers<BR><span id=\"dtaskbox\"><INPUT type=\"checkbox\" disabled></span> <span onclick=\"taskclic();\">Tasks</span><BR> <DIV style=\"display:none\"><input type=\"file\" id=\"chfile\" onchange=\"rtask()\" /></DIV><HR>..::Units::..<BR><input type=\"radio\" name=\"units\" id=\"unm\" value=\"m\" onclick=\"chunit()\" checked>Met. <input type=\"radio\" name=\"units\" id=\"uni\" value=\"i\" onclick=\"chunit()\">Imp.<HR>..::Path length::..<BR><input type=\"radio\" name=\"pl\" id=\"rp1\" value=\"1\" checked onclick=\"chpl()\">5' <input type=\"radio\" name=\"pl\" id=\"rp2\" value=\"2\" onclick=\"chpl()\">10' <input type=\"radio\" name=\"pl\" id=\"rp3\" value=\"3\" onclick=\"chpl()\">All</TD></TR></TABLE>";
 
 	// parameter b=lat1,lon1,lat2,lon2 bounds
-	if (typeof(parh['b']) != 'undefined') {
-		cent=parh['b'].split(',');
+	if (typeof(parh.b) != 'undefined') {
+		cent=parh.b.split(',');
 		document.getElementById('latmax').value = parseFloat(cent[0]);
 		document.getElementById('latmin').value = parseFloat(cent[1]);
 		document.getElementById('lonmax').value = parseFloat(cent[2]);
@@ -1403,9 +1403,9 @@ function initialize()
 	}
 
 	// parameter l= active layers
-	if (typeof(parh['l']) != 'undefined') {
-		for (var i = 0; i < parh['l'].length; i++) {
-		switch(parh['l'][i])	{
+	if (typeof(parh.l) != 'undefined') {
+		for (var i = 0; i < parh.l.length; i++) {
+		switch(parh.l[i])	{
 			case 'w':	// weather
 				document.getElementById('weabox').checked=true;
 				wea();
@@ -1437,10 +1437,10 @@ function initialize()
 		}
 	}
 
-	if (typeof(parh['t']) != 'undefined') {
+	if (typeof(parh.t) != 'undefined') {
 
 		  var xhr = new XMLHttpRequest();
-			xhr.open("GET", parh['t'], true);
+			xhr.open("GET", parh.t, true);
 			xhr.onreadystatechange = function() {
 			if (xhr.readyState === 4) {
 				var status = xhr.status;
@@ -1457,8 +1457,8 @@ function initialize()
 
 	// parameter w=0 (Don't display the warning)
 	var warn=1;
-	if (typeof(parh['w']) != 'undefined') {
-		if (parh['w'] === 0) { warn=0;	hashw="&w=0";}
+	if (typeof(parh.w) != 'undefined') {
+		if (parh.w === 0) { warn=0;	hashw="&w=0";}
 	}
 
 	if (warn==1) {
@@ -1467,8 +1467,8 @@ function initialize()
 	}
 
 	// parameter s=1 auto set bounds to the map
-	if (typeof(parh['s']) != 'undefined') {
-		if (parh['s']==1) {
+	if (typeof(parh.s) != 'undefined') {
+		if (parh.s==1) {
 			document.getElementById('astmbox').checked=true;
 			vstm=true;
 			hashs="&s=1";
@@ -1476,8 +1476,8 @@ function initialize()
 	}
 
 	// parameter u=i units imperial ou metric (default))
-	if (typeof(parh['u']) != 'undefined') {
-		if (parh['u']=="i") {
+	if (typeof(parh.u) != 'undefined') {
+		if (parh.u=="i") {
 			document.getElementById('uni').checked=true;
 			unit="i";
 			hashs="&u=i";
@@ -1486,12 +1486,12 @@ function initialize()
 
 
 	// parameter p=1,2 or 3 path length 5", 10" or all points
-	if (typeof(parh['p']) != 'undefined') {
-		if (parh['p']==2) { 		// 10 minutes
+	if (typeof(parh.p) != 'undefined') {
+		if (parh.p==2) { 		// 10 minutes
 			pathl=60;
 			document.getElementById('rp2').checked=true;
 			hashp="&p=2";
-		} else if (parh['p']==3) {		// all points
+		} else if (parh.p==3) {		// all points
 			pathl=99999;
 			document.getElementById('rp3').checked=true;
 			hashp="&p=3";
