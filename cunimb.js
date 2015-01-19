@@ -539,7 +539,7 @@ function redraw(pol) {
 	mrk.set('tra', 1);
 	var aa="";
 	if (fi=="hidden") aa="&a=1";
-  downloadUrl(cxml1+'?id='+p+aa+"&l="+lo, function(data)
+  downloadUrl(tld + '/' + cxml1+'?id='+p+aa+"&l="+lo, function(data)
 		{
 		var vtrace = data.documentElement.getElementsByTagName("m");
 		var err = parseFloat(vtrace[0].getAttribute("e"));
@@ -585,7 +585,7 @@ function reclbox() {
 
 
 function checkrec() {
-  downloadUrl(rxml, function(data)
+  downloadUrl(tld + '/' + rxml, function(data)
 		{
 		var vlrec = data.documentElement.getElementsByTagName("m");
 		var err = parseFloat(vlrec[0].getAttribute("e"));
@@ -705,7 +705,7 @@ function affinfo(mark) {
 	if (fi!="hidden") {
 		document.getElementById("acif").innerHTML="<A HREF='https://www.google.com/search?nfpr=1&q=\""+rg+"\"' target='_blank' onclick=\"event.stopPropagation();\">Infos</a>&nbsp;&nbsp;&nbsp;&nbsp;<A HREF='https://www.google.com/search?nfpr=1&q=\""+rg+"\"&tbm=isch' target='_blank' onclick=\"event.stopPropagation();\">Pictures</a>";
 		if (mrk.get('owner') === "") {
-			downloadUrl(dxml+'?i='+mark+'&f='+fi, function(data)
+			downloadUrl(tld + '/' + dxml+'?i='+mark+'&f='+fi, function(data)
 				{
 					var dat = data.documentElement.getElementsByTagName("m");
 					var err = parseFloat(dat[0].getAttribute("g"));
@@ -800,7 +800,7 @@ function dist(lat1,lon1,lat2,lon2) {
 function gesmark()
   {
 
-	  downloadUrl(cxml+"?a="+all+boundc+recc+parc+tz, function(data)
+	  downloadUrl(tld + '/' + cxml+"?a="+all+boundc+recc+parc+tz, function(data)
 	    {
 	    ++w;
 	    var planeurs = data.documentElement.getElementsByTagName("m");
