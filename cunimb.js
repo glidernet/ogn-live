@@ -80,7 +80,7 @@ function op(maxw) {
 	}
 
 function chunit() {			// change units
-	if (document.getElementById('uni').checked==true) {		// units imperial
+	if (document.getElementById('uni').checked === true) {		// units imperial
 		unit='i';
 		hashu="&u=i";
 	} else {		// units metric
@@ -92,10 +92,10 @@ function chunit() {			// change units
 
 
 function chpl() {			// change path length
-	if (document.getElementById('rp1').checked==true) { 		// 5 minutes
+	if (document.getElementById('rp1').checked === true) { 		// 5 minutes
 		pathl=30;
 		hashp="";
-	} else if (document.getElementById('rp2').checked==true) {		// 10 minutes
+	} else if (document.getElementById('rp2').checked === true) {		// 10 minutes
 		pathl=60;
 		hashp="&p=2";
 	} else {		// all points
@@ -174,12 +174,12 @@ function deleteallpath() {
 function allpath() {
 	var j=-1;
 	if (onoff==1) {
-		if (vallpolon==true) vallpolon = false; else vallpolon = true;
+		if (vallpolon === true) vallpolon = false; else vallpolon = true;
 		while(online[++j]){
 			window["P_"+online[j][2]].setOptions( {visible: vallpolon } );
 		}
 	} else {
-		if (vallpoloff==true) vallpoloff = false; else vallpoloff = true;
+		if (vallpoloff === true) vallpoloff = false; else vallpoloff = true;
 		while(offline[++j]){
 			window["P_"+offline[j][2]].setOptions( {visible: vallpoloff } );
 		}
@@ -190,12 +190,12 @@ function allpath() {
 function allmarker() {
 	var j=-1;
 	if (onoff==1) {
-		if (vallmaron==true) vallmaron = false; else vallmaron = true;
+		if (vallmaron === true) vallmaron = false; else vallmaron = true;
 		while(online[++j]){
 			window["M_"+online[j][2]].setOptions( {visible: vallmaron } );
 		}
 	} else {
-		if (vallmaroff==true) vallmaroff = false; else vallmaroff = true;
+		if (vallmaroff === true) vallmaroff = false; else vallmaroff = true;
 		while(offline[++j]){
 			window["M_"+offline[j][2]].setOptions( {visible: vallmaroff } );
 		}
@@ -214,19 +214,19 @@ function tricn() {
 }
 
 function trialti() {
-	if (tricol==0) triasc = 1;
+	if (tricol === 0) triasc = 1;
 	else if (triasc==1) triasc=2; else triasc=1;
 	tricol = 1;
 	afftab();
 }
 
 function focuson(poly) {
-	if (document.getElementById(poly)!=null) document.getElementById(poly).className= 'yel';
+	if (document.getElementById(poly) !== null) document.getElementById(poly).className= 'yel';
 	window[poly].setOptions ( {strokeWeight: 4, strokeOpacity: 1} );
 }
 
 function focusoff(poly) {
-	if (document.getElementById(poly)!=null) document.getElementById(poly).className= 'whi';
+	if (document.getElementById(poly) !== null) document.getElementById(poly).className= 'whi';
 	window[poly].setOptions ( {strokeWeight: 2, strokeOpacity: 0.75} );
 }
 
@@ -387,7 +387,7 @@ function bounds() {
 	}
 	else {
 		bound = false;
-		if (vstm==false) boundc = "";
+		if (vstm === false) boundc = "";
 		hashb="";
 	}
 	rehash();
@@ -433,7 +433,7 @@ function afftab() {
 		}
 	dlistd +="</TABLE>";
   document.getElementById("dtlist").innerHTML = dlistd;
-  if (aflist == true) document.getElementById("onoff").innerHTML = onoffaff + affcpt;;
+  if (aflist === true) document.getElementById("onoff").innerHTML = onoffaff + affcpt;;
 
 }
 
@@ -449,7 +449,7 @@ if(a > b)
 
 
 function alist()  {
-  if (aflist == true) {
+  if (aflist === true) {
   	document.getElementById("ett1").innerHTML = "<CENTER><IMG style=\"z-index:50\" onclick=\"alist();\" SRC=\""+tld+"/pict/plu.png\"></CENTER>";
     document.getElementById('dlist').style.width="20px";
     document.getElementById('dlist').style.height="20px";
@@ -468,7 +468,7 @@ function alist()  {
 }
 
 function sideclick() {
-	if (lside==0) {
+	if (lside === 0) {
 		document.getElementById('dlist').className="lleft";
 		document.getElementById('ac').className="acleft";
 		document.getElementById('ac').style.right="";
@@ -498,7 +498,7 @@ function centeron(mark) {
 
 
 function centeroff() {
-	if (autoc!="") { map.setCenter(window[autoc].getPosition()); }
+	if (autoc !== "") { map.setCenter(window[autoc].getPosition()); }
 	cton=false;
 }
 
@@ -508,7 +508,7 @@ function vpolmar(chk, polmar) {
 
 
 function isvisib(pol) {
-	if (window[pol].getVisible()==true) return "checked";
+	if (window[pol].getVisible() === true) return "checked";
 	else return "";
 }
 
@@ -546,7 +546,7 @@ function redraw(pol) {
 		var idd = vtrace[0].getAttribute("i");
 		var encodedt = vtrace[0].getAttribute("r");
 
-		if (err==0 && encodedt.length>2) {
+		if (err === 0 && encodedt.length>2) {
 			window['P_'+idd].getPath().clear();
 			var ftrace = google.maps.geometry.encoding.decodePath( encodedt );
 			window['P_'+idd].setPath(ftrace);
@@ -589,7 +589,7 @@ function checkrec() {
 		{
 		var vlrec = data.documentElement.getElementsByTagName("m");
 		var err = parseFloat(vlrec[0].getAttribute("e"));
-		if (err==0 && vlrec.length>1) {
+		if (err === 0 && vlrec.length>1) {
 			selrec = "";
 			// effacer markers
 			var j=-1;
@@ -704,13 +704,13 @@ function affinfo(mark) {
 	document.getElementById("acty").innerHTML=ftype[mrk.get('type')*1];
 	if (fi!="hidden") {
 		document.getElementById("acif").innerHTML="<A HREF='https://www.google.com/search?nfpr=1&q=\""+rg+"\"' target='_blank' onclick=\"event.stopPropagation();\">Infos</a>&nbsp;&nbsp;&nbsp;&nbsp;<A HREF='https://www.google.com/search?nfpr=1&q=\""+rg+"\"&tbm=isch' target='_blank' onclick=\"event.stopPropagation();\">Pictures</a>";
-		if (mrk.get('owner')=="") {
+		if (mrk.get('owner') === "") {
 			downloadUrl(dxml+'?i='+mark+'&f='+fi, function(data)
 				{
 					var dat = data.documentElement.getElementsByTagName("m");
 					var err = parseFloat(dat[0].getAttribute("g"));
 					var mrk = dat[0].getAttribute("i");
-					if (err==0) {
+					if (err === 0) {
 						window[mrk].set('owner', ""+dat[0].getAttribute("a"));
 						window[mrk].set('airf', ""+dat[0].getAttribute("b"));
 						window[mrk].set('model', ""+dat[0].getAttribute("c"));
@@ -759,8 +759,8 @@ function settomap() {
 		document.getElementById('latmin').value = amin;
 		document.getElementById('lonmax').value = omax;
 		document.getElementById('lonmin').value = omin;
-		if (bound==true) bounds();
-		if (vstm==true) {
+		if (bound === true) bounds();
+		if (vstm === true) {
 			boundc="&b="+amax+"&c="+amin+"&d="+omax+"&e="+omin;
 			hashs="&s=1";
 			rehash();
@@ -780,7 +780,7 @@ function astm() {
 
 	} else {
 		vstm=false;
-		if (bound==false) boundc="";
+		if (bound === false) boundc="";
 		hashs="";
 		rehash();
 	}
@@ -839,7 +839,7 @@ function gesmark()
 	          {
 	          // **** création de la couleur de la trace en fonction d'un tableau de 9 couleurs
 	          hcol= tcolor[ccolor];
-	          if (hnew==true) visib = false;
+	          if (hnew === true) visib = false;
 
 	          // création du PolyLine
 	          var polyOptions = {
@@ -937,7 +937,7 @@ function gesmark()
 
 					if (ddf<600) {
 						if (ddf>120) afdif="n";
-						else if (difalt==0) afdif="z";
+						else if (difalt === 0) afdif="z";
 						else if (difalt<-4) afdif="mmm";
 						else if (difalt<-1) afdif="mm";
 						else if (difalt<0) afdif="m";
@@ -952,7 +952,7 @@ function gesmark()
 							window[markvar].set('off', 0);
 						}
 
-						if (window[markvar].get('tra')==0) {
+						if (window[markvar].get('tra') === 0) {
 							if (window[polyvar].getPath().getLength()>=pathl) window[polyvar].getPath().removeAt(0); // remove first point of the trace
 						}
 
@@ -971,7 +971,7 @@ function gesmark()
 
 					}
 					else {
-					 	if (all==0) {
+					 	if (all === 0) {
 					 		if ( typeof(window[polyvar]) != 'undefined' )  { // si pas déjà effacé
 			          // efface et détruit le PolyLine et le Marker
 			          window[polyvar].setMap(null);
@@ -991,7 +991,7 @@ function gesmark()
 					 	}
 					 	else {
 						 	offline.push([cn,alt*1,ps+"_"+cn,colcn,"n"]);
-						 	if (window[markvar].get('off')==0) {
+						 	if (window[markvar].get('off') === 0) {
 						 		window[markvar].setOptions( {zIndex: 10 } );
 						 		window[markvar].setIcon(""+tld+"/markers/"+cn+"_o.png");
 						 		window[markvar].set('off', 1);
@@ -1003,7 +1003,7 @@ function gesmark()
 	        if (autoc==markvar)
 	          {
 	          document.getElementById("divInfoac").innerHTML="<B>AC</B>: "+cn+" - "+ps+" @ "+(alt*m2ft[unit]).toFixed()+am2ft[unit];
-	          if (cton==false) map.setCenter(new google.maps.LatLng(lat,lon));
+	          if (cton === false) map.setCenter(new google.maps.LatLng(lat,lon));
 	          }
 
 	        if (acaff==markvar) affinfodata(markvar);
@@ -1019,7 +1019,7 @@ function gesmark()
   }
 
 function wd()	{
-	if (w==0) {
+	if (w === 0) {
 		clearTimeout(tmgm);
 		gesmark();
 	}
@@ -1035,7 +1035,7 @@ function rempl(po, c) {
 	var thl=hl;
 	hl= thl.substring(0,po) + c + thl.substring(po+1);
 	thl = hl.replace(/ /g,'');
-	if (thl=='') hashl=''; else hashl= "&l="+thl;
+	if (thl === '') hashl=''; else hashl= "&l="+thl;
 };
 
 function taskclic() {	document.getElementById("chfile").click(); }
@@ -1260,7 +1260,7 @@ function initialize()
         });
 
   google.maps.event.addListener(map, 'bounds_changed', function() {
-        if (vstm==true) settomap();
+        if (vstm === true) settomap();
         });
 
 	google.maps.event.addListener(map, 'zoom_changed', function() {
@@ -1387,7 +1387,7 @@ function initialize()
 	document.getElementById("ett2").innerHTML = "<TABLE class=\"tt\"><TR width=\"12\"><TH class=\"cgv\" ondblclick=\"allmarker();\"><IMG src='"+tld+"/pict/ico.png'></TH><TH class=\"cgv\" ondblclick=\"allpath();\"><IMG src='"+tld+"/pict/tra.gif'></TH><TH class=\"cgn\" onclick=\"tricn();\">CN</TH><TH	class=\"cgc\" ondblclick=\"deleteallpath();\"><IMG border =\"0\" src='"+tld+"/pict/a.gif'></TH><TH class=\"cga\" onclick=\"trialti();\">Alti.</TH><TH class=\"cgz\">Vz</TH></TR></table>";
 	document.getElementById("ac").innerHTML = "<span style=\"color: #333; font-weight: bold; font-size: 1.1em; line-height: 1.3em;\">&nbsp;&nbsp;&nbsp;..::Aircraft::..</span><BR><span class=\"act\">CN: </span><span id=\"accn\" class=\"aca\"></span><BR><DIV id=\"ac1\"><span class=\"act\">Regist.: </span><span id=\"acre\" class=\"aca\"></span><BR></DIV><span class=\"act\">Flarm Id: </span><span id=\"acfi\" class=\"aca\"></span><BR><span class=\"act\">Type: </span><span id=\"acty\" class=\"aca\"></span><BR><DIV id=\"ac2\"><span class=\"act\">Owner: </span><span id=\"acow\" class=\"aca\"></span><BR><span class=\"act\">Airfield: </span><span id=\"acaf\" class=\"aca\"></span><BR><span class=\"act\">Model: </span><span id=\"acmo\" class=\"aca\"></span><BR><span class=\"act\">Freq.: </span><span id=\"acfr\" class=\"aca\"></span></DIV><span class=\"act\">Last time: </span><span id=\"aclt\" class=\"aca\"></span><BR><span class=\"act\">Latitude: </span><span id=\"acla\" class=\"aca\"></span><BR><span class=\"act\">Longitude: </span><span id=\"aclo\" class=\"aca\"></span><BR><span class=\"act\">Altitude: </span><span id=\"acal\" class=\"aca\"></span><BR><span class=\"act\">G.Speed: </span><span id=\"acsp\" class=\"aca\"></span><BR><span class=\"act\">Track: </span><span id=\"actr\" class=\"aca\"></span><span class=\"aca\">&thinsp;&deg;</span><BR><span class=\"act\">Vz: </span><span id=\"acvz\" class=\"aca\"></span><BR><span class=\"act\">Receiver: </span><span id=\"acrx\" class=\"aca\"></span><BR><span id=\"acif\" class=\"aca\"></span>";
 	document.getElementById("dtable").innerHTML = "<DIV id=\"menu\" style=\"display:none;\"></DIV><DIV id=\"dtlist\" style=\"display:block\"></DIV>";
-	document.getElementById("menu").innerHTML = "<TABLE class=\"tt\"><TR><TD><INPUT type=\"checkbox\" id=\"hnewbox\" onChange='javascript : hidenew();'> Hide new gliders<BR><INPUT type=\"checkbox\" id=\"offl\" onChange='javascript : lineoff();'"+ ((all==0)?" checked":"") +"> Ignore Offline<HR><INPUT type=\"checkbox\" id=\"boundsbox\" onChange='javascript : bounds();'"+ ((bound==true)?" checked":"") +"> Bounds<BR><TABLE cellspacing=\"0\" cellpading=\"0\"><TR align=\"center\"><TD colspan=\"2\"><INPUT type=\"text\" id=\"latmax\" name=\"latmax\" size=\"7\" value=\""+amax+"\"></TD></TR><TR align=\"center\"><TD><INPUT type=\"text\" id=\"lonmin\" name=\"lonmin\" size=\"7\" value=\""+omin+"\"></TD><TD><INPUT type=\"text\" id=\"lonmax\" name=\"lonmax\" size=\"7\" value=\""+omax+"\"></TD></TR><TR align=\"center\"><TD colspan=\"2\"><INPUT type=\"text\" id=\"latmin\" name=\"latmin\" size=\"7\" value=\""+amin+"\"></TD></TR></TABLE><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<INPUT type=\"button\" onclick=\"settomap()\" value=\"Set to map\"><BR><INPUT type=\"checkbox\" id=\"astmbox\" onChange='javascript : astm();'> Auto Set to map<HR>..:: Layers ::..<BR><INPUT type=\"checkbox\" id=\"weabox\" onChange=\"javascript : wea();\"> Weather <BR><INPUT type=\"checkbox\" id=\"clobox\" onChange=\"javascript : clo();\"> Clouds <BR><INPUT type=\"checkbox\" id=\"winbox\" onChange=\"javascript : wind();\"> Wind <BR><INPUT type=\"checkbox\" id=\"prebox\" onChange=\"javascript : pres();\"> Pressure <BR><INPUT type=\"checkbox\" id=\"aspbox\" onChange=\"javascript : asp();\"> AirSpaces <A HREF=\"http://www.openaip.net\" target=\"_blank\" style=\"font-size:10px;\">( openaip.net )</A><BR><INPUT type=\"checkbox\" id=\"aptbox\" onChange=\"javascript : apt();\"> Airports <A HREF=\"http://www.openaip.net\" target=\"_blank\" style=\"font-size:10px;\">( openaip.net )</A><BR><INPUT type=\"checkbox\" id=\"reclbox\" onChange=\"javascript : reclbox();\"> Receivers<BR><span id=\"dtaskbox\"><INPUT type=\"checkbox\" disabled></span> <span onclick=\"taskclic();\">Tasks</span><BR> <DIV style=\"display:none\"><input type=\"file\" id=\"chfile\" onchange=\"rtask()\" /></DIV><HR>..::Units::..<BR><input type=\"radio\" name=\"units\" id=\"unm\" value=\"m\" onclick=\"chunit()\" checked>Met. <input type=\"radio\" name=\"units\" id=\"uni\" value=\"i\" onclick=\"chunit()\">Imp.<HR>..::Path length::..<BR><input type=\"radio\" name=\"pl\" id=\"rp1\" value=\"1\" checked onclick=\"chpl()\">5' <input type=\"radio\" name=\"pl\" id=\"rp2\" value=\"2\" onclick=\"chpl()\">10' <input type=\"radio\" name=\"pl\" id=\"rp3\" value=\"3\" onclick=\"chpl()\">All</TD></TR></TABLE>";
+	document.getElementById("menu").innerHTML = "<TABLE class=\"tt\"><TR><TD><INPUT type=\"checkbox\" id=\"hnewbox\" onChange='javascript : hidenew();'> Hide new gliders<BR><INPUT type=\"checkbox\" id=\"offl\" onChange='javascript : lineoff();'"+ ((all === 0)?" checked":"") +"> Ignore Offline<HR><INPUT type=\"checkbox\" id=\"boundsbox\" onChange='javascript : bounds();'"+ ((bound === true)?" checked":"") +"> Bounds<BR><TABLE cellspacing=\"0\" cellpading=\"0\"><TR align=\"center\"><TD colspan=\"2\"><INPUT type=\"text\" id=\"latmax\" name=\"latmax\" size=\"7\" value=\""+amax+"\"></TD></TR><TR align=\"center\"><TD><INPUT type=\"text\" id=\"lonmin\" name=\"lonmin\" size=\"7\" value=\""+omin+"\"></TD><TD><INPUT type=\"text\" id=\"lonmax\" name=\"lonmax\" size=\"7\" value=\""+omax+"\"></TD></TR><TR align=\"center\"><TD colspan=\"2\"><INPUT type=\"text\" id=\"latmin\" name=\"latmin\" size=\"7\" value=\""+amin+"\"></TD></TR></TABLE><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<INPUT type=\"button\" onclick=\"settomap()\" value=\"Set to map\"><BR><INPUT type=\"checkbox\" id=\"astmbox\" onChange='javascript : astm();'> Auto Set to map<HR>..:: Layers ::..<BR><INPUT type=\"checkbox\" id=\"weabox\" onChange=\"javascript : wea();\"> Weather <BR><INPUT type=\"checkbox\" id=\"clobox\" onChange=\"javascript : clo();\"> Clouds <BR><INPUT type=\"checkbox\" id=\"winbox\" onChange=\"javascript : wind();\"> Wind <BR><INPUT type=\"checkbox\" id=\"prebox\" onChange=\"javascript : pres();\"> Pressure <BR><INPUT type=\"checkbox\" id=\"aspbox\" onChange=\"javascript : asp();\"> AirSpaces <A HREF=\"http://www.openaip.net\" target=\"_blank\" style=\"font-size:10px;\">( openaip.net )</A><BR><INPUT type=\"checkbox\" id=\"aptbox\" onChange=\"javascript : apt();\"> Airports <A HREF=\"http://www.openaip.net\" target=\"_blank\" style=\"font-size:10px;\">( openaip.net )</A><BR><INPUT type=\"checkbox\" id=\"reclbox\" onChange=\"javascript : reclbox();\"> Receivers<BR><span id=\"dtaskbox\"><INPUT type=\"checkbox\" disabled></span> <span onclick=\"taskclic();\">Tasks</span><BR> <DIV style=\"display:none\"><input type=\"file\" id=\"chfile\" onchange=\"rtask()\" /></DIV><HR>..::Units::..<BR><input type=\"radio\" name=\"units\" id=\"unm\" value=\"m\" onclick=\"chunit()\" checked>Met. <input type=\"radio\" name=\"units\" id=\"uni\" value=\"i\" onclick=\"chunit()\">Imp.<HR>..::Path length::..<BR><input type=\"radio\" name=\"pl\" id=\"rp1\" value=\"1\" checked onclick=\"chpl()\">5' <input type=\"radio\" name=\"pl\" id=\"rp2\" value=\"2\" onclick=\"chpl()\">10' <input type=\"radio\" name=\"pl\" id=\"rp3\" value=\"3\" onclick=\"chpl()\">All</TD></TR></TABLE>";
 
 	// parameter b=lat1,lon1,lat2,lon2 bounds
 	if (typeof(parh['b']) != 'undefined') {
@@ -1458,7 +1458,7 @@ function initialize()
 	// parameter w=0 (Don't display the warning)
 	var warn=1;
 	if (typeof(parh['w']) != 'undefined') {
-		if (parh['w']==0) { warn=0;	hashw="&w=0";}
+		if (parh['w'] === 0) { warn=0;	hashw="&w=0";}
 	}
 
 	if (warn==1) {
