@@ -1,9 +1,9 @@
 /*
-   _____            _           _                      _   
-  / ____|          (_)         | |                    | |  
- | |    _   _ _ __  _ _ __ ___ | |__        _ __   ___| |_ 
+   _____            _           _                      _
+  / ____|          (_)         | |                    | |
+ | |    _   _ _ __  _ _ __ ___ | |__        _ __   ___| |_
  | |   | | | | '_ \| | '_ ` _ \| '_ \      | '_ \ / _ \ __|
- | |___| |_| | | | | | | | | | | |_) |  _  | | | |  __/ |_ 
+ | |___| |_| | | | | | | | | | | |_) |  _  | | | |  __/ |_
   \_____\__,_|_| |_|_|_| |_| |_|_.__/  (_) |_| |_|\___|\__|
 
 */
@@ -31,7 +31,7 @@ var onoff = 1;		// 1: online, 2: offline, 3: Menu
 var onoffaff ="OnLine";
 var triasc = 1;	// 1: asc 2: desc
 var tricol = 0; // 0:tri sur cn 1: tri sur alti
-var ett1 = "<CENTER><IMG style=\"z-index:50\" onclick=\"alist();\" SRC=\""+tld+"/pict/min.png\">&nbsp;&nbsp;<IMG style=\"z-index:50\" onclick=\"sideclick();\" SRC=\""+tld+"/pict/dbarrow.gif\">&nbsp;&nbsp;<A HREF=\""+tld+"/help-fr.html\" target=\"_blank\"><IMG style=\"z-index:50\" SRC=\""+tld+"/pict/hel.png\"></A>&nbsp;&nbsp;<span id=\"onoff\" onclick=\"onofff();\"></span></CENTER>"; 
+var ett1 = "<CENTER><IMG style=\"z-index:50\" onclick=\"alist();\" SRC=\""+tld+"/pict/min.png\">&nbsp;&nbsp;<IMG style=\"z-index:50\" onclick=\"sideclick();\" SRC=\""+tld+"/pict/dbarrow.gif\">&nbsp;&nbsp;<A HREF=\""+tld+"/help-fr.html\" target=\"_blank\"><IMG style=\"z-index:50\" SRC=\""+tld+"/pict/hel.png\"></A>&nbsp;&nbsp;<span id=\"onoff\" onclick=\"onofff();\"></span></CENTER>";
 var w = 0;	// watchdog variable
 var tmgm,tmwd;
 var vasp = false;
@@ -58,7 +58,7 @@ var akh2kt={"m":"km/h", "i":"kt"};
 var m2kt={"m":1, "i":1.94384};
 var am2kt={"m":"m/s", "i":"kt"};
 
- 
+
 var hashc="",hashz="",hashm="",hasho="",hashb="",hashs="",hashl="",hasht="",hl="       ",hashw="",hashu="",hashp="";
 // center     zoom    maptype  offline  bound   autoset2ma  layers  tasks                warning   units   pathlength
 
@@ -80,7 +80,7 @@ function op(maxw) {
 	}
 
 function chunit() {			// change units
-	if (document.getElementById('uni').checked==true) {		// units imperial 
+	if (document.getElementById('uni').checked==true) {		// units imperial
 		unit='i';
 		hashu="&u=i";
 	} else {		// units metric
@@ -95,7 +95,7 @@ function chpl() {			// change path length
 	if (document.getElementById('rp1').checked==true) { 		// 5 minutes
 		pathl=30;
 		hashp="";
-	} else if (document.getElementById('rp2').checked==true) {		// 10 minutes 
+	} else if (document.getElementById('rp2').checked==true) {		// 10 minutes
 		pathl=60;
 		hashp="&p=2";
 	} else {		// all points
@@ -153,13 +153,13 @@ function delpoff () {		// delete all offline path
 	while(offline[++j]){
 		window["P_"+offline[j][2]].getPath().clear();
 		window["M_"+offline[j][2]].set('tra', 0);
-	}		
+	}
 
 }
 
 function deletepath(pol) {
 	window[pol].getPath().clear();
-	window["M_"+pol.substring(2)].set('tra', 0);	
+	window["M_"+pol.substring(2)].set('tra', 0);
 }
 
 function deleteallpath() {
@@ -173,7 +173,7 @@ function deleteallpath() {
 
 function allpath() {
 	var j=-1;
-	if (onoff==1) {	
+	if (onoff==1) {
 		if (vallpolon==true) vallpolon = false; else vallpolon = true;
 		while(online[++j]){
 			window["P_"+online[j][2]].setOptions( {visible: vallpolon } );
@@ -184,12 +184,12 @@ function allpath() {
 			window["P_"+offline[j][2]].setOptions( {visible: vallpoloff } );
 		}
 	}
-	afftab();	
+	afftab();
 }
 
 function allmarker() {
 	var j=-1;
-	if (onoff==1) {	
+	if (onoff==1) {
 		if (vallmaron==true) vallmaron = false; else vallmaron = true;
 		while(online[++j]){
 			window["M_"+online[j][2]].setOptions( {visible: vallmaron } );
@@ -200,7 +200,7 @@ function allmarker() {
 			window["M_"+offline[j][2]].setOptions( {visible: vallmaroff } );
 		}
 	}
-	afftab();	
+	afftab();
 }
 
 
@@ -221,13 +221,13 @@ function trialti() {
 }
 
 function focuson(poly) {
-	if (document.getElementById(poly)!=null) document.getElementById(poly).className= 'yel'; 
+	if (document.getElementById(poly)!=null) document.getElementById(poly).className= 'yel';
 	window[poly].setOptions ( {strokeWeight: 4, strokeOpacity: 1} );
 }
 
 function focusoff(poly) {
 	if (document.getElementById(poly)!=null) document.getElementById(poly).className= 'whi';
-	window[poly].setOptions ( {strokeWeight: 2, strokeOpacity: 0.75} ); 
+	window[poly].setOptions ( {strokeWeight: 2, strokeOpacity: 0.75} );
 }
 
 function asp() {
@@ -236,102 +236,102 @@ function asp() {
 		airspaceoverlay.setOpacity(1);
 		map.overlayMapTypes.setAt(1, airspaceoverlay);
 		rempl(4,"z");
-		} 
+		}
   else {
   	vasp=false;
-  	airspaceoverlay.setOpacity(0); 
+  	airspaceoverlay.setOpacity(0);
   	map.overlayMapTypes.removeAt(1);
   	rempl(4," ");
   	}
   rehash();
 }
-			
+
 function apt() {
 	if(document.getElementById('aptbox').checked) {
-		vapt=true;		
+		vapt=true;
 		airportoverlay.setOpacity(1);
 		map.overlayMapTypes.setAt(2, airportoverlay);
 		rempl(5,"a");
 		}
  	else {
- 		vapt=false; 		
+ 		vapt=false;
  		airportoverlay.setOpacity(0);
  		map.overlayMapTypes.removeAt(2);
  		rempl(5," ");
  		}
  	rehash();
-}	
+}
 
 function wind() {
 	if(document.getElementById('winbox').checked) {
-		vwin=true;		
+		vwin=true;
 		windoverlay.setOpacity(1);
 		map.overlayMapTypes.setAt(3, windoverlay);
 		if (map.getZoom()>7) map.setZoom(7);
 		rempl(2,"v");
 		}
  	else {
- 		vwin=false; 		
+ 		vwin=false;
  		windoverlay.setOpacity(0);
  		map.overlayMapTypes.removeAt(3);
  		rempl(2," ");
  		}
  	rehash();
-}	
+}
 
 function pres() {
 	if(document.getElementById('prebox').checked) {
-		vpre=true;		
+		vpre=true;
 		presoverlay.setOpacity(1);
 		map.overlayMapTypes.setAt(4, presoverlay);
 		if (map.getZoom()>7) map.setZoom(7);
 		rempl(3,"p");
 		}
  	else {
- 		vpre=false; 		
+ 		vpre=false;
  		presoverlay.setOpacity(0);
  		map.overlayMapTypes.removeAt(4);
  		rempl(3," ");
  		}
  	rehash();
-}	
+}
 
 
 function wea() {
 	if(document.getElementById('weabox').checked) {
-		vwea=true;		
+		vwea=true;
 		weatherLayer = new google.maps.weather.WeatherLayer({ temperatureUnits: google.maps.weather.TemperatureUnit.CELSIUS  });
     weatherLayer.setMap(map);
     if (map.getZoom()>12) map.setZoom(12);
     rempl(0,"w");
 		}
  	else {
- 		vwea=false; 		
+ 		vwea=false;
 		weatherLayer.setMap(null);
 		rempl(0," ");
  		}
  	rehash();
-}	
+}
 
 function clo() {
 	if(document.getElementById('clobox').checked) {
-		vclo=true;		
+		vclo=true;
 		cloudLayer = new google.maps.weather.CloudLayer();
     cloudLayer.setMap(map);
     if (map.getZoom()>6) map.setZoom(6);
     rempl(1,"c");
 		}
  	else {
- 		vclo=false; 		
+ 		vclo=false;
 		cloudLayer.setMap(null);
 		rempl(1," ");
  		}
  	rehash();
-}	
+}
 
 
 function hidenew() {
-	if(document.getElementById('hnewbox').checked) hnew=true; else hnew=false;		
+	if(document.getElementById('hnewbox').checked) hnew=true; else hnew=false;
 }
 
 function lineoff() {
@@ -404,7 +404,7 @@ function afftab() {
 		case 1:
 			online.sort(ASC);
 			if (triasc==2) online.reverse();
-			while(online[++j]){		
+			while(online[++j]){
 		  	mar = "M_"+online[j][2];
 	  		pol = "P_"+online[j][2];
 				dlistd += "<TR id=\""+pol+"\" onmouseover=\"focuson('"+pol+"');\" onmouseout=\"focusoff('"+pol+"');\"><TD class=\"cgv\"><input onchange=\"vpolmar(this.checked ,'"+mar+"');\" type=\"checkbox\" " + isvisib(mar) + " ></TD><TD class=\"cgv\"><input onchange=\"vpolmar(this.checked ,'"+pol+"');\" type=\"checkbox\" " + isvisib(pol) + " ></TD><TD class=\"cgn\" onmousedown=\"centeron('"+mar+"');\" onmouseup=\"centeroff();\" oncontextmenu=\"event.stopPropagation(); redraw('"+pol+"'); return false;\" ondblclick=\"event.stopPropagation(); autocenter('" +mar+ "');\" >"+online[j][0]+"</TD><TD class=\"cgc\"><span style='background-color: "+online[j][3]+"' ondblclick=\"deletepath('" +pol+ "'); return false;\" oncontextmenu=\"this.style.backgroundColor=changecolor('"+mar+"'); return false;\">&nbsp;&nbsp;</span></TD><TD onclick=\"affinfo('"+mar+"')\" class=\"cga\">";
@@ -417,7 +417,7 @@ function afftab() {
 		case 2:
 			offline.sort(ASC);
 			if (triasc==2) offline.reverse();
-			while(offline[++j]){		
+			while(offline[++j]){
 		  	mar = "M_"+offline[j][2];
 	  		pol = "P_"+offline[j][2];
 				dlistd += "<TR id=\""+pol+"\" onmouseover=\"focuson('"+pol+"');\" onmouseout=\"focusoff('"+pol+"');\"><TD class=\"cgv\"><input onchange=\"vpolmar(this.checked ,'"+mar+"');\" type=\"checkbox\" " + isvisib(mar) + " ></TD><TD class=\"cgv\"><input onchange=\"vpolmar(this.checked ,'"+pol+"');\" type=\"checkbox\" " + isvisib(pol) + " ></TD><TD class=\"cgn\" onmousedown=\"centeron('"+mar+"');\" onmouseup=\"centeroff();\" oncontextmenu=\"event.stopPropagation(); redraw('"+pol+"'); return false;\" ondblclick=\"event.stopPropagation(); autocenter('" +mar+ "');\" >"+offline[j][0]+"</TD><TD class=\"cgc\"><span style='background-color: "+offline[j][3]+"' ondblclick=\"deletepath('" +pol+ "'); return false;\" oncontextmenu=\"this.style.backgroundColor=changecolor('"+mar+"'); return false;\">&nbsp;&nbsp;</span></TD><TD onclick=\"affinfo('"+mar+"')\" class=\"cga\">";
@@ -434,7 +434,7 @@ function afftab() {
 	dlistd +="</TABLE>";
   document.getElementById("dtlist").innerHTML = dlistd;
   if (aflist == true) document.getElementById("onoff").innerHTML = onoffaff + affcpt;;
-    	
+
 }
 
 function ASC(a,b){
@@ -446,8 +446,8 @@ if(a > b)
       return -1
    return 0
  }
- 
- 
+
+
 function alist()  {
   if (aflist == true) {
   	document.getElementById("ett1").innerHTML = "<CENTER><IMG style=\"z-index:50\" onclick=\"alist();\" SRC=\""+tld+"/pict/plu.png\"></CENTER>";
@@ -536,16 +536,16 @@ function redraw(pol) {
 	var mrk=window["M_"+p];
 	var fi=mrk.get('fid');
 	var lo=mrk.getPosition().lng().toFixed();
-	mrk.set('tra', 1);	
+	mrk.set('tra', 1);
 	var aa="";
-	if (fi=="hidden") aa="&a=1"; 
+	if (fi=="hidden") aa="&a=1";
   downloadUrl(cxml1+'?id='+p+aa+"&l="+lo, function(data)
 		{
 		var vtrace = data.documentElement.getElementsByTagName("m");
 		var err = parseFloat(vtrace[0].getAttribute("e"));
 		var idd = vtrace[0].getAttribute("i");
 		var encodedt = vtrace[0].getAttribute("r");
-		
+
 		if (err==0 && encodedt.length>2) {
 			window['P_'+idd].getPath().clear();
 			var ftrace = google.maps.geometry.encoding.decodePath( encodedt );
@@ -558,7 +558,7 @@ function redraw(pol) {
 function taskbox() {
 	if(document.getElementById('taskbox').checked) {
 		vtas=true;
-	} else { 
+	} else {
 		vtas=false;
 	}
 	var j=-1;
@@ -572,7 +572,7 @@ function reclbox() {
 	if(document.getElementById('reclbox').checked) {
 		vrecl=true;
 		rempl(6,"r");
-	} else { 
+	} else {
 		vrecl=false;
 		rempl(6," ");
 	}
@@ -617,14 +617,14 @@ function checkrec() {
 	    	}
 	    setTimeout('checkrec()', 120000);
 			}
-		else 
+		else
 			{
 			selrec =	"<option value='_error_'>Error</option>";
 			setTimeout('checkrec()', 20000);
 			}
 		reclbox();
-		});			
-	
+		});
+
 }
 
 
@@ -652,10 +652,10 @@ function receiv() {
 	}
  	else {
  		vrec=false;
- 		/* 		
+ 		/*
  		recc="";
  		*/
-	}	
+	}
 }
 
 
@@ -667,13 +667,13 @@ function affinfodata(mark) {
 	document.getElementById("aclt").innerHTML=mrk.get('tim');
 	document.getElementById("acla").innerHTML=mrk.getPosition().lat().toFixed(6);
 	document.getElementById("aclo").innerHTML=mrk.getPosition().lng().toFixed(6);
-	document.getElementById("acal").innerHTML=al.toFixed()+"&thinsp;"+am2ft[unit];		
-	document.getElementById("acsp").innerHTML=vx.toFixed()+"&thinsp;"+akh2kt[unit];		
+	document.getElementById("acal").innerHTML=al.toFixed()+"&thinsp;"+am2ft[unit];
+	document.getElementById("acsp").innerHTML=vx.toFixed()+"&thinsp;"+akh2kt[unit];
 	document.getElementById("actr").innerHTML=mrk.get('track');
 	document.getElementById("acvz").innerHTML=((vz>=0)?"+":"&ndash;")+Math.abs(vz).toFixed(1)+"&thinsp;"+am2kt[unit];
 	var re = mrk.get('rec');
-	if (typeof(window["R_"+re]) != 'undefined') {	
-		var mre = window["R_"+re]; 
+	if (typeof(window["R_"+re]) != 'undefined') {
+		var mre = window["R_"+re];
 		var di = dist(mrk.getPosition().lat(), mrk.getPosition().lng(), mre.getPosition().lat(), mre.getPosition().lng() );
 		re += " ("+di.toFixed()+" Km)";
 	} else {
@@ -722,14 +722,14 @@ function affinfo(mark) {
 						document.getElementById("ac2").style.display = "none";
 					}
 				});
-	
-			
+
+
 		} else {
 			if (mrk.get('owner')!="_") {
 				affinfodata2(mark);
 				document.getElementById("ac2").style.display = "block";
 			} else {
-				document.getElementById("ac2").style.display = "none";				
+				document.getElementById("ac2").style.display = "none";
 			}
 		}
 	}
@@ -759,13 +759,13 @@ function settomap() {
 		document.getElementById('latmin').value = amin;
 		document.getElementById('lonmax').value = omax;
 		document.getElementById('lonmin').value = omin;
-		if (bound==true) bounds();	
+		if (bound==true) bounds();
 		if (vstm==true) {
 			boundc="&b="+amax+"&c="+amin+"&d="+omax+"&e="+omin;
 			hashs="&s=1";
 			rehash();
 		}
-		
+
 }
 
 function astm() {
@@ -777,7 +777,7 @@ function astm() {
 			hashb="";
 		}
 		settomap();
-		
+
 	} else {
 		vstm=false;
 		if (bound==false) boundc="";
@@ -799,7 +799,7 @@ function dist(lat1,lon1,lat2,lon2) {
 
 function gesmark()
   {
-  
+
 	  downloadUrl(cxml+"?a="+all+boundc+recc+parc+tz, function(data)
 	    {
 	    ++w;
@@ -807,13 +807,13 @@ function gesmark()
 	    online.length=0;
 	    offline.length=0;
 	    var colcn;
-	    var del = "N";	
-	
+	    var del = "N";
+
 	    for (var i = 0; i < planeurs.length; i++)
 	      {
 	      // récupération des données transmises pour ce planeur
 	      var tab=planeurs[i].getAttribute("a").split(",");
-	      
+
 	      var lat = parseFloat(tab[0]);
 	      var lon = parseFloat(tab[1]);
 	      var cn = tab[2];
@@ -826,21 +826,21 @@ function gesmark()
 	      var vz = tab[9];
 	      var typ = tab[10];
 	      var rec = tab[11];
-	      
-	      
+
+
 
 	      var posi= new google.maps.LatLng(lat, lon);
 	      var polyvar="P_"+ps+"_"+cn;
 	      var markvar="M_"+ps+"_"+cn;
 	      var visib = true;
-	
-	
+
+
 	        if (typeof(window[polyvar]) == 'undefined')     // si planeur non créé (pas déjà présent sur la carte)
 	          {
 	          // **** création de la couleur de la trace en fonction d'un tableau de 9 couleurs
 	          hcol= tcolor[ccolor];
 	          if (hnew==true) visib = false;
-	
+
 	          // création du PolyLine
 	          var polyOptions = {
 	            strokeColor: '#'+hcol,
@@ -852,20 +852,20 @@ function gesmark()
 	          window[polyvar].setMap(map);
 	          window[polyvar].set('nom', ""+cn+" - "+ps);
 	          window[polyvar].set('poly', ""+polyvar);
-	          
+
 	          window[polyvar].getPath().push(posi);			// ajout d'une position sur le tracé
-	
+
 	          google.maps.event.addListener(window[polyvar], "mouseover", function() {
 	            focuson(this.get('poly'));
 	            var bcol=this.strokeColor;
 	            document.getElementById("divInfo").innerHTML="<span style='background-color: "+bcol+"'>&nbsp;&nbsp;&nbsp;</span>&nbsp;"+this.get('nom');
 	          });
-	
+
 	          google.maps.event.addListener(window[polyvar], "mouseout", function() {
 	            focusoff(this.get('poly'));
 	            document.getElementById("divInfo").innerHTML="&nbsp;";
 	          });
-	
+
 	          // création du Marker
 	          window[markvar] = new google.maps.Marker({
 		          position: posi,
@@ -895,13 +895,13 @@ function gesmark()
 		        window[markvar].set('alt', ""+alt);
 		        window[markvar].set('tra', 0);
 
-	
+
 	          google.maps.event.addListener(window[markvar], "mouseover", function() {
 	              var bcol=window[this.get('poly')].strokeColor;
 	              document.getElementById("divInfo").innerHTML="<span style='background-color: "+bcol+"'>&nbsp;&nbsp;&nbsp;</span>&nbsp;"+this.get('nom');
 	              focuson(this.get('poly'));
 	            });
-	
+
 	          google.maps.event.addListener(window[markvar], "mouseout", function() {
 	              document.getElementById("divInfo").innerHTML="&nbsp;";
 	              focusoff(this.get('poly'));
@@ -909,32 +909,32 @@ function gesmark()
 
 						google.maps.event.addListener(window[markvar], "click", function() {
 								affinfo(this.get('mark'));
-	            });	
-	
+	            });
+
 	          google.maps.event.addListener(window[markvar], "dblclick", function() {
 	              document.getElementById("divInfoac").innerHTML="<B>AC</B>: "+this.get('title');
 	              autoc=this.get('mark');
 	              document.getElementById("divInfoac").style.display = "block";
 	              map.setCenter(this.position);
 	            });
-	            
+
 	          google.maps.event.addListener(window[markvar], "rightclick", function() {
 	          		var pol = this.get('poly');
 	          		redraw(pol);
-	            });  
-	            
-	          if(++ccolor==9) ccolor=0;  
+	            });
+
+	          if(++ccolor==9) ccolor=0;
 	          }   // fin du if typeof...
-	          
-	        
+
+
 
 	        //var oldalt=window[markvar].get('alt');
 					//var difalt=(alt-oldalt)/15;
 					var difalt=vz*1;
 
-					
+
 	        colcn=window[polyvar].strokeColor;
-	
+
 					if (ddf<600) {
 						if (ddf>120) afdif="n";
 						else if (difalt==0) afdif="z";
@@ -943,7 +943,7 @@ function gesmark()
 						else if (difalt<0) afdif="m";
 						else if (difalt>4) afdif="ppp";
 						else if (difalt>1) afdif="pp";
-						else afdif="p";          
+						else afdif="p";
 
 						online.push([cn,alt*1,ps+"_"+cn,colcn,afdif]);
 						if (window[markvar].get('off')==1) {
@@ -951,15 +951,15 @@ function gesmark()
 							window[markvar].setIcon(""+tld+"/markers/"+cn+ftypec[typ*1]+".png");
 							window[markvar].set('off', 0);
 						}
-						
+
 						if (window[markvar].get('tra')==0) {
 							if (window[polyvar].getPath().getLength()>=pathl) window[polyvar].getPath().removeAt(0); // remove first point of the trace
 						}
-            
+
 
 	        	window[polyvar].getPath().push(posi);			// ajout d'une position sur le tracé
 	       		window[markvar].setPosition(posi);				// déplace le marker
-	
+
    	        // change l'altitude affichée
 		        window[markvar].setTitle(""+cn+" - "+ps+" @ "+(alt*m2ft[unit]).toFixed()+am2ft[unit]+" @ "+tim);
 						window[markvar].set('speed', ""+speed);
@@ -976,17 +976,17 @@ function gesmark()
 			          // efface et détruit le PolyLine et le Marker
 			          window[polyvar].setMap(null);
 			          delete window[polyvar];
-			
+
 			          window[markvar].setMap(null);
 			          delete window[markvar];
-			          
+
 			          if (autoc==markvar) {
 			          	autoc="";
 			          	document.getElementById("divInfoac").innerHTML="&nbsp;";
 			    				document.getElementById("divInfoac").style.display = "none";
 			    				}
 			    			if (acaff==markvar) acaff="";
-	          
+
 	          	}
 					 	}
 					 	else {
@@ -997,9 +997,9 @@ function gesmark()
 						 		window[markvar].set('off', 1);
 						 		}
 					 		}
-					 } 
-	        
-	        
+					 }
+
+
 	        if (autoc==markvar)
 	          {
 	          document.getElementById("divInfoac").innerHTML="<B>AC</B>: "+cn+" - "+ps+" @ "+(alt*m2ft[unit]).toFixed()+am2ft[unit];
@@ -1007,15 +1007,15 @@ function gesmark()
 	          }
 
 	        if (acaff==markvar) affinfodata(markvar);
-	
-	      
-	
+
+
+
 	      }         // fin du for (var i = 0; i < planeurs.length; i++)
 	      // tri et affichage du tableau
 	      afftab();
 	      tmgm = setTimeout('gesmark()', 10000);
 	    });
-  	
+
   }
 
 function wd()	{
@@ -1080,7 +1080,7 @@ function task(cont) {
 	            var bcol=this.strokeColor;
 	            document.getElementById("divInfo").innerHTML="<span style='background-color: "+bcol+"'>&nbsp;&nbsp;&nbsp;</span>&nbsp;task:&nbsp;"+this.get('nom');
 	          });
-	
+
           google.maps.event.addListener(flightPath, "mouseout", function() {
 	            document.getElementById("divInfo").innerHTML="&nbsp;";
 	          });
@@ -1117,7 +1117,7 @@ function initialize()
 		parh[x[0]]=x[1];
 	}
 
-	// parameter c=lat,lon (center of the map) 
+	// parameter c=lat,lon (center of the map)
 	if (typeof(parh['c']) != 'undefined') {
 		cent=parh['c'].split(',');
 		vlat=parseFloat(cent[0]);
@@ -1139,7 +1139,7 @@ function initialize()
     maxZoom: 11,
     name: "Relief",
     tileSize: new google.maps.Size(256,256)
-    });      
+    });
 
 	wateroverlay = new google.maps.ImageMapType({
 		getTileUrl: function(aB, aA) {
@@ -1149,7 +1149,7 @@ function initialize()
 		maxZoom: 11,
 		opacity: 0,
 		tileSize: new google.maps.Size(256, 256)
-		});	
+		});
 	*/
 	airspaceoverlay = new google.maps.ImageMapType({
             getTileUrl: function(tile, zoom) {
@@ -1190,7 +1190,7 @@ function initialize()
             opacity: 0,
             tileSize: new google.maps.Size(256, 256)
         });
-  	
+
   windoverlay = new google.maps.ImageMapType({
 					getTileUrl: function(tile, zoom) {
 						if (zoom>7) return;
@@ -1199,8 +1199,8 @@ function initialize()
 				maxZoom: 7,
 				opacity: 0,
 				tileSize: new google.maps.Size(256, 256)
-				});	
-	
+				});
+
   presoverlay = new google.maps.ImageMapType({
 					getTileUrl: function(tile, zoom) {
 						if (zoom>7) return;
@@ -1209,9 +1209,9 @@ function initialize()
 				maxZoom: 7,
 				opacity: 0,
 				tileSize: new google.maps.Size(256, 256)
-				});	
+				});
 
-  	
+
   var myOptions = {
 	mapTypeControlOptions: {
    			// mapTypeIds: ['RELIEF', google.maps.MapTypeId.ROADMAP, google.maps.MapTypeId.TERRAIN, google.maps.MapTypeId.SATELLITE, google.maps.MapTypeId.HYBRID ]
@@ -1226,18 +1226,18 @@ function initialize()
 	//mapTypeId: google.maps.MapTypeId.TERRAIN
   }
   map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
-  
+
   //map.mapTypes.set('RELIEF' , RELIEF);
 
 	var mid = 'TERRAIN';
 	var tmid = { "r" : "ROADMAP", "t" : "TERRAIN", "s": "SATELLITE", "h": "HYBRID"};
-	
+
 	// parameter m= map type
 	if (typeof(parh['m']) != 'undefined') {
 		mid = tmid[parh['m']];
 		hashm="&m="+parh['m'];
 	}
-	
+
 	map.setMapTypeId(google.maps.MapTypeId[mid]);
 
 	google.maps.event.addListener(map, 'maptypeid_changed', function() {
@@ -1253,8 +1253,8 @@ function initialize()
 			}
       	*/
      	});
-  
-  
+
+
   google.maps.event.addListener(map, 'click', function() {
         infowindow.close();
         });
@@ -1275,7 +1275,7 @@ function initialize()
         });
 
 	// parameter z=  zoom level
-	if (typeof(parh['z']) != 'undefined') map.setZoom(parseInt(parh['z'])); 
+	if (typeof(parh['z']) != 'undefined') map.setZoom(parseInt(parh['z']));
 	else {
   	var southWest = new google.maps.LatLng(vlatmin, vlonmin);
   	var northEast = new google.maps.LatLng(vlatmax, vlonmax);
@@ -1284,8 +1284,8 @@ function initialize()
   }
 
 
-	
-	
+
+
   var divinfoCont = document.createElement ('DIV');		// contener glider info when overmouse
   divinfoCont.style.paddingTop = "7px";
   divinfoCont.style.paddingRight = "3px";
@@ -1297,7 +1297,7 @@ function initialize()
   var divinfoContpb = document.createElement ('DIV');		// contener poweredby
   divinfoContpb.style.paddingTop = "7px";
   divinfoContpb.style.paddingRight = "3px";
-	
+
 
   var divInfo = document.createElement("div");
   divInfo.id = "divInfo";
@@ -1324,12 +1324,12 @@ function initialize()
   //divInfopb.style.width = "170px";
   divInfopb.style.backgroundColor = '#F5F5F5';
   divInfopb.style.opacity = 0.7;
-  
+
   divInfopb.style.cursor = 'pointer';
   divInfopb.style.float = "left";
   divInfopb.style.display = "block";
   divInfopb.innerHTML="&nbsp;&nbsp;Powered By <A HREF=\"http://glidernet.org\" target=\"_blank\"><B>GliderNet.Org</B></A>&nbsp;&nbsp;";
-  
+
 
   // divInfopb.appendChild ( document.createTextNode("Powered By <B>GliderNet.Org</B>"));
 
@@ -1358,15 +1358,15 @@ function initialize()
         var locations = [];
         var clickedLocation = event.latLng;
         locations.push(clickedLocation);
-        
+
         var latc = clickedLocation.lat();
-        var alat = (latc>=0?"N":"S") + " " + dec2dms(latc); 
-         
+        var alat = (latc>=0?"N":"S") + " " + dec2dms(latc);
+
         var lonc = clickedLocation.lng();
         var alon = (lonc>=0?"E":"W") + " " + dec2dms(lonc);
 
         var positionalRequest = { 'locations': locations }
-        
+
         elevator.getElevationForLocations(positionalRequest, function(results, status) {
           if (status == google.maps.ElevationStatus.OK) {
             if (results[0]) {
@@ -1389,7 +1389,7 @@ function initialize()
 	document.getElementById("dtable").innerHTML = "<DIV id=\"menu\" style=\"display:none;\"></DIV><DIV id=\"dtlist\" style=\"display:block\"></DIV>";
 	document.getElementById("menu").innerHTML = "<TABLE class=\"tt\"><TR><TD><INPUT type=\"checkbox\" id=\"hnewbox\" onChange='javascript : hidenew();'> Hide new gliders<BR><INPUT type=\"checkbox\" id=\"offl\" onChange='javascript : lineoff();'"+ ((all==0)?" checked":"") +"> Ignore Offline<HR><INPUT type=\"checkbox\" id=\"boundsbox\" onChange='javascript : bounds();'"+ ((bound==true)?" checked":"") +"> Bounds<BR><TABLE cellspacing=\"0\" cellpading=\"0\"><TR align=\"center\"><TD colspan=\"2\"><INPUT type=\"text\" id=\"latmax\" name=\"latmax\" size=\"7\" value=\""+amax+"\"></TD></TR><TR align=\"center\"><TD><INPUT type=\"text\" id=\"lonmin\" name=\"lonmin\" size=\"7\" value=\""+omin+"\"></TD><TD><INPUT type=\"text\" id=\"lonmax\" name=\"lonmax\" size=\"7\" value=\""+omax+"\"></TD></TR><TR align=\"center\"><TD colspan=\"2\"><INPUT type=\"text\" id=\"latmin\" name=\"latmin\" size=\"7\" value=\""+amin+"\"></TD></TR></TABLE><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<INPUT type=\"button\" onclick=\"settomap()\" value=\"Set to map\"><BR><INPUT type=\"checkbox\" id=\"astmbox\" onChange='javascript : astm();'> Auto Set to map<HR>..:: Layers ::..<BR><INPUT type=\"checkbox\" id=\"weabox\" onChange=\"javascript : wea();\"> Weather <BR><INPUT type=\"checkbox\" id=\"clobox\" onChange=\"javascript : clo();\"> Clouds <BR><INPUT type=\"checkbox\" id=\"winbox\" onChange=\"javascript : wind();\"> Wind <BR><INPUT type=\"checkbox\" id=\"prebox\" onChange=\"javascript : pres();\"> Pressure <BR><INPUT type=\"checkbox\" id=\"aspbox\" onChange=\"javascript : asp();\"> AirSpaces <A HREF=\"http://www.openaip.net\" target=\"_blank\" style=\"font-size:10px;\">( openaip.net )</A><BR><INPUT type=\"checkbox\" id=\"aptbox\" onChange=\"javascript : apt();\"> Airports <A HREF=\"http://www.openaip.net\" target=\"_blank\" style=\"font-size:10px;\">( openaip.net )</A><BR><INPUT type=\"checkbox\" id=\"reclbox\" onChange=\"javascript : reclbox();\"> Receivers<BR><span id=\"dtaskbox\"><INPUT type=\"checkbox\" disabled></span> <span onclick=\"taskclic();\">Tasks</span><BR> <DIV style=\"display:none\"><input type=\"file\" id=\"chfile\" onchange=\"rtask()\" /></DIV><HR>..::Units::..<BR><input type=\"radio\" name=\"units\" id=\"unm\" value=\"m\" onclick=\"chunit()\" checked>Met. <input type=\"radio\" name=\"units\" id=\"uni\" value=\"i\" onclick=\"chunit()\">Imp.<HR>..::Path length::..<BR><input type=\"radio\" name=\"pl\" id=\"rp1\" value=\"1\" checked onclick=\"chpl()\">5' <input type=\"radio\" name=\"pl\" id=\"rp2\" value=\"2\" onclick=\"chpl()\">10' <input type=\"radio\" name=\"pl\" id=\"rp3\" value=\"3\" onclick=\"chpl()\">All</TD></TR></TABLE>";
 
-	// parameter b=lat1,lon1,lat2,lon2 bounds	
+	// parameter b=lat1,lon1,lat2,lon2 bounds
 	if (typeof(parh['b']) != 'undefined') {
 		cent=parh['b'].split(',');
 		document.getElementById('latmax').value = parseFloat(cent[0]);
@@ -1436,9 +1436,9 @@ function initialize()
 			}
 		}
 	}
-	
+
 	if (typeof(parh['t']) != 'undefined') {
-		
+
 		  var xhr = new XMLHttpRequest();
 			xhr.open("GET", parh['t'], true);
 			xhr.onreadystatechange = function() {
@@ -1452,7 +1452,7 @@ function initialize()
 			}
 			};
 
-			xhr.send(null);	
+			xhr.send(null);
 	}
 
 	// parameter w=0 (Don't display the warning)
@@ -1460,10 +1460,10 @@ function initialize()
 	if (typeof(parh['w']) != 'undefined') {
 		if (parh['w']==0) { warn=0;	hashw="&w=0";}
 	}
-	
+
 	if (warn==1) {
-		document.getElementById("popup").innerHTML = "<img class=\"pr\" alt=\"close\" src=\"/pict/close.png\"><H1>Warning!</H1><BR><P style=\"text-align:justify;\"><B>The data on this site can be ambiguous in certain situations and the displayed position of an aircraft or glider can be displaced relative to the actual position.<BR>Before raising an alert please contact us so we can interpret the data correctly.</B></P>";						
-		op(300);	
+		document.getElementById("popup").innerHTML = "<img class=\"pr\" alt=\"close\" src=\"/pict/close.png\"><H1>Warning!</H1><BR><P style=\"text-align:justify;\"><B>The data on this site can be ambiguous in certain situations and the displayed position of an aircraft or glider can be displaced relative to the actual position.<BR>Before raising an alert please contact us so we can interpret the data correctly.</B></P>";
+		op(300);
 	}
 
 	// parameter s=1 auto set bounds to the map
@@ -1499,10 +1499,10 @@ function initialize()
 	}
 
 
-	tz ="&z="+(tz /-60);			// the javascript gettimezone function return negative value in minutes then /-60 to have correct hours 
-	
+	tz ="&z="+(tz /-60);			// the javascript gettimezone function return negative value in minutes then /-60 to have correct hours
+
 	rehash();
 	checkrec();
-	tmwd = setTimeout('wd()', 30000);      
+	tmwd = setTimeout('wd()', 30000);
 	gesmark();
   }
