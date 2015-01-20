@@ -5,16 +5,16 @@
 * @return {XMLHttpRequest|Null}
 */
 function createXmlHttpRequest() {
- try {
-   if (typeof ActiveXObject != 'undefined') {
-     return new ActiveXObject('Microsoft.XMLHTTP');
-   } else if (window["XMLHttpRequest"]) {
-     return new XMLHttpRequest();
-   }
- } catch (e) {
-   changeStatus(e);
- }
- return null;
+  try {
+    if (typeof ActiveXObject != 'undefined') {
+      return new ActiveXObject('Microsoft.XMLHTTP');
+    } else if (window["XMLHttpRequest"]) {
+      return new XMLHttpRequest();
+    }
+  } catch (e) {
+    changeStatus(e);
+  }
+  return null;
 };
 
 /**
@@ -25,59 +25,59 @@ function createXmlHttpRequest() {
 * @param {Function} callback The function to call once retrieved.
 */
 function downloadUrl(url, callback) {
- var status = -1;
- var request = createXmlHttpRequest();
- if (!request) {
-   return false;
- }
+  var status = -1;
+  var request = createXmlHttpRequest();
+  if (!request) {
+    return false;
+  }
 
- request.onreadystatechange = function() {
-   if (request.readyState == 4) {
-     try {
-       status = request.status;
-     } catch (e) {
-       // Usually indicates request timed out in FF.
-     }
-     if (status == 200) {
-       callback(request.responseXML, request.status);
-       request.onreadystatechange = function() {};
-     }
-   }
- }
- request.open('GET', url, true);
- try {
-   request.send(null);
- } catch (e) {
-   changeStatus(e);
- }
+  request.onreadystatechange = function() {
+    if (request.readyState == 4) {
+      try {
+        status = request.status;
+      } catch (e) {
+        // Usually indicates request timed out in FF.
+      }
+      if (status == 200) {
+        callback(request.responseXML, request.status);
+        request.onreadystatechange = function() {};
+      }
+    }
+  }
+  request.open('GET', url, true);
+  try {
+    request.send(null);
+  } catch (e) {
+    changeStatus(e);
+  }
 };
 
 function downloadUrltxt(url, callback) {
- var status = -1;
- var request = createXmlHttpRequest();
- if (!request) {
-   return false;
- }
+  var status = -1;
+  var request = createXmlHttpRequest();
+  if (!request) {
+    return false;
+  }
 
- request.onreadystatechange = function() {
-   if (request.readyState == 4) {
-     try {
-       status = request.status;
-     } catch (e) {
-       // Usually indicates request timed out in FF.
-     }
-     if (status == 200) {
-       callback(request.responseText, request.status);
-       request.onreadystatechange = function() {};
-     }
-   }
- }
- request.open('GET', url, true);
- try {
-   request.send(null);
- } catch (e) {
-   changeStatus(e);
- }
+  request.onreadystatechange = function() {
+    if (request.readyState == 4) {
+      try {
+        status = request.status;
+      } catch (e) {
+        // Usually indicates request timed out in FF.
+      }
+      if (status == 200) {
+        callback(request.responseText, request.status);
+        request.onreadystatechange = function() {};
+      }
+    }
+  }
+  request.open('GET', url, true);
+  try {
+    request.send(null);
+  } catch (e) {
+    changeStatus(e);
+  }
 };
 
 
