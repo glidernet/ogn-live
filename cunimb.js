@@ -46,7 +46,7 @@ var vwea = false;
 var vclo = false;
 var hnew = false;
 selrec = "";
-var ftype = ["unknown", "Glider/MotorGlider", "Tow Plane", "Helicopter", "Parachute", "Drop Plane", "Hand Glider", "Para Glider", "Plane", "Jet", "UFO", "Balloon", "Airship", "Drone", "Static Object"];
+var ftype = ["unknown", "Glider/MotorGlider", "Tow Plane", "Helicopter", "Parachute", "Drop Plane", "Hangglider", "Paraglider", "Plane", "Jet", "UFO", "Balloon", "Airship", "Drone", "Static Object"];
 var ftypec = ["_b", "", "_g", "_r", "_b", "_b", "_p", "_p", "_b", "_b", "_b", "_b", "_b", "_b", "_b"];
 var taska = [];
 var initialResolution = 2 * Math.PI * 6378137 / 256; // == 156543.0339
