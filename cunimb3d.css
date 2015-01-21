@@ -37,25 +37,25 @@ html, body {
 }
 
 .lright {
-  // border-radius: 10px 0 10px 10px;
+  /* border-radius: 10px 0 10px 10px; */
   top: 25px;
   right: 0px;
 }
 
 .lleft {
-  // border-radius: 0 10px 10px 10px;
+  /* border-radius: 0 10px 10px 10px; */
   left: 75px;
   top: 35px;
 }
 
 .acright {
-  // border-radius: 10px 0 0 10px;
+  /* border-radius: 10px 0 0 10px; */
   top: 45px;
   right: 180px;
 }
 
 .acleft {
-  // border-radius: 0 10px 10px 0;
+  /* border-radius: 0 10px 10px 0; */
   top: 35px;
   left: 255px;
 }
