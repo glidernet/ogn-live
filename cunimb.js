@@ -1167,7 +1167,7 @@ function initialize() {
 
   // parameter o=1 (display offline)
   if (typeof(parh.o) != 'undefined') {
-    if (parh.o == 1) {
+    if (parh.o == "1") {
       all = 1;
       hasho = "&o=1";
     }
@@ -1508,7 +1508,7 @@ function initialize() {
   // parameter w=0 (Don't display the warning)
   var warn = 1;
   if (typeof(parh.w) != 'undefined') {
-    if (parh.w === 0) {
+    if (parh.w == "0") {
       warn = 0;
       hashw = "&w=0";
     }
@@ -1521,7 +1521,7 @@ function initialize() {
 
   // parameter s=1 auto set bounds to the map
   if (typeof(parh.s) != 'undefined') {
-    if (parh.s == 1) {
+    if (parh.s == "1") {
       document.getElementById('astmbox').checked = true;
       vstm = true;
       hashs = "&s=1";
@@ -1540,11 +1540,11 @@ function initialize() {
 
   // parameter p=1,2 or 3 path length 5", 10" or all points
   if (typeof(parh.p) != 'undefined') {
-    if (parh.p == 2) { // 10 minutes
+    if (parh.p == "2") { // 10 minutes
       pathl = 60;
       document.getElementById('rp2').checked = true;
       hashp = "&p=2";
-    } else if (parh.p == 3) { // all points
+    } else if (parh.p == "3") { // all points
       pathl = 99999;
       document.getElementById('rp3').checked = true;
       hashp = "&p=3";
