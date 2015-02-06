@@ -29,7 +29,7 @@ $latmax=$latmin=$lonmax=$lonmin=0;
 $stmt = $dbh->prepare($q);
 $stmt->execute($params);
 
-if ($stmt->columnCount() == 0)
+if ($stmt->rowCount() == 0)
 {
     $latmax=60;
     $latmin=35;
