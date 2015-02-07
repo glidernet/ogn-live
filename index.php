@@ -1,61 +1,64 @@
 <?php
-$link="";
 require('sql.php');
-ouvrebase();
 
-if (isset($_GET['rec']))  { $recc="'&r=".$_GET['rec']."'"; $reqc=" AND rec='".$_GET['rec']."'"; } else { $recc = "\"\""; $reqc=""; } 
-if (isset($_GET['pw']))  { $parc="'&p=".$_GET['pw']."'"; } else { $parc = "\"\""; }
+$q="select * from live where tim > 0";
 
+if (isset($_GET['rec']))
+{
+    $recc="'&r=".$_GET['rec']."'";
+    $q .=" AND rec=?";
+    $params[] = $_GET['rec'];
+}
+else
+{
+    $recc = "\"\"";
+}
 
-
-$req="select * from live where tim > 0";
-$req.=$reqc;
+if (isset($_GET['pw']))
+{
+    $parc="'&p=".$_GET['pw']."'";
+}
+else
+{
+    $parc = "\"\"";
+}
 
 
 $latmax=$latmin=$lonmax=$lonmin=0;
 
-if (!$result=@mysql_query ($req))
-  {
-  echo "<BR><BR><CENTER>Request error $req</CENTER><BR><BR>";
-  @mysql_close($link);
-  exit();
-  }
+$stmt = $dbh->prepare($q);
+$stmt->execute($params);
 
-
-if (@mysql_num_rows($result)==0)
-  {
-  $latmax=60;
-  $latmin=35;
-  $lonmax=30;
-  $lonmin=-10;
-  $lon=2;
-  $lat=45;
-
-
-  }
+if ($stmt->rowCount() == 0)
+{
+    $latmax=60;
+    $latmin=35;
+    $lonmax=30;
+    $lonmin=-10;
+    $lon=2;
+    $lat=45;
+}
 else
-  {
-
-  $aa=0;
-
-  while($ligne = @mysql_fetch_array($result))
+{
+    $aa=0;
+    while($ligne = $stmt->fetch(PDO::FETCH_ASSOC))
     {
-    extract($ligne);
-    if ($aa==0)
-      {
-      $latmax=$latmin=$lat;
-      $lonmax=$lonmin=$lon;
-      $aa=1;
-      }
-    else
-      {
-      if ($lat>$latmax) $latmax=$lat;
-      if ($lat<$latmin) $latmin=$lat;
-      if ($lon>$lonmax) $lonmax=$lon;
-      if ($lon<$lonmin) $lonmin=$lon;
-      }
+        extract($ligne);
+        if ($aa==0)
+        {
+            $latmax=$latmin=$lat;
+            $lonmax=$lonmin=$lon;
+            $aa=1;
+        }
+        else
+        {
+            if ($lat>$latmax) $latmax=$lat;
+            if ($lat<$latmin) $latmin=$lat;
+            if ($lon>$lonmax) $lonmax=$lon;
+            if ($lon<$lonmin) $lonmin=$lon;
+        }
     }
-  }
+}
 
 
 echo "<!DOCTYPE html>
@@ -123,5 +126,3 @@ catch(e) {
 </body>
 
 </html>";
-@mysql_close($link);
-?>
