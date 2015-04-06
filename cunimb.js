@@ -59,7 +59,7 @@ var m2kt={"m":1, "i":1.94384};
 var am2kt={"m":"m/s", "i":"kt"};
 
 
-var hashc="",hashz="",hashm="",hasho="",hashb="",hashs="",hashl="",hasht="",hl="       ",hashw="",hashu="",hashp="";
+var hashc="",hashz="",hashm="",hasho="",hashb="",hashs="",hashl="",hasht="",hl="       ",hashw="",hashu="",hashp="",hashn="";
 // center     zoom    maptype  offline  bound   autoset2ma  layers  tasks                warning   units   pathlength
 
 
@@ -490,6 +490,7 @@ function alist() {
     else document.getElementById('ac').style.right = "0px";
     centeroff();
     aflist = false;
+    hashn = "&n=0";
   } else {
     document.getElementById("ett1").innerHTML = ett1;
     document.getElementById('dlist').style.width = "180px";
@@ -498,7 +499,9 @@ function alist() {
     else document.getElementById('ac').style.right = "180px";
     aflist = true;
     afftab();
+    hashn = "";
   }
+  rehash();
 }
 
 function sideclick() {
@@ -1063,7 +1066,7 @@ function wd() {
 }
 
 function rehash() {
-  window.location.hash = hashc + hashz + hashm + hasho + hashb + hashs + hashl + hashw + hashp + hashu;
+  window.location.hash = hashc + hashz + hashm + hasho + hashb + hashs + hashl + hashw + hashp + hashu + hashn;
 }
 
 function rempl(po, c) {
@@ -1512,6 +1515,13 @@ function initialize() {
     if (parh.w == "0") {
       warn = 0;
       hashw = "&w=0";
+    }
+  }
+
+ // parameter n=0 (Hide the panel)
+  if (typeof(parh.n) != 'undefined') {
+    if (parh.n == "0") {
+      alist();
     }
   }
 
