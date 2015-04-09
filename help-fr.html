@@ -1,0 +1,201 @@
+<!--
+   ____                      _____ _ _     _             _   _      _                      _    
+  / __ \                    / ____| (_)   | |           | \ | |    | |                    | |   
+ | |  | |_ __   ___ _ __   | |  __| |_  __| | ___ _ __  |  \| | ___| |___      _____  _ __| | __
+ | |  | | '_ \ / _ \ '_ \  | | |_ | | |/ _` |/ _ \ '__| | . ` |/ _ \ __\ \ /\ / / _ \| '__| |/ /
+ | |__| | |_) |  __/ | | | | |__| | | | (_| |  __/ |    | |\  |  __/ |_ \ V  V / (_) | |  |   < 
+  \____/| .__/ \___|_| |_|  \_____|_|_|\__,_|\___|_|    |_| \_|\___|\__| \_/\_/ \___/|_|  |_|\_\
+        | |                                                                                     
+        |_|                                                                                     
+-->
+<HTML>
+  <HEAD>
+  <title>Localisation des planeurs</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+  </HEAD>
+  <BODY bgcolor="white";>
+  <CENTER>
+  <TABLE style="width:800px">
+  <TR>
+  	<TD>
+  		<TABLE style="width:100%">
+  			<TR>
+					<TD>
+						<A HREF="http://wiki.glidernet.org">Rejoignez la communauté!<BR><IMG SRC="/pict/ogn-logo-ani.gif"></A>
+					</td>
+					<TD style="text-align:right">
+						<A HREF="/help-de.html"><IMG SRC="/pict/drapd.gif">&nbsp;Deutsch</A>
+					</td>
+										<td style="text-align:right">
+						<a href="/help-en.html"><img src="/pict/drape.gif">&nbsp;English</a>
+		      </td>
+
+				</TR>
+			</TABLE>
+		</TD>
+  </TR>
+  <TR>
+  	<TD>
+  		<p style="text-align:justify; color:blue;"><B>live.glidernet.org</B> affiche sur une carte les planeurs équipés de <A HREF="http://www.flarm.com/index_fr.html">FLARM</A>. Leurs positions sont r&eacute;cup&eacute;r&eacute;es par des <A HREF="http://flarmrange.onglide.com">r&eacute;cepteurs Flarm au sol</A> et retransmises via l'InterNet.
+  		Chaque planeur est repr&eacute;sent&eacute; par une ic&ocirc;ne comportant un identifiant de 3 caract&egrave;res maximum (num&eacute;ro de concours ou fin de l'immatriculation). Un trait de couleur repr&eacute;sente la trace de chaque planeur sur la carte. Une liste de tous les planeurs en vol en affich&eacute;e sur le cot&eacute; de la carte avec l'identifiant du planeur, la couleur de sa trace, son altitude et sa Vz. 
+  		</p>
+  		
+  		<CENTER>
+  		<IMG width="750" height="372" src="/pict/c1.gif">
+  		</CENTER>
+  	</TD>
+  </TR>
+  <TR>
+  	<TD>
+  	<CENTER>
+  		<TABLE>
+  			<TR><TD><B>..:: Listes et Menu ::..</B></td></TR>
+	  		<TR>
+						<TD width="400"><IMG width="184" height="26" src="/pict/h1.gif">
+						<p style="text-align:justify; color:blue;">
+						Par d&eacute;faut sont affich&eacute;s les planeurs qui ont transmis des donn&eacute;es r&eacute;cemment, liste "OnLine". Si un planeur n'envoit plus de donn&eacute;es depuis plus de 10 minutes, il passe alors dans la liste "OffLine".<BR>
+						Cliquez alternativement sur <span style="color:black;">Online</span>, <span style="color:black;">Offline</span> ou <span style="color:black;">Menu</span> pour passer d'une page &agrave; l'autre.<BR>
+						Pour cacher la liste il faut cliquer sur <IMG width="16" height="16" src="/pict/min.png">. Elle se r&eacute;duit et il faut alors cliquer sur <IMG width="16" height="16" src="/pict/plu.png"> pour la faire r&eacute;-apparaître.<BR>
+						Pour passer la liste de l'autre cot&eacute; de l'&eacute;cran (gauche/droite) cliquez sur la double fl&egrave;che <IMG width="28" height="21" src="/pict/dbarrow.gif">.<BR>
+						Pour afficher cette page d'aide, cliquez sur <IMG width="16" height="16" src="/pict/hel.png">.<BR><BR>
+						La page <span style="color:black;">Menu</span> permet de gérer plusieurs fonctionnalités:<BR>
+						-cocher "Hide new gliders" cache les nouveaux planeur connectés.<BR>
+						-cocher "Ignore Offline" cache les planeurs inactifs depuis 10 min.<BR>
+						-cocher "Bounds" permets de n'afficher que les planeurs dans les limites géographiques spécifiées dans les cases en dessous:<BR>
+						<TABLE cellspacing="0" cellpading="0"><TR align="center"><TD colspan="2"><INPUT readonly type="text" id="latmax" name="latmax" size="7" value="lat max"></TD></TR><TR align="center"><TD><INPUT readonly type="text" id="lonmin" name="lonmin" size="7" value="long min"></TD><TD><INPUT readonly type="text" id="lonmax" name="lonmax" size="7" value="long max"></TD></TR><TR align="center"><TD colspan="2"><INPUT readonly type="text" id="latmin" name="latmin" size="7" value="lat min"></TD></TR></TABLE>
+						-cliquer sur le bouton "Set to map" permet d'adapter les limites géographiques à celle de la carte affichée.<BR>
+						-cocher "Auto Set to map" permet de modifier les limites géographiques en permanence aux limites de la carte affichée.<BR> 
+						Afficher/masquer différentes couches:<BR>
+						-Weather: Météo<BR>
+						-Clouds: Nuages<BR>
+						-Wind: Vent<BR>
+						-Pressure: Pression<BR>
+						-AirSpaces: Espace Aérien<BR>
+						-AirPorts: Aérodromes<BR>
+						-Receivers: Récepteurs<BR> 
+						<TABLE>
+							<TR>
+								<TD><IMG SRC="/pict/rec1.png"></td>
+								<TD>Vert: récepteur connecté</td>
+							</tr>
+							<TR>
+								<TD><IMG SRC="/pict/rec0.png"></td>
+								<TD>Rouge: récepteur déconnecté ou éteint</td>
+							</tr>
+
+						</table>
+						
+						
+						
+						</p></td>
+  			</TR>
+  			<TR><TD>&nbsp;</td></TR>
+	  		<TR>
+						<TD width="400"><p style="text-align:justify; color:blue;"><B>En-t&ecirc;te des colonnes:</B>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<IMG border="1" width="172" height="25" src="/pict/h2.gif">
+							<BR>Un double-clic sur <IMG width="15" height="17" src="/pict/ico.png"> cache ou affiche toutes les ic&ocirc;nes.
+							<BR>Un double-clic sur <IMG width="9" height="18" src="/pict/tra.gif"> cache ou affiche toutes les traces.
+							<BR>Un clic sur <B>CN</B> trie la liste sur les identifiants par ordre alphab&eacute;tique (un autre clic trie par ordre inverse).
+							<BR>Un double-clic sur <IMG width="9" height="18" src="/pict/a.gif"> efface la trace de tous les planeurs.
+							<BR>Un clic sur <B>Alti.</B> trie les altitudes par ordre croissant (un autre clic trie par ordre inverse).
+							</p>
+							</td>
+  			</TR>
+  			<TR><TD>&nbsp;</td></TR>
+  			  			
+	  		<TR>
+						<TD width="400"><p style="text-align:justify; color:blue;"><B>Les lignes:</B>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<IMG border="1" width="162" height="23" src="/pict/h3.gif">
+							<BR>D&eacute;cocher ou cocher la premi&egrave;re case de la ligne d'un planeur cache ou affiche l'ic&ocirc;ne du planeur.
+							<BR>D&eacute;cocher ou cocher la deuxi&egrave;me case de la ligne d'un planeur cache ou affiche la trace du planeur.
+							<BR>Un clic sur l'identifiant centre la carte sur l'ic&ocirc;ne correspondante (momentan&eacute;ment si un centrage automatique est actif).
+							<BR>Un double-clic sur l'identifiant active le centrage automatique sur l'ic&ocirc;ne du planeur correspondant.
+							<BR>Un clic-droit sur l'identifiant recharge la trace compl&egrave;te de la journ&eacute;e.
+							<BR>Un clic-droit sur le rectangle de couleur d'un planeur change la couleur de la trace qui lui est affect&eacute;e (boucle parmi les 9 couleurs possibles).
+							<BR>Un double-clic sur le rectangle de couleur d'un planeur efface sa trace.
+							<BR>Un clic sur l'altitude fait appara&icirc;tre la fen&ecirc;tre contenant les informations du planeur enregistrée sur <A HREF="http://flarmnet.org">Flarmnet.org</a>.
+							<BR><BR>
+							
+							<TABLE>
+							<TR><TD></td><TD style="color:blue;">Les tendances des Vz:</td></tr>
+								<TR><TD><IMG border="1" width="19" height="19" src="/pict/ppp.gif"></td><TD>Vz > +4m/s</td></tr>
+								<TR><TD><IMG border="1" width="19" height="19" src="/pict/pp.gif"></td><TD>+4m/s &ge; Vz > +1m/s</td></tr>
+								<TR><TD><IMG border="1" width="19" height="19" src="/pict/p.gif"></td><TD>+1m/s &ge; Vz > 0m/s</td></tr>
+								<TR><TD><IMG border="1" width="19" height="19" src="/pict/z.gif"></td><TD>Vz = 0m/s</td></tr>
+								<TR><TD><IMG border="1" width="19" height="19" src="/pict/m.gif"></td><TD>0m/s > Vz &ge; -1m/s</td></tr>
+								<TR><TD><IMG border="1" width="19" height="19" src="/pict/mm.gif"></td><TD>-1m/s > Vz &ge; -4m/s</td></tr>
+								<TR><TD><IMG border="1" width="19" height="19" src="/pict/mmm.gif"></td><TD>-4m/s > Vz</td></tr>
+								<TR><TD><IMG border="1" width="19" height="19" src="/pict/n.gif"></td><TD>Inactif, pas de donn&eacute;e re&ccedil;ue depuis plus de 2 min.</td></tr>
+							</table>
+							</p>
+							</td>
+  			</TR>
+  
+  		</TABLE>
+  		<HR>
+  		<TABLE>
+  			<TR><TD><B>..:: La carte ::..</B></td></TR>
+	  		<TR>
+						<TD width="400">
+						<TABLE>
+							<TR>
+								<TD><IMG SRC="/pict/OGN.png"></td>
+								<TD>Jaune: Planeurs et Motoplaneurs</td>
+							</tr>
+							<TR>
+								<TD><IMG SRC="/pict/OGN_g.png"></td>
+								<TD>Vert: Remorqueurs</td>
+							</tr>
+							<TR>
+								<TD><IMG SRC="/pict/OGN_r.png"></td>
+								<TD>Rouge: Hélicoptères</td>
+							</tr>
+							<TR>
+								<TD><IMG SRC="/pict/OGN_p.png"></td>
+								<TD>Rose: Deltaplanes et Parapentes</td>
+							</tr>
+							<TR>
+								<TD><IMG SRC="/pict/OGN_b.png"></td>
+								<TD>Bleu: Autres aéronefs</td>
+							</tr>
+							<TR>
+								<TD><IMG SRC="/pict/OGN_o.png"></td>
+								<TD>Gris: Tout aéronef inactif (pas de donnée reçue depuis plus de 10 minutes)</td>
+							</tr>
+							
+						</table>
+						
+						
+						<CENTER><IMG width="337" height="195" src="/pict/c4.gif"></CENTER>
+						<p style="text-align:justify; color:blue;">Sur la carte, le survol avec la souris d'une ic&ocirc;ne ou d'une trace affiche l'identifiant et le nom du planeur sur une &eacute;tiquette en haut au milieu et surligne la trace du planeur consid&eacute;r&eacute;.
+						<BR>Le survol de l'ic&ocirc;ne d'un planeur surligne sa ligne dans la liste et affiche momentan&eacute;ment une bulle avec son identifiant, altitude et heure des derni&egrave;res donn&eacute;es re&ccedil;ues.
+						<BR>Un clic sur l'ic&ocirc;ne d'un planeur (ou sur l'altitude du planeur dans la liste) fait appara&icirc;tre la fen&ecirc;tre contenant les informations du planeur provenant de la base de donnée <A href="http://flarmnet.org">Flarmnet.org</a>. (un clic sur cette fen&ecirc;tre l'efface).
+						</P> 
+  			</TR>
+  			<TR><TD>&nbsp;</td></TR>
+	  		<TR>
+						<TD width="400">
+						<p style="text-align:justify; color:blue;">
+						<BR>Un double-clic sur l'ic&ocirc;ne d'un planeur (ou sur l'identifiant d'un planeur dans la liste) active le centrage automatique sur ce planeur.
+						<BR>Une &eacute;tiquette en haut &agrave; gauche indique sur quel planeur le centrage automatique (AC) est actif.</P>
+						<CENTER><IMG width="289" height="107" src="/pict/c3.gif"></CENTER>
+						<p style="text-align:justify; color:blue;">Pour d&eacute;sactiver le centrage automatique, cliquez sur cette &eacute;tiquette.
+						<BR>Un clic-droit sur l'ic&ocirc;ne d'un planeur (ou sur l'identifiant d'un planeur dans la liste) recharge la trace compl&egrave;te de la journ&eacute;e.</P>
+  			</TR>
+  			<TR><TD>&nbsp;</td></TR>
+	  		<TR>
+						<TD width="400">
+						<p style="text-align:justify; color:blue;">Un clic-droit sur le fond de carte affiche l'altitude topographique et les coordonn&eacute;es g&eacute;ographiques du point cliqu&eacute;.</P>
+						<CENTER><IMG width="300" height="235" src="/pict/c5.gif"></CENTER> 
+  			</TR>
+
+  
+  		</TABLE>  		
+  		
+  		</CENTER>
+  	</TD>
+  </tr>
+  	
+  </TABLE>
+  
+  </CENTER>
+  </BODY>
+  </HTML>

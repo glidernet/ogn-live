@@ -1,0 +1,196 @@
+<!--
+   ____                      _____ _ _     _             _   _      _                      _    
+  / __ \                    / ____| (_)   | |           | \ | |    | |                    | |   
+ | |  | |_ __   ___ _ __   | |  __| |_  __| | ___ _ __  |  \| | ___| |___      _____  _ __| | __
+ | |  | | '_ \ / _ \ '_ \  | | |_ | | |/ _` |/ _ \ '__| | . ` |/ _ \ __\ \ /\ / / _ \| '__| |/ /
+ | |__| | |_) |  __/ | | | | |__| | | | (_| |  __/ |    | |\  |  __/ |_ \ V  V / (_) | |  |   < 
+  \____/| .__/ \___|_| |_|  \_____|_|_|\__,_|\___|_|    |_| \_|\___|\__| \_/\_/ \___/|_|  |_|\_\
+        | |                                                                                     
+        |_|                                                                                     
+-->
+<HTML>
+  <HEAD>
+  <title>Localisation des planeurs</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+  </HEAD>
+  <BODY bgcolor="white";>
+  <CENTER>
+  <TABLE style="width:800px">
+  <TR>
+  	<TD>
+			<TABLE style="width:100%">
+  			<TR>
+					<TD>
+						<A HREF="http://wiki.glidernet.org"><IMG SRC="/pict/ogn-logo-ani.gif"></A>
+					</td>
+					<TD style="text-align:right">
+						<A HREF="/help-fr.html"><IMG SRC="/pict/drapf.gif">&nbsp;Français</A>
+					</td>
+					<td style="text-align:right">
+						<a href="/help-en.html"><img src="/pict/drape.gif">&nbsp;English</a>
+	      </td>
+
+				</TR>
+			</TABLE>  	
+  	
+  	</td>
+  </tr>
+  <TR>
+  	<TD>
+  		<p style="text-align:justify; color:blue;"><B>live.glidernet.org</B> zeigt auf einer Karte Flugzeuge, die sich im Flug befinden und ein Flarmgerät an Bord haben. Ihre Positionen werden von Flarm Bodenempfängern abgerufen und über das Internet übertragen. Jedes Segelflugzeug wird durch ein Symbol mit einer Kennung von bis zu 3 Zeichen (Startnummer oder die letzten Zeichen der Registrierung) vertreten. Eine farbige Linie stellt die Spur von jedem Segelflugzeug auf der Karte dar. An der Seite der Karte werden alle Flugzeuge aufgelistet mit der Kennung des Flugzeugs, der Farbe der Spur, seine Höhe und die Steig-/Sinkgeschwindigkeit. 
+  		</p>
+  		
+  		<CENTER>
+  		<IMG width="750" height="372" src="/pict/c1.gif">
+  		</CENTER>
+  	</TD>
+  </TR>
+  <TR>
+  	<TD>
+  	<CENTER>
+  		<TABLE>
+  			<TR><TD><B>..::  Listen-Menü ::..</B></td></TR>
+	  		<TR>
+						<TD width="400"><IMG width="184" height="26" src="/pict/h1.gif">
+						<p style="text-align:justify; color:blue;">
+						Standardmäßig werden die Flugzeuge, von denen vor kurzem Daten übertragen wurden, in der Liste "Online" angezeigt. Wenn ein Flugzeug über 10 Minuten keine Daten mehr sendet, dann wird es in die Liste "Offline" verschoben.<BR>
+						Klicken Sie abwechselnd auf <span style="color:black;">Online</span>, <span style="color:black;">Offline</span> oder <span style="color:black;">Menü</span>, um von einer Seite dieses Dialogfensters zur nächsten zu gelangen.<BR>
+						Um die Liste zu verstecken, müssen Sie auf <IMG width="16" height="16" src="/pict/min.png"> klicken. Die Dialog-Ansicht wird dann verkleinert, und um diese wieder erscheinen zu lassen, klicken Sie auf  <IMG width="16" height="16" src="/pict/plu.png">.<BR>
+						Um die Liste auf die jeweils andere Seite der Karte (links / rechts) zuverschieben, klicken Sie auf den Doppelpfeil <IMG width="28" height="21" src="/pict/dbarrow.gif">.<BR>
+						Um diese Hilfe-Seite anzuzeigen, klicken Sie auf <IMG width="16" height="16" src="/pict/hel.png">.<BR><BR>
+						Auf der <span style="color:black;">Menü</span>-Seite können Sie mehrere Funktionen verwalten:<BR>
+						
+						-Setzen Sie einen Haken bei "Hide new gliders", um Flugzeuge, die sich neu mit dem System verbinden, auszublenden.<BR>
+						-Setzen Sie einen Haken bei "Ignore offline", um Flugzeuge auszublenden, die länger als 10 Minuten inaktiv sind.<BR>
+						-Setzen Sie einen Haken bei "Bounds", um nur solche Flugzeuge anzuzeigen, die sich in den geografischen Grenzen bewegen, die mit den folgenden Feldern bestimmt werden:<BR>
+						<TABLE cellspacing="0" cellpading="0"><TR align="center"><TD colspan="2"><INPUT readonly type="text" id="latmax" name="latmax" size="7" value="lat max"></TD></TR><TR align="center"><TD><INPUT readonly type="text" id="lonmin" name="lonmin" size="7" value="long min"></TD><TD><INPUT readonly type="text" id="lonmax" name="lonmax" size="7" value="long max"></TD></TR><TR align="center"><TD colspan="2"><INPUT readonly type="text" id="latmin" name="latmin" size="7" value="lat min"></TD></TR></TABLE>
+						-Klicken Sie auf die Schaltfläche "Set to map", um die geographischen Grenzen der Karte zu bestimmen. <BR>
+						-Setzen Sie einen Haken bei "Auto Set zur Karte", um die geographische Grenzen der Karte permanent festzulegen.<BR> 
+						Anzeigen / Ausblenden verschiedenen Darstellungsebenen:<BR>
+						-Weather: Wetter<BR>
+						-Clouds: Wolken<BR>
+						-Wind: Wind<BR>
+						-Pressure: Druck<BR>
+						-AirSpaces: Lufträume<BR>
+						-AirPorts: Flugplätze<BR>
+						-Receivers: Empfänger<BR> 
+						<TABLE>
+							<TR>
+								<TD><IMG SRC="/pict/rec1.png"></td>
+								<TD>Grün: Verbundener Receiver</td>
+							</tr>
+							<TR>
+								<TD><IMG SRC="/pict/rec0.png"></td>
+								<TD>Rot: Receiver ausgeschaltet oder nicht angeschlossen</td>
+							</tr>
+
+						</table>
+						
+						
+						</p></td>
+  			</TR>
+  			<TR><TD>&nbsp;</td></TR>
+	  		<TR>
+						<TD width="400"><p style="text-align:justify; color:blue;"><B>Spalten der Kopfzeile:</B>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<IMG border="1" width="172" height="25" src="/pict/h2.gif">
+							<BR>Doppelklicken Sie auf <IMG width="15" height="17" src="/pict/ico.png"> zum Verbergen oder Zeigen aller Flugzeugsymbole.
+							<BR>Doppelklicken Sie auf <IMG width="9" height="18" src="/pict/tra.gif"> zum Ausblenden oder Zeigen der Flugzeugspuren.
+							<BR>Klicken Sie auf <B>CN</B> sortiert die Liste in alphabetischer Reihenfolge der IDs (mit einem weiteren Klick wird in umgekehrter Reihenfolge sortiert). 
+							<BR>Doppelklicken Sie auf <IMG width="9" height="18" src="/pict/a.gif"> löscht die Spuren aller Flugzeuge.
+							<BR>Klicken Sie auf <B>Alti.</B> sortiert aufsteigend nach Flughöhe (ein weiterer Klick, um in umgekehrter Reihenfolge zu sortieren).
+							</p>
+							</td>
+  			</TR>
+  			<TR><TD>&nbsp;</td></TR>
+  			  			
+	  		<TR>
+						<TD width="400"><p style="text-align:justify; color:blue;"><B>Linien:</B>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<IMG border="1" width="162" height="23" src="/pict/h3.gif">
+							<BR>Entfernen oder Setzen Sie den Haken im ersten Feld einer Listenzeile, um das Symbol des betreffenden Flugzeugs zu verstecken oder anzuzeigen.
+							<BR>Entfernen oder Setzen Sie den Haken im zweiten Feld einer Listenzeile, um die Spur des betreffenden Flugzeuges zu verstecken oder anzuzeigen.
+							<BR>Ein Klick auf eine Identifizierung in der Liste zentriert die Karte bezogen auf das Flugzeugsymbol (nur vorübergehend, wenn eine automatische Zentrierung aktiv ist).
+							<BR>Doppelklicken Sie auf die Identifizierung zur automatische Zentrierung auf das Symbol des entsprechenden Flugzeugs.
+							<BR>Per Rechtsklick auf die ID laden Sie die gesamte Flugzeugspur von dem Tag.
+							<BR>Ein Rechtsklick auf das farbige Rechteck ändert die Farbe der Spur (Schleife über die 9 verfügbaren Farben).
+							<BR>Doppelklicken Sie auf das farbige Rechteck löscht die Spur des Flugzeuges.
+							<BR>Bei einem Klick auf die Höhe erscheint das Fenster mit weiteren Informationen zu dem Flugzeug. 
+							<BR><BR>
+							
+							<TABLE>
+							<TR><TD></td><TD style="color:blue;">Trends der Steig-/Sinkgeschwindigkeit:</td></tr>
+								<TR><TD><IMG border="1" width="19" height="19" src="/pict/ppp.gif"></td><TD>Vz > +4m/s</td></tr>
+								<TR><TD><IMG border="1" width="19" height="19" src="/pict/pp.gif"></td><TD>+4m/s &ge; Vz > +1m/s</td></tr>
+								<TR><TD><IMG border="1" width="19" height="19" src="/pict/p.gif"></td><TD>+1m/s &ge; Vz > 0m/s</td></tr>
+								<TR><TD><IMG border="1" width="19" height="19" src="/pict/z.gif"></td><TD>Vz = 0m/s</td></tr>
+								<TR><TD><IMG border="1" width="19" height="19" src="/pict/m.gif"></td><TD>0m/s > Vz &ge; -1m/s</td></tr>
+								<TR><TD><IMG border="1" width="19" height="19" src="/pict/mm.gif"></td><TD>-1m/s > Vz &ge; -4m/s</td></tr>
+								<TR><TD><IMG border="1" width="19" height="19" src="/pict/mmm.gif"></td><TD>-4m/s > Vz</td></tr>
+								<TR><TD><IMG border="1" width="19" height="19" src="/pict/n.gif"></td><TD>Inactif, pas de donn&eacute;e re&ccedil;ue depuis plus de 2 min.</td></tr>
+							</table>
+							</p>
+							</td>
+  			</TR>
+  
+  		</TABLE>
+  		<HR>
+  		<TABLE>
+  			<TR><TD><B>..:: Die Karte ::..</B></td></TR>
+	  		<TR>
+						<TD width="400">
+						<TABLE>
+							<TR>
+								<TD><IMG SRC="/pict/OGN.png"></td>
+								<TD>Gelb: Segelflugzeuge und Motorsegler</td>
+							</tr>
+							<TR>
+								<TD><IMG SRC="/pict/OGN_g.png"></td>
+								<TD>Grün: Schleppflugzeuge</td>
+							</tr>
+							<TR>
+								<TD><IMG SRC="/pict/OGN_r.png"></td>
+								<TD>Rot: Hubschrauber</td>
+							</tr>
+							<TR>
+								<TD><IMG SRC="/pict/OGN_b.png"></td>
+								<TD>Blau: Andere Flugzeug</td>
+							</tr>
+							<TR>
+								<TD><IMG SRC="/pict/OGN_o.png"></td>
+								<TD>Grau: Offline Flugzeuge (für mehr als 10 Minuten keine Daten empfangen)</td>
+							</tr>
+							
+						</table>
+						
+						<CENTER><IMG width="337" height="195" src="/pict/c4.gif"></CENTER>
+						<p style="text-align:justify; color:blue;">Wenn sie den Mauszeiger über ein Flugzeugsymbol halten, wird oben in der Mitte der Karte in einem Label, die Kennung und der Name des betreffenden Flugzeugs angezeigt. 
+						<BR>Gleichzeitig wird die zugehörige Zeile in der Liste hervorgehoben und an dem Mauszeiger erscheint eine Blase mit Flugzeugkennung/-name, der Höhe und dem Zeitpunkt des letzten Datenempfangs. 
+						<BR>Beim Klick auf das Symbol eines Flugzeugs (oder die Höhenanzeige des Flugzeugs in der Liste) erscheint ein Fenster, mit weiteren Informationen zu dem Flugzeug. (Ein Klick auf dieses Fenster blendet es wieder aus.) 
+						</P> 
+  			</TR>
+  			<TR><TD>&nbsp;</td></TR>
+	  		<TR>
+						<TD width="400">
+						<p style="text-align:justify; color:blue;">
+						<BR>Doppelklicken auf das Symbol eines Flugzeugs (oder die Kennung eines Flugzeugs in der Liste) ermöglicht die automatische Zentrierung auf dem Flugzeug. 
+						<BR>Ein Label in der linken oberen Ecke zeigt an, auf welchem Flugzeug die automatische Zentrierung (AC) aktiv ist.</P>
+						<CENTER><IMG width="289" height="107" src="/pict/c3.gif"></CENTER>
+						<p style="text-align:justify; color:blue;">Um die automatische Zentrierung zu deaktivieren, klicken Sie auf dieses Label.
+						<BR>Ein Rechtsklick auf das Symbol von einem Flugzeug (oder der Kennung eines Flugzeugs in der Liste) lädt die gesamte Spur von dem Tag.</P>
+  			</TR>
+  			<TR><TD>&nbsp;</td></TR>
+	  		<TR>
+						<TD width="400">
+						<p style="text-align:justify; color:blue;">Ein Rechtsklick auf dem Hintergrund Karte zeigt die topographische Höhe und geographischen Koordinaten des angeklickten Punktes.</P>
+						<CENTER><IMG width="300" height="235" src="/pict/c5.gif"></CENTER> 
+  			</TR>
+
+  
+  		</TABLE>  		
+  		
+  		</CENTER>
+  	</TD>
+  </tr>
+  	
+  </TABLE>
+  
+  </CENTER>
+  </BODY>
+  </HTML>

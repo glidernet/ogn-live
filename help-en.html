@@ -1,0 +1,245 @@
+<!--
+   ____                      _____ _ _     _             _   _      _                      _    
+  / __ \                    / ____| (_)   | |           | \ | |    | |                    | |   
+ | |  | |_ __   ___ _ __   | |  __| |_  __| | ___ _ __  |  \| | ___| |___      _____  _ __| | __
+ | |  | | '_ \ / _ \ '_ \  | | |_ | | |/ _` |/ _ \ '__| | . ` |/ _ \ __\ \ /\ / / _ \| '__| |/ /
+ | |__| | |_) |  __/ | | | | |__| | | | (_| |  __/ |    | |\  |  __/ |_ \ V  V / (_) | |  |   < 
+  \____/| .__/ \___|_| |_|  \_____|_|_|\__,_|\___|_|    |_| \_|\___|\__| \_/\_/ \___/|_|  |_|\_\
+        | |                                                                                     
+        |_|                                                                                     
+-->
+<html><head>
+  <title>Spot the gliders</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="author" content="philippe" > 
+  </head>
+
+  <body ;="" bgcolor="white">
+  <center>
+  <table style="width:800px">
+  <tbody>
+  <tr> 	<td>
+	<table style="width:100%">
+	<tbody>
+	<tr>  <td>
+		<a href="http://wiki.glidernet.org/">Join the community!<br>
+		<img src="/pict/ogn-logo-ani.gif"></a>
+	      </td>
+	      <td style="text-align:right">
+		<a href="/help-fr.html">
+		<img src="/pict/drapf.gif">&nbsp;Francais</a>
+	      </td>
+	      <td style="text-align:right">
+		<a href="/help-de.html">
+		<img src="/pict/drapd.gif">&nbsp;Deutsch</a>
+	      </td>
+	</tr>
+	</tbody>
+	</table>
+	</td>
+  </tr>
+
+  <tr> 	<td>
+	<p style="text-align:justify; color:blue;"><b>live.glidernet.org</b>
+ 
+displays <a href="http://www.flarm.com/" target=window>FLARM</a> equipped aircraft in flight on a map. Their positions are recovered by a network of 
+<a href="http://flarmrange.onglide.com/" target=window> Flarm ground receivers</a> and
+uploaded to this website via the InterNet.  Each aircraft is represented by an icon with
+a 3 character identifier (this is either its competition number, the last 3 characters
+of its registration or _xx where xx is the last 2 characters of a randomly assigned hex ID).
+A coloured line on the map represents the track of each aircraft. A list of all aircraft
+in flight is displayed in a panel at the side of the window and shows the identifier of the
+aircraft, the colour of its track, its altitude and its vertical speed (Vz). 
+
+	</p>
+  		
+  	<center>
+  	<img src="/pict/c1.gif" height="372" width="750">
+  	</center>
+  	</td>
+  </tr>
+  <tr> 	<td>
+  	<center>
+  	<table>
+  	<tbody><tr><td><b>..:: Lists and Menu Panel ::..</b></td></tr>
+	<tr>  <td width="800"><img src="/pict/h1.gif" height="26" width="184">
+	      <p style="text-align:justify; color:blue;">
+
+Clicking on the header label <span style="color:black;">OnLine</span>,
+<span style="color:black;">OffLine</span> or <span style="color:black;">Menu</span>
+rotates this panel through a sequence of 3 pages.<br><br>
+
+The default condition is that all aircraft for which data has been available within the
+last 10 minutes are displayed in the <span style="color:black;">OnLine</span> list.
+If there has been no data for an aircraft after a period of 10 minutes then
+it goes into the <span style="color:black;">OffLine</span> list.<br><br>
+
+To hide the panel you must click on the <img src="/pict/min.png" height="16" width="16"> icon.
+To make the panel reappear you must click on the <img src="/pict/plu.png" height="16" width="16"> icon.<br>
+To switch the panel to the other side of the screen (left / right) you must click the double arrow
+<img src="/pict/dbarrow.gif" height="21" width="28"> icon.<br>
+To view this help page, click on the <img src="/pict/hel.png" height="16" width="16"> icon.
+
+<br><br>
+The <span style="color:black;">Menu</span> page enables the user to access the map
+display controls:<br>
+- The checkbox "Hide new gliders" prevents new gliders that are picked up by the network from being displayed.<br>
+- The checkbox "Ignore Offline" disables the <span style="color:black;">OffLine</span> page.<br><br>
+- The checkbox "Bounds" limits the <span style="color:black;">OnLine</span> and
+<span style="color:black;">OffLine</span> lists to show only gliders within the geographical boundaries
+ specified in the boxes below:<br>
+
+	<table cellpading="0" cellspacing="0"><tbody><tr align="center"><td colspan="2"><input readonly="readonly" id="latmax" name="latmax" size="7" value="lat max" type="text"></td></tr><tr align="center"><td><input readonly="readonly" id="lonmin" name="lonmin" size="7" value="long min" type="text"></td><td><input readonly="readonly" id="lonmax" name="lonmax" size="7" value="long max" type="text"></td></tr><tr align="center"><td colspan="2"><input readonly="readonly" id="latmin" name="latmin" size="7" value="lat min" type="text"></td></tr></tbody></table>
+
+The "Set to map" button adjusts the boundaries to be those of the current map display.<br>
+- The checkbox "Auto Set to map" allows the boundaries to be continually updated as the map is zoomed and panned.<br><br>
+The "..:: Layers ::.." section shows or hides additional layers on the map which are self explanatory:<br>
+- Receiver status<br> 
+		<table>
+		<tbody><tr>
+			<td><img src="/pict/rec1.png"></td>
+			<td><span style="color:green;">Green</span>: <span style="color:blue;">Receiver online and active</span></td>
+		</tr>
+		<tr>
+			<td><img src="/pict/rec0.png"></td>
+			<td><span style="color:red;">Red</span>: <span style="color:blue;">Receiver offline or inactive</span></td>
+		</tr>
+		</tbody></table>
+
+
+
+	</p></td>
+</tr>
+<tr><td>&nbsp;</td></tr>
+
+<tr>
+	<td width="400"><p style="text-align:justify; color:blue;"><b>Column headers:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<img src="/pict/h2.gif" border="1" height="25" width="172"><br>
+
+A double-click on <img src="/pict/ico.png" height="17" width="15"> shows or hides all icons.<br>
+A double-click on <img src="/pict/tra.gif" height="18" width="9"> shows or hides all traces.<br>
+A click on <b>CN</b> sorts the list in alphabetical order of IDs (another click will sort in reverse order).<br>
+A double-click on <img src="/pict/a.gif" height="18" width="9"> erases the tracks of all aircraft.<br>
+A click on <b>Alti.</b> sorts the list in order of ascending altitudes (another click will sort in reverse order).
+	</p>
+	</td>
+</tr>
+<tr><td>&nbsp;</td></tr>
+
+<tr>
+	<td width="400"><p style="text-align:justify; color:blue;"><b>Individual aircraft lines:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/pict/h3.gif" border="1" height="23" width="162"><br>
+Unchecking or checking the first box hides or shows the icon of the aircraft.<br>
+Unchecking or checking the second box hides or shows the track of the aircraft.<br>
+A click on the ID centers the map on the aircraft icon (momentarily if automatic centering is active on another aircraft).<br>
+A double-click on the ID (or the icon of the aircraft in the map) activates automatic centering on the aircraft icon in the map.<br>
+A right-click on the ID (or the icon of the aircraft in the map) displays the complete track for the aircraft for the day.<br>
+A right-click on the coloured rectangle changes the colour of the track that is assigned to the aircraft
+  (looping through 9 possible colours).<br>
+A double-click on the coloured rectangle clears the aircraft's track for the day.<br>
+A click on the altitude (or the icon of a aircraft in the map) brings up a detail panel
+  containing the information registered on <a href="http://flarmnet.org/index.php/en/">flarmnet</a>
+  for the aircraft.
+<br><br>
+
+							
+<table>
+	<tbody><tr><td></td><td style="color:blue;">Ranges of Vz icons:</td></tr>
+		<tr><td><img src="/pict/ppp.gif" border="1" height="19" width="19"></td><td>Vz &gt; +4m/s</td></tr>
+		<tr><td><img src="/pict/pp.gif" border="1" height="19" width="19"></td><td>+4m/s &#8805; Vz &gt; +1m/s</td></tr>
+		<tr><td><img src="/pict/p.gif" border="1" height="19" width="19"></td><td>+1m/s &#8805; Vz &gt; 0m/s</td></tr>
+		<tr><td><img src="/pict/z.gif" border="1" height="19" width="19"></td><td>Vz = 0m/s</td></tr>
+		<tr><td><img src="/pict/m.gif" border="1" height="19" width="19"></td><td>0m/s &gt; Vz &#8805; -1m/s</td></tr>
+		<tr><td><img src="/pict/mm.gif" border="1" height="19" width="19"></td><td>-1m/s &gt; Vz &#8805; -4m/s</td></tr>
+		<tr><td><img src="/pict/mmm.gif" border="1" height="19" width="19"></td><td>-4m/s &gt; Vz</td></tr>
+		<tr><td><img src="/pict/n.gif" border="1" height="19" width="19"></td><td>Inactive, no data received for more than 2 min.</td></tr>
+	</tbody></table>
+	</p></td>
+  	</tr>
+	</tbody></table>
+<hr>
+<table>
+	<tbody><tr><td><b>..:: The map ::..</b></td></tr>
+<tr>
+	<td width="800"><table>
+	<tbody><tr>
+		<td><img src="/pict/OGN.png"></td>
+		<td>Yellow: Gliders and motorgliders</td>
+	</tr>
+	<tr>
+		<td><img src="/pict/OGN_g.png"></td>
+		<td>Green: Tugs</td>
+	</tr>
+	<tr>
+		<td><img src="/pict/OGN_r.png"></td>
+		<td>Red: Helicopters</td>
+	</tr>
+	<tr>
+		<td><img src="/pict/OGN_b.png"></td>
+		<td>Blue: Other aircraft</td>
+	</tr>
+	<tr>
+		<td><img src="/pict/OGN_o.png"></td>
+		<td>Grey: All inactive aircraft (no data received for the last 10 minutes)</td>
+	</tr>
+						
+	</tbody></table>
+
+
+<center><img src="/pict/c4.gif" height="195" width="337"></center>
+
+<p style="text-align:justify; color:blue;">
+
+On the map, hovering the mouse over an icon or track displays the ID and registration of
+the aircraft on a label at the top center and highlights the track of the aircraft.<br>
+
+Hovering the mouse over an icon highlights the line in the
+list for that aircraft and momentarily displays a bubble with its ID, registration, altitude
+and time of the last data received.<br>
+
+A click on the icon of a aircraft (or the altitude of the aircraft in the list) brings up
+the detail panel containing the information held on <a href="http://flarmnet.org/index.php/en/">flarmnet</a> for the aircraft
+(clicking on this panel closes it).
+
+</p> 
+	</td></tr>
+<tr><td>&nbsp;</td></tr>
+<tr>
+
+	<td width="800">
+	<p style="text-align:justify; color:blue;"><br>
+A double-click on the icon of a aircraft (or the identifier of a aircraft in the list)
+activates automatic centering on that aircraft.<br>
+A label at the top left shows which aircraft automatic centering (AC) is active on.<br>
+To disable automatic centering, click on this label.
+
+<center><img src="/pict/c3.gif" height="107" width="289"></center>
+
+
+<p style="text-align:justify; color:blue;">
+
+A right-click on the icon of a aircraft (or the identifier of
+a aircraft in the list) displays the complete track for that aircraft for the day.
+</p>
+
+	</td></tr>
+<tr><td>&nbsp;</td></tr>
+<tr>
+	<td width="800">
+	<p style="text-align:justify; color:blue;">
+A right-click on the background map shows the topographic elevation and geographical coordinates
+of the clicked point.</p>
+	<center><img src="/pict/c5.gif" height="235" width="300"></center> 
+	</td></tr>
+
+  
+  		</tbody></table>  		
+  		
+  		</center>
+  	</td>
+  </tr>
+  	
+  </tbody></table>
+  
+  </center>
+  
+  </body></html>
