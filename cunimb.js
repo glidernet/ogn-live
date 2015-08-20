@@ -1,13 +1,13 @@
 /*
-   _____            _           _                      _
-  / ____|          (_)         | |                    | |
- | |    _   _ _ __  _ _ __ ___ | |__        _ __   ___| |_
- | |   | | | | '_ \| | '_ ` _ \| '_ \      | '_ \ / _ \ __|
- | |___| |_| | | | | | | | | | | |_) |  _  | | | |  __/ |_
-  \_____\__,_|_| |_|_|_| |_| |_|_.__/  (_) |_| |_|\___|\__|
-
+   ____                      _____ _ _     _             _   _      _                      _    
+  / __ \                    / ____| (_)   | |           | \ | |    | |                    | |   
+ | |  | |_ __   ___ _ __   | |  __| |_  __| | ___ _ __  |  \| | ___| |___      _____  _ __| | __
+ | |  | | '_ \ / _ \ '_ \  | | |_ | | |/ _` |/ _ \ '__| | . ` |/ _ \ __\ \ /\ / / _ \| '__| |/ /
+ | |__| | |_) |  __/ | | | | |__| | | | (_| |  __/ |    | |\  |  __/ |_ \ V  V / (_) | |  |   < 
+  \____/| .__/ \___|_| |_|  \_____|_|_|\__,_|\___|_|    |_| \_|\___|\__| \_/\_/ \___/|_|  |_|\_\
+        | |                                                                                     
+        |_|                                                                                     
 */
-
 var map;
 var autoc = "";
 var acaff = "";
@@ -34,20 +34,20 @@ var tricol = 0; // 0:tri sur cn 1: tri sur alti
 var ett1 = "<CENTER><IMG style=\"z-index:50\" onclick=\"alist();\" SRC=\"" + tld + "/pict/min.png\">&nbsp;&nbsp;<IMG style=\"z-index:50\" onclick=\"sideclick();\" SRC=\"" + tld + "/pict/dbarrow.gif\">&nbsp;&nbsp;<A HREF=\"" + tld + "/help-fr.html\" target=\"_blank\"><IMG style=\"z-index:50\" SRC=\"" + tld + "/pict/hel.png\"></A>&nbsp;&nbsp;<span id=\"onoff\" onclick=\"onofff();\"></span></CENTER>";
 var w = 0; // watchdog variable
 var tmgm, tmwd;
+var nbreq = 0; // nb request launch
+var wlt = 0; // tasks white list
+var wlist = [];
 var vasp = false;
 var vrec = false;
 var vrecl = false;
-var vtas = false;
 var vstm = false;
 var vapt = false;
 var vwin = false;
 var vpre = false;
-var vwea = false;
-var vclo = false;
 var hnew = false;
 selrec = "";
-var ftype = ["unknown", "Glider/MotorGlider", "Tow Plane", "Helicopter", "Parachute", "Drop Plane", "Hangglider", "Paraglider", "Plane", "Jet", "UFO", "Balloon", "Airship", "Drone", "Static Object"];
-var ftypec = ["_b", "", "_g", "_r", "_b", "_b", "_p", "_p", "_b", "_b", "_b", "_b", "_b", "_b", "_b"];
+var ftype = ["unknown", "Glider/MotorGlider", "Tow Plane", "Helicopter", "Parachute", "Drop Plane", "Hangglider", "Paraglider", "Plane", "Jet", "UFO", "Balloon", "Airship", "Drone", "unknown", "Static Object" ];
+var ftypec = ["_b", "", "_g", "_r", "_b", "_b", "_p", "_p", "_b", "_b", "_b", "_b", "_b", "_b", "_b", "_b"];
 var taska = [];
 var initialResolution = 2 * Math.PI * 6378137 / 256; // == 156543.0339
 var originShift = 2 * Math.PI * 6378137 / 2.0; // == 20037508.34
@@ -59,8 +59,8 @@ var m2kt={"m":1, "i":1.94384};
 var am2kt={"m":"m/s", "i":"kt"};
 
 
-var hashc="",hashz="",hashm="",hasho="",hashb="",hashs="",hashl="",hasht="",hl="       ",hashw="",hashu="",hashp="",hashn="";
-// center     zoom    maptype  offline  bound   autoset2ma  layers  tasks                warning   units   pathlength
+var hashc="",hashz="",hashm="",hasho="",hashb="",hashs="",hashl="",hasht="",hl="       ",hashw="",hashu="",hashp="",hashn="",hashy="";
+// center     zoom    maptype  offline  bound   autoset2ma  layers  tasks                warning   units   pathlength nolist devtype
 
 
 //  close popup
@@ -104,6 +104,24 @@ function chpl() { // change path length
   }
   delpon();
   delpoff();
+  rehash();
+}
+
+function devtype() { // devices types selected
+	var dt = 0;
+	if (document.getElementById('ICAObox').checked) {
+		dt += 1;
+  }
+ 	if (document.getElementById('Flarmbox').checked) {
+		dt += 2;
+  }
+ 	if (document.getElementById('OGNbox').checked) {
+		dt += 4;
+  }
+	if (dt == 7)	hashy = "";		// all devices 
+	else hashy = "&y=" + dt;
+	reseton();
+	resetoff();
   rehash();
 }
 
@@ -313,54 +331,36 @@ function pres() {
 }
 
 
-function wea() {
-  if (document.getElementById('weabox').checked) {
-    vwea = true;
-    weatherLayer = new google.maps.weather.WeatherLayer({
-      temperatureUnits: google.maps.weather.TemperatureUnit.CELSIUS
-    });
-    weatherLayer.setMap(map);
-    if (map.getZoom() > 12) map.setZoom(12);
-    rempl(0, "w");
-  } else {
-    vwea = false;
-    weatherLayer.setMap(null);
-    rempl(0, " ");
-  }
-  rehash();
-}
-
-function clo() {
-  if (document.getElementById('clobox').checked) {
-    vclo = true;
-    cloudLayer = new google.maps.weather.CloudLayer();
-    cloudLayer.setMap(map);
-    if (map.getZoom() > 6) map.setZoom(6);
-    rempl(1, "c");
-  } else {
-    vclo = false;
-    cloudLayer.setMap(null);
-    rempl(1, " ");
-  }
-  rehash();
-}
-
-
 function hidenew() {
   if (document.getElementById('hnewbox').checked) hnew = true;
   else hnew = false;
 }
 
+function reseton() {		// delete all online markers and their path
+	var j = -1;
+	while (online[++j]) {
+		window["M_" + online[j][2]].setMap(null);
+		delete window["M_" + online[j][2]];
+		window["P_" + online[j][2]].setMap(null);
+		delete window["P_" + online[j][2]];
+	}
+}
+
+function resetoff() {		// delete all offline markers and their path
+	var j = -1;
+	while (offline[++j]) {
+		window["M_" + offline[j][2]].setMap(null);
+		delete window["M_" + offline[j][2]];
+		window["P_" + offline[j][2]].setMap(null);
+		delete window["P_" + offline[j][2]];
+	}
+}
+
+
 function lineoff() {
   if (document.getElementById('offl').checked) {
     all = 0;
-    var j = -1;
-    while (offline[++j]) {
-      window["M_" + offline[j][2]].setMap(null);
-      delete window["M_" + offline[j][2]];
-      window["P_" + offline[j][2]].setMap(null);
-      delete window["P_" + offline[j][2]];
-    }
+    resetoff();
     hasho = "";
   } else {
     all = 1;
@@ -400,20 +400,8 @@ function bounds() {
     document.getElementById('latmin').value = amin;
     document.getElementById('lonmax').value = omax;
     document.getElementById('lonmin').value = omin;
-    var j = -1;
-    while (online[++j]) {
-      window["M_" + online[j][2]].setMap(null);
-      delete window["M_" + online[j][2]];
-      window["P_" + online[j][2]].setMap(null);
-      delete window["P_" + online[j][2]];
-    }
-    j = -1;
-    while (offline[++j]) {
-      window["M_" + offline[j][2]].setMap(null);
-      delete window["M_" + offline[j][2]];
-      window["P_" + offline[j][2]].setMap(null);
-      delete window["P_" + offline[j][2]];
-    }
+    reseton();
+    resetoff();
     hashb = "&b=" + amax.toFixed(4) + "," + amin.toFixed(4) + "," + omax.toFixed(4) + "," + omin.toFixed(4);
   } else {
     bound = false;
@@ -466,7 +454,7 @@ function afftab() {
   }
   dlistd += "</TABLE>";
   document.getElementById("dtlist").innerHTML = dlistd;
-  if (aflist === true) document.getElementById("onoff").innerHTML = onoffaff + affcpt;
+  if (aflist === true) document.getElementById("onoff").innerHTML = "<B>"+ onoffaff +"</B>" + affcpt;
 
 }
 
@@ -580,9 +568,7 @@ function redraw(pol) {
   var fi = mrk.get('fid');
   var lo = mrk.getPosition().lng().toFixed();
   mrk.set('tra', 1);
-  var aa = "";
-  if (fi == "hidden") aa = "&a=1";
-  downloadUrl(tld + '/' + cxml1 + '?id=' + p + aa + "&l=" + lo, function(data) {
+  downloadUrl(tld + '/' + cxml1 + '?id=' + p + "&l=" + lo, function(data) {
     var vtrace = data.documentElement.getElementsByTagName("m");
     var err = parseFloat(vtrace[0].getAttribute("e"));
     var idd = vtrace[0].getAttribute("i");
@@ -598,10 +584,20 @@ function redraw(pol) {
 
 
 function taskbox() {
+	var vtas = false;
   if (document.getElementById('taskbox').checked) {
     vtas = true;
+    if (wlt == 2) {
+    	--wlt;
+    	reseton();
+    	resetoff();
+    }
   } else {
-    vtas = false;
+  	if (wlt == 1) {
+  		++wlt;
+  		reseton();
+    	resetoff();
+  	}
   }
   var j = -1;
   while (taska[++j]) {
@@ -676,27 +672,8 @@ function checkrec() {
 function receiv() {
   if (document.getElementById('recbox').checked) {
     vrec = true;
-    /*
-    var s = document.getElementById("recsel");
-    var sv = s.options[s.selectedIndex].value;
-    recc="&r="+sv;
-    var j=-1;
-    while(online[++j]){
-      window["M_"+online[j][2]].setMap(null);   delete window["M_"+online[j][2]];
-      window["P_"+online[j][2]].setMap(null);   delete window["P_"+online[j][2]];
-    }
-    j=-1;
-    while(offline[++j]){
-      window["M_"+offline[j][2]].setMap(null);  delete window["M_"+offline[j][2]];
-      window["P_"+offline[j][2]].setMap(null);  delete window["P_"+offline[j][2]];
-    }
-    */
-
   } else {
     vrec = false;
-    /*
-    recc="";
-    */
   }
 }
 
@@ -726,10 +703,7 @@ function affinfodata(mark) {
 
 function affinfodata2(mark) {
   var mrk = window[mark];
-  // document.getElementById("acow").innerHTML = mrk.get('owner');
-  // document.getElementById("acaf").innerHTML = mrk.get('airf');
   document.getElementById("acmo").innerHTML = mrk.get('model');
-  // document.getElementById("acfr").innerHTML = mrk.get('freq');
 }
 
 function affinfo(mark) {
@@ -746,27 +720,25 @@ function affinfo(mark) {
   document.getElementById("acty").innerHTML = ftype[mrk.get('type') * 1];
   if (fi != "hidden") {
     document.getElementById("acif").innerHTML = "<A HREF='https://www.google.com/search?nfpr=1&q=\"" + rg + "\"' target='_blank' onclick=\"event.stopPropagation();\">Infos</a>&nbsp;&nbsp;&nbsp;&nbsp;<A HREF='https://www.google.com/search?nfpr=1&q=\"" + rg + "\"&tbm=isch' target='_blank' onclick=\"event.stopPropagation();\">Pictures</a>";
-    if (mrk.get('owner') === "") {
+    if (mrk.get('dinfo') === "") {
       downloadUrl(tld + '/' + dxml + '?i=' + mark + '&f=' + fi, function(data) {
         var dat = data.documentElement.getElementsByTagName("m");
         var err = parseFloat(dat[0].getAttribute("g"));
         var mrk = dat[0].getAttribute("i");
         if (err === 0) {
-          // window[mrk].set('owner', "" + dat[0].getAttribute("a"));
-          // window[mrk].set('airf', "" + dat[0].getAttribute("b"));
           window[mrk].set('model', "" + dat[0].getAttribute("c"));
-          // window[mrk].set('freq', "" + dat[0].getAttribute("e"));
           affinfodata2(mrk);
           document.getElementById("ac2").style.display = "block";
+          window[mrk].set('dinfo', "ok");
         } else {
-          window[mrk].set('owner', "_");
+          window[mrk].set('dinfo', "_");
           document.getElementById("ac2").style.display = "none";
         }
       });
 
 
     } else {
-      if (mrk.get('owner') != "_") {
+      if (mrk.get('dinfo') != "_") {
         affinfodata2(mark);
         document.getElementById("ac2").style.display = "block";
       } else {
@@ -776,10 +748,7 @@ function affinfo(mark) {
   } else {
     document.getElementById("ac2").style.display = "none";
     document.getElementById("acif").innerHTML = "";
-    //document.getElementById("acow").innerHTML = "";
-    //document.getElementById("acaf").innerHTML = "";
     document.getElementById("acmo").innerHTML = "";
-    //document.getElementById("acfr").innerHTML = "";
   }
   acaff = mark;
   document.getElementById("ac").style.display = "block";
@@ -838,8 +807,10 @@ function dist(lat1, lon1, lat2, lon2) {
 }
 
 function gesmark() {
-
-  downloadUrl(tld + '/' + cxml + "?a=" + all + boundc + recc + parc + tz, function(data) {
+	if (nbreq > 0) { --nbreq; return; }
+	
+	++nbreq;
+  downloadUrl(tld + '/' + cxml + "?a=" + all + boundc + recc + parc + tz + hashy, function(data) {
     ++w;
     var planeurs = data.documentElement.getElementsByTagName("m");
     online.length = 0;
@@ -851,10 +822,17 @@ function gesmark() {
       // récupération des données transmises pour ce planeur
       var tab = planeurs[i].getAttribute("a").split(",");
 
+
+      var fid = tab[12];		
+		if (wlt == 1) {
+			if (wlist.indexOf(fid) == -1) continue;
+		}
+		var ps = tab[3];
       var lat = parseFloat(tab[0]);
       var lon = parseFloat(tab[1]);
       var cn = tab[2];
-      var ps = tab[3];
+      if (cn == "") cn = "_";
+      
       var alt = tab[4];
       var tim = tab[5];
       var ddf = tab[6];
@@ -864,21 +842,23 @@ function gesmark() {
       var typ = tab[10];
       var rec = tab[11];
 
+      var crc = tab[13];
+
 
 
       var posi = new google.maps.LatLng(lat, lon);
-      var polyvar = "P_" + ps + "_" + cn;
-      var markvar = "M_" + ps + "_" + cn;
+      var polyvar = "P_" + crc;
+      var markvar = "M_" + crc;
       var visib = true;
 
 
-      if (typeof(window[polyvar]) == 'undefined') // si planeur non créé (pas déjà présent sur la carte)
+      if (typeof(window[polyvar]) == 'undefined') // If aircraft not already created
       {
-        // **** création de la couleur de la trace en fonction d'un tableau de 9 couleurs
+        // create path color for array
         hcol = tcolor[ccolor];
         if (hnew === true) visib = false;
 
-        // création du PolyLine
+        // create Marker
         var polyOptions = {
           strokeColor: '#' + hcol,
           strokeOpacity: 0.75,
@@ -916,13 +896,12 @@ function gesmark() {
         window[markvar].set('nom', "" + cn + " - " + ps);
         window[markvar].set('cn', "" + cn);
         window[markvar].set('reg', "" + ps);
-        var fid = tab[12];
         if (fid == "0") fid = "hidden";
         window[markvar].set('fid', "" + fid);
         window[markvar].set('type', "" + typ);
         window[markvar].set('icol', "" + ccolor);
         window[markvar].set('off', 0);
-        window[markvar].set('owner', "");
+        window[markvar].set('dinfo', "");
         window[markvar].setTitle("" + cn + " - " + ps + " @ " + (alt * m2ft[unit]).toFixed() + am2ft[unit] + " @ " + tim);
         window[markvar].set('speed', "" + speed);
         window[markvar].set('track', "" + track);
@@ -963,16 +942,11 @@ function gesmark() {
         if (++ccolor == 9) ccolor = 0;
       } // fin du if typeof...
 
-
-
-      //var oldalt=window[markvar].get('alt');
-      //var difalt=(alt-oldalt)/15;
       var difalt = vz * 1;
-
 
       colcn = window[polyvar].strokeColor;
 
-      if (ddf < 600) {
+      if (ddf < 600) {		// if online (active during 10 last minutes)
         if (ddf > 120) afdif = "n";
         else if (difalt === 0) afdif = "z";
         else if (difalt < -4) afdif = "mmm";
@@ -982,7 +956,7 @@ function gesmark() {
         else if (difalt > 1) afdif = "pp";
         else afdif = "p";
 
-        online.push([cn, alt * 1, ps + "_" + cn, colcn, afdif]);
+        online.push([cn, alt * 1, crc, colcn, afdif]);
         if (window[markvar].get('off') == 1) {
           window[markvar].setOptions({
             zIndex: 50
@@ -1027,7 +1001,7 @@ function gesmark() {
 
           }
         } else {
-          offline.push([cn, alt * 1, ps + "_" + cn, colcn, "n"]);
+          offline.push([cn, alt * 1, crc, colcn, "n"]);
           if (window[markvar].get('off') === 0) {
             window[markvar].setOptions({
               zIndex: 10
@@ -1051,7 +1025,12 @@ function gesmark() {
     } // fin du for (var i = 0; i < planeurs.length; i++)
     // tri et affichage du tableau
     afftab();
-    tmgm = setTimeout(gesmark, 10000);
+    if (--nbreq < 0) {
+    	nbreq = 0;
+    }
+    else {
+    	tmgm = setTimeout(gesmark, 10000);
+    }
   });
 
 }
@@ -1066,7 +1045,7 @@ function wd() {
 }
 
 function rehash() {
-  window.location.hash = hashc + hashz + hashm + hasho + hashb + hashs + hashl + hashw + hashp + hashu + hashn;
+  window.location.hash = hashc + hashz + hashm + hasho + hashb + hashs + hashl + hashw + hashp + hashu + hashn + hashy;
 }
 
 function rempl(po, c) {
@@ -1085,11 +1064,19 @@ function task(cont) {
   var res = JSON.parse(cont);
   var tc, tn, ltp;
   var tp = [];
+  var wl = [];
   var tasks = res.tasks;
   for (var i = 0; i < tasks.length; i++) {
     tn = tasks[i].name || "task" + i;
     tc = tasks[i].color || "FFFFFF";
     tp.length = 0;
+    if (typeof tasks[i].wlist != 'undefined') {
+    	wlt = 1;
+    	wl = tasks[i].wlist;
+    	for(var ii= 0; ii < wl.length; ii++) {
+    		wlist.push(wl[ii]);
+			}    	
+    }
     for (var ii = 0; ii < tasks[i].legs.length; ii++) {
       if (typeof tasks[i].legs[ii][1] == 'undefined') { // circle
         aatCircle = new google.maps.Circle({
@@ -1125,15 +1112,16 @@ function task(cont) {
     google.maps.event.addListener(flightPath, "mouseout", function() {
       document.getElementById("divInfo").innerHTML = "&nbsp;";
     });
-
-
-    // prévoir whitelist pour chaqsue task (avec couleur de fond différente?)
+  }
+  if (wlt == 1) {
+  	reseton();
+  	resetoff();
   }
   document.getElementById("dtaskbox").innerHTML = "<INPUT type=\"checkbox\" id=\"taskbox\" onChange=\"javascript : taskbox();\" checked>";
 
 }
 
-function rtask() {
+function rtask() {	// select a task file
   var files = document.getElementById('chfile').files;
   if (!files.length) {
     alert('Please select a file!');
@@ -1155,6 +1143,7 @@ function initialize() {
   var has = window.location.hash.substring(1).split('&'); // parse the parameters
   var parh = [];
   var cent = [];
+  var gmdelay = 0;  // to delay first call to gesmark if task file required 
   for (var i = 0; i < has.length; i++) {
     var x = has[i].split('=');
     parh[x[0]] = x[1];
@@ -1176,27 +1165,6 @@ function initialize() {
     }
   }
 
-  /*
-  RELIEF = new google.maps.ImageMapType({
-    alt: "www.maps-for-free.com",
-    getTileUrl: function(aB,aA) {
-      return "http://www.maps-for-free.com//layer/relief/z"+aA+"/row"+aB.y+"/"+aA+"_"+aB.x+"-"+aB.y+".jpg";
-      },
-    maxZoom: 11,
-    name: "Relief",
-    tileSize: new google.maps.Size(256,256)
-    });
-
-  wateroverlay = new google.maps.ImageMapType({
-    getTileUrl: function(aB, aA) {
-      if (aA>11) return;
-      return "http://www.maps-for-free.com//layer/water/z"+aA+"/row"+aB.y+"/"+aA+"_"+aB.x+"-"+aB.y+".gif";
-      },
-    maxZoom: 11,
-    opacity: 0,
-    tileSize: new google.maps.Size(256, 256)
-    });
-  */
   airspaceoverlay = new google.maps.ImageMapType({
     getTileUrl: function(tile, zoom) {
       var tx = tile.x;
@@ -1294,15 +1262,6 @@ function initialize() {
   google.maps.event.addListener(map, 'maptypeid_changed', function() {
     hashm = "&m=" + map.getMapTypeId().substr(0, 1);
     rehash();
-    /*
-      if (id=="RELIEF") {
-        wateroverlay.setOpacity(1);
-        map.overlayMapTypes.setAt(0, wateroverlay);
-      } else {
-        wateroverlay.setOpacity(0);
-        map.overlayMapTypes.removeAt(0);
-      }
-        */
   });
 
 
@@ -1438,10 +1397,9 @@ function initialize() {
 
   document.getElementById("ett1").innerHTML = ett1;
   document.getElementById("ett2").innerHTML = "<TABLE class=\"tt\"><TR width=\"12\"><TH class=\"cgv\" ondblclick=\"allmarker();\"><IMG src='" + tld + "/pict/ico.png'></TH><TH class=\"cgv\" ondblclick=\"allpath();\"><IMG src='" + tld + "/pict/tra.gif'></TH><TH class=\"cgn\" onclick=\"tricn();\">CN</TH><TH class=\"cgc\" ondblclick=\"deleteallpath();\"><IMG border =\"0\" src='" + tld + "/pict/a.gif'></TH><TH class=\"cga\" onclick=\"trialti();\">Alti.</TH><TH class=\"cgz\">Vz</TH></TR></table>";
-  // document.getElementById("ac").innerHTML = "<span style=\"color: #333; font-weight: bold; font-size: 1.1em; line-height: 1.3em;\">&nbsp;&nbsp;&nbsp;..::Aircraft::..</span><BR><span class=\"act\">CN: </span><span id=\"accn\" class=\"aca\"></span><BR><DIV id=\"ac1\"><span class=\"act\">Regist.: </span><span id=\"acre\" class=\"aca\"></span><BR></DIV><span class=\"act\">Flarm Id: </span><span id=\"acfi\" class=\"aca\"></span><BR><span class=\"act\">Type: </span><span id=\"acty\" class=\"aca\"></span><BR><DIV id=\"ac2\"><span class=\"act\">Owner: </span><span id=\"acow\" class=\"aca\"></span><BR><span class=\"act\">Airfield: </span><span id=\"acaf\" class=\"aca\"></span><BR><span class=\"act\">Model: </span><span id=\"acmo\" class=\"aca\"></span><BR><span class=\"act\">Freq.: </span><span id=\"acfr\" class=\"aca\"></span></DIV><span class=\"act\">Last time: </span><span id=\"aclt\" class=\"aca\"></span><BR><span class=\"act\">Latitude: </span><span id=\"acla\" class=\"aca\"></span><BR><span class=\"act\">Longitude: </span><span id=\"aclo\" class=\"aca\"></span><BR><span class=\"act\">Altitude: </span><span id=\"acal\" class=\"aca\"></span><BR><span class=\"act\">G.Speed: </span><span id=\"acsp\" class=\"aca\"></span><BR><span class=\"act\">Track: </span><span id=\"actr\" class=\"aca\"></span><span class=\"aca\">&thinsp;&deg;</span><BR><span class=\"act\">Vz: </span><span id=\"acvz\" class=\"aca\"></span><BR><span class=\"act\">Receiver: </span><span id=\"acrx\" class=\"aca\"></span><BR><span id=\"acif\" class=\"aca\"></span>";
   document.getElementById("ac").innerHTML = "<span style=\"color: #333; font-weight: bold; font-size: 1.1em; line-height: 1.3em;\">&nbsp;&nbsp;&nbsp;..::Aircraft::..</span><BR><span class=\"act\">CN: </span><span id=\"accn\" class=\"aca\"></span><BR><DIV id=\"ac1\"><span class=\"act\">Regist.: </span><span id=\"acre\" class=\"aca\"></span><BR></DIV><span class=\"act\">Device Id: </span><span id=\"acfi\" class=\"aca\"></span><BR><span class=\"act\">Type: </span><span id=\"acty\" class=\"aca\"></span><BR><DIV id=\"ac2\"><span class=\"act\">Model: </span><span id=\"acmo\" class=\"aca\"></span></DIV><span class=\"act\">Last time: </span><span id=\"aclt\" class=\"aca\"></span><BR><span class=\"act\">Latitude: </span><span id=\"acla\" class=\"aca\"></span><BR><span class=\"act\">Longitude: </span><span id=\"aclo\" class=\"aca\"></span><BR><span class=\"act\">Altitude: </span><span id=\"acal\" class=\"aca\"></span><BR><span class=\"act\">G.Speed: </span><span id=\"acsp\" class=\"aca\"></span><BR><span class=\"act\">Track: </span><span id=\"actr\" class=\"aca\"></span><span class=\"aca\">&thinsp;&deg;</span><BR><span class=\"act\">Vz: </span><span id=\"acvz\" class=\"aca\"></span><BR><span class=\"act\">Receiver: </span><span id=\"acrx\" class=\"aca\"></span><BR><span id=\"acif\" class=\"aca\"></span>";
   document.getElementById("dtable").innerHTML = "<DIV id=\"menu\" style=\"display:none;\"></DIV><DIV id=\"dtlist\" style=\"display:block\"></DIV>";
-  document.getElementById("menu").innerHTML = "<TABLE class=\"tt\"><TR><TD><INPUT type=\"checkbox\" id=\"hnewbox\" onChange='javascript : hidenew();'> Hide new gliders<BR><INPUT type=\"checkbox\" id=\"offl\" onChange='javascript : lineoff();'" + ((all === 0) ? " checked" : "") + "> Ignore Offline<HR><INPUT type=\"checkbox\" id=\"boundsbox\" onChange='javascript : bounds();'" + ((bound === true) ? " checked" : "") + "> Bounds<BR><TABLE cellspacing=\"0\" cellpading=\"0\"><TR align=\"center\"><TD colspan=\"2\"><INPUT type=\"text\" id=\"latmax\" name=\"latmax\" size=\"7\" value=\"" + amax + "\"></TD></TR><TR align=\"center\"><TD><INPUT type=\"text\" id=\"lonmin\" name=\"lonmin\" size=\"7\" value=\"" + omin + "\"></TD><TD><INPUT type=\"text\" id=\"lonmax\" name=\"lonmax\" size=\"7\" value=\"" + omax + "\"></TD></TR><TR align=\"center\"><TD colspan=\"2\"><INPUT type=\"text\" id=\"latmin\" name=\"latmin\" size=\"7\" value=\"" + amin + "\"></TD></TR></TABLE><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<INPUT type=\"button\" onclick=\"settomap()\" value=\"Set to map\"><BR><INPUT type=\"checkbox\" id=\"astmbox\" onChange='javascript : astm();'> Auto Set to map<HR>..:: Layers ::..<BR><INPUT type=\"checkbox\" id=\"weabox\" onChange=\"javascript : wea();\"> Weather <BR><INPUT type=\"checkbox\" id=\"clobox\" onChange=\"javascript : clo();\"> Clouds <BR><INPUT type=\"checkbox\" id=\"winbox\" onChange=\"javascript : wind();\"> Wind <BR><INPUT type=\"checkbox\" id=\"prebox\" onChange=\"javascript : pres();\"> Pressure <BR><INPUT type=\"checkbox\" id=\"aspbox\" onChange=\"javascript : asp();\"> AirSpaces <A HREF=\"http://www.openaip.net\" target=\"_blank\" style=\"font-size:10px;\">( openaip.net )</A><BR><INPUT type=\"checkbox\" id=\"aptbox\" onChange=\"javascript : apt();\"> Airports <A HREF=\"http://www.openaip.net\" target=\"_blank\" style=\"font-size:10px;\">( openaip.net )</A><BR><INPUT type=\"checkbox\" id=\"reclbox\" onChange=\"javascript : reclbox();\"> Receivers<BR><span id=\"dtaskbox\"><INPUT type=\"checkbox\" disabled></span> <span onclick=\"taskclic();\">Tasks</span><BR> <DIV style=\"display:none\"><input type=\"file\" id=\"chfile\" onchange=\"rtask()\" /></DIV><HR>..::Units::..<BR><input type=\"radio\" name=\"units\" id=\"unm\" value=\"m\" onclick=\"chunit()\" checked>Met. <input type=\"radio\" name=\"units\" id=\"uni\" value=\"i\" onclick=\"chunit()\">Imp.<HR>..::Path length::..<BR><input type=\"radio\" name=\"pl\" id=\"rp1\" value=\"1\" checked onclick=\"chpl()\">5' <input type=\"radio\" name=\"pl\" id=\"rp2\" value=\"2\" onclick=\"chpl()\">10' <input type=\"radio\" name=\"pl\" id=\"rp3\" value=\"3\" onclick=\"chpl()\">All</TD></TR></TABLE>";
+  document.getElementById("menu").innerHTML = "<TABLE class=\"tt\"><TR><TD><INPUT type=\"checkbox\" id=\"hnewbox\" onChange='javascript : hidenew();'> Hide new gliders<BR><INPUT type=\"checkbox\" id=\"offl\" onChange='javascript : lineoff();'" + ((all === 0) ? " checked" : "") + "> Ignore Offline<HR><INPUT type=\"checkbox\" id=\"boundsbox\" onChange='javascript : bounds();'" + ((bound === true) ? " checked" : "") + "> Bounds<BR><TABLE cellspacing=\"0\" cellpading=\"0\"><TR align=\"center\"><TD colspan=\"2\"><INPUT type=\"text\" id=\"latmax\" name=\"latmax\" size=\"7\" value=\"" + amax + "\"></TD></TR><TR align=\"center\"><TD><INPUT type=\"text\" id=\"lonmin\" name=\"lonmin\" size=\"7\" value=\"" + omin + "\"></TD><TD><INPUT type=\"text\" id=\"lonmax\" name=\"lonmax\" size=\"7\" value=\"" + omax + "\"></TD></TR><TR align=\"center\"><TD colspan=\"2\"><INPUT type=\"text\" id=\"latmin\" name=\"latmin\" size=\"7\" value=\"" + amin + "\"></TD></TR></TABLE><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<INPUT type=\"button\" onclick=\"settomap()\" value=\"Set to map\"><BR><INPUT type=\"checkbox\" id=\"astmbox\" onChange='javascript : astm();'> Auto Set to map<HR>..:: Devices ::..<BR><INPUT type=\"checkbox\" id=\"ICAObox\" onChange=\"javascript : devtype();\"> ICAO<BR><INPUT type=\"checkbox\" id=\"Flarmbox\" onChange=\"javascript : devtype();\"> Flarm<BR><INPUT type=\"checkbox\" id=\"OGNbox\" onChange=\"javascript : devtype();\"> OGN Trackers<HR>..:: Layers ::..<BR><INPUT type=\"checkbox\" id=\"winbox\" onChange=\"javascript : wind();\"> Wind <BR><INPUT type=\"checkbox\" id=\"prebox\" onChange=\"javascript : pres();\"> Pressure <BR><INPUT type=\"checkbox\" id=\"aspbox\" onChange=\"javascript : asp();\"> AirSpaces <A HREF=\"http://www.openaip.net\" target=\"_blank\" style=\"font-size:10px;\">( openaip.net )</A><BR><INPUT type=\"checkbox\" id=\"aptbox\" onChange=\"javascript : apt();\"> Airports <A HREF=\"http://www.openaip.net\" target=\"_blank\" style=\"font-size:10px;\">( openaip.net )</A><BR><INPUT type=\"checkbox\" id=\"reclbox\" onChange=\"javascript : reclbox();\"> Receivers<BR><span id=\"dtaskbox\"><INPUT type=\"checkbox\" disabled></span> <span onclick=\"taskclic();\">Tasks</span><BR> <DIV style=\"display:none\"><input type=\"file\" id=\"chfile\" onchange=\"rtask()\" /></DIV><HR>..::Units::..<BR><input type=\"radio\" name=\"units\" id=\"unm\" value=\"m\" onclick=\"chunit()\" checked>Met. <input type=\"radio\" name=\"units\" id=\"uni\" value=\"i\" onclick=\"chunit()\">Imp.<HR>..::Path length::..<BR><input type=\"radio\" name=\"pl\" id=\"rp1\" value=\"1\" checked onclick=\"chpl()\">5' <input type=\"radio\" name=\"pl\" id=\"rp2\" value=\"2\" onclick=\"chpl()\">10' <input type=\"radio\" name=\"pl\" id=\"rp3\" value=\"3\" onclick=\"chpl()\">All<HR><CENTER>Join the<BR><A HREF=\"http://ddb.glidernet.org\" target=\"_blank\">OGN DataBase</A></CENTER></TD></TR></TABLE>";
 
   // parameter b=lat1,lon1,lat2,lon2 bounds
   if (typeof(parh.b) != 'undefined') {
@@ -1460,14 +1418,6 @@ function initialize() {
   if (typeof(parh.l) != 'undefined') {
     for (var i = 0; i < parh.l.length; i++) {
       switch (parh.l[i]) {
-        case 'w': // weather
-          document.getElementById('weabox').checked = true;
-          wea();
-          break;
-        case 'c': // cloud
-          document.getElementById('clobox').checked = true;
-          clo();
-          break;
         case 'v': // wind
           document.getElementById('winbox').checked = true;
           wind();
@@ -1492,8 +1442,8 @@ function initialize() {
   }
 
   if (typeof(parh.t) != 'undefined') {
-
-    var xhr = new XMLHttpRequest();
+	gmdelay = 1;
+		var xhr = new XMLHttpRequest();
     xhr.open("GET", parh.t, true);
     xhr.onreadystatechange = function() {
       if (xhr.readyState === 4) {
@@ -1504,6 +1454,7 @@ function initialize() {
           alert("Task Request unsuccessful" + status);
         }
       }
+      gesmark();
     };
 
     xhr.send(null);
@@ -1526,7 +1477,7 @@ function initialize() {
   }
 
   if (warn == 1) {
-    document.getElementById("popup").innerHTML = "<img class=\"pr\" alt=\"close\" src=\"" + tld + "/pict/close.png\"><H1>Warning!</H1><BR><P style=\"text-align:justify;\"><B>The data on this site can be ambiguous in certain situations and the displayed position of an aircraft or glider can be displaced relative to the actual position.<BR>Before raising an alert please contact us so we can interpret the data correctly.</B></P>";
+    document.getElementById("popup").innerHTML = "<img class=\"pr\" alt=\"close\" src=\"" + tld + "/pict/close.png\"><H1>Warning!</H1><BR><P style=\"text-align:justify;\"><B>The data on this site can be ambiguous in certain situations and the displayed position of an aircraft or glider can be displaced relative to the actual position.<BR>Before raising an alert please contact us so we can interpret the data correctly.</B><BR><BR><B>If you want your devices to be identified, join the <A HREF=\"http://ddb.glidernet.org\" target=\"_blank\">OGN DataBase</A>.</B></P>";
     op(300);
   }
 
@@ -1544,7 +1495,7 @@ function initialize() {
     if (parh.u == "i") {
       document.getElementById('uni').checked = true;
       unit = "i";
-      hashs = "&u=i";
+      hashu = "&u=i";
     }
   }
 
@@ -1562,11 +1513,30 @@ function initialize() {
     }
   }
 
+  // parameter device type d=1 ICAO ,2 Flarm or 3 OGN tracker
+  if (typeof(parh.y) != 'undefined') {
+  	if ((parh.y & 1) == 1) {
+  		document.getElementById('ICAObox').checked = true;
+  	}
+  	if ((parh.y & 2) == 2) {
+  		document.getElementById('Flarmbox').checked = true;
+  	}
+  	if ((parh.y & 4) == 4) {
+  		document.getElementById('OGNbox').checked = true;
+  	}
+  	devtype();
+  } else {
+		document.getElementById('ICAObox').checked = true;
+		document.getElementById('Flarmbox').checked = true;
+		document.getElementById('OGNbox').checked = true;
+  }
+
+
 
   tz = "&z=" + (tz / -60); // the javascript gettimezone function return negative value in minutes then /-60 to have correct hours
 
   rehash();
   checkrec();
   tmwd = setTimeout(wd, 30000);
-  gesmark();
+  if (gmdelay == 0) gesmark();
 }
