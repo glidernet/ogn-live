@@ -46,7 +46,7 @@ var vwin = false;
 var vpre = false;
 var hnew = false;
 selrec = "";
-var ftype = ["unknown", "Glider/MotorGlider", "Tow Plane", "Helicopter", "Parachute", "Drop Plane", "Hangglider", "Paraglider", "Plane", "Jet", "UFO", "Balloon", "Airship", "Drone", "unknown", "Static Object" ];
+var ftype = ["unknown", "Glider/MotorGlider", "Tow Plane", "Helicopter", "Parachute", "Drop Plane", "Hangglider", "Paraglider", "Plane", "Jet", "UFO", "Balloon", "Airship", "Drone", "unknown", "Static Object"];
 var ftypec = ["_b", "", "_g", "_r", "_b", "_b", "_p", "_p", "_b", "_b", "_b", "_b", "_b", "_b", "_b", "_b"];
 var taskFeatures = [];
 var initialResolution = 2 * Math.PI * 6378137 / 256; // == 156543.0339
@@ -108,20 +108,20 @@ function chpl() { // change path length
 }
 
 function devtype() { // devices types selected
-	var dt = 0;
-	if (document.getElementById('ICAObox').checked) {
-		dt += 1;
+  var dt = 0;
+  if (document.getElementById('ICAObox').checked) {
+    dt += 1;
   }
- 	if (document.getElementById('Flarmbox').checked) {
-		dt += 2;
+  if (document.getElementById('Flarmbox').checked) {
+    dt += 2;
   }
- 	if (document.getElementById('OGNbox').checked) {
-		dt += 4;
+  if (document.getElementById('OGNbox').checked) {
+    dt += 4;
   }
-	if (dt == 7)	hashy = "";		// all devices 
-	else hashy = "&y=" + dt;
-	reseton();
-	resetoff();
+  if (dt == 7) hashy = ""; // all devices
+  else hashy = "&y=" + dt;
+  reseton();
+  resetoff();
   rehash();
 }
 
@@ -336,24 +336,24 @@ function hidenew() {
   else hnew = false;
 }
 
-function reseton() {		// delete all online markers and their path
-	var j = -1;
-	while (online[++j]) {
-		window["M_" + online[j][2]].setMap(null);
-		delete window["M_" + online[j][2]];
-		window["P_" + online[j][2]].setMap(null);
-		delete window["P_" + online[j][2]];
-	}
+function reseton() { // delete all online markers and their path
+  var j = -1;
+  while (online[++j]) {
+    window["M_" + online[j][2]].setMap(null);
+    delete window["M_" + online[j][2]];
+    window["P_" + online[j][2]].setMap(null);
+    delete window["P_" + online[j][2]];
+  }
 }
 
-function resetoff() {		// delete all offline markers and their path
-	var j = -1;
-	while (offline[++j]) {
-		window["M_" + offline[j][2]].setMap(null);
-		delete window["M_" + offline[j][2]];
-		window["P_" + offline[j][2]].setMap(null);
-		delete window["P_" + offline[j][2]];
-	}
+function resetoff() { // delete all offline markers and their path
+  var j = -1;
+  while (offline[++j]) {
+    window["M_" + offline[j][2]].setMap(null);
+    delete window["M_" + offline[j][2]];
+    window["P_" + offline[j][2]].setMap(null);
+    delete window["P_" + offline[j][2]];
+  }
 }
 
 
@@ -454,7 +454,7 @@ function afftab() {
   }
   dlistd += "</TABLE>";
   document.getElementById("dtlist").innerHTML = dlistd;
-  if (aflist === true) document.getElementById("onoff").innerHTML = "<B>"+ onoffaff +"</B>" + affcpt;
+  if (aflist === true) document.getElementById("onoff").innerHTML = "<B>" + onoffaff + "</B>" + affcpt;
 
 }
 
@@ -584,20 +584,20 @@ function redraw(pol) {
 
 
 function taskbox() {
-	var vtas = false;
+  var vtas = false;
   if (document.getElementById('taskbox').checked) {
     vtas = true;
     if (wlt == 2) {
-    	--wlt;
-    	reseton();
-    	resetoff();
+      --wlt;
+      reseton();
+      resetoff();
     }
   } else {
-  	if (wlt == 1) {
-  		++wlt;
-  		reseton();
-    	resetoff();
-  	}
+    if (wlt == 1) {
+      ++wlt;
+      reseton();
+      resetoff();
+    }
   }
   var j = -1;
   while (taskFeatures[++j]) {
@@ -807,9 +807,12 @@ function dist(lat1, lon1, lat2, lon2) {
 }
 
 function gesmark() {
-	if (nbreq > 0) { --nbreq; return; }
-	
-	++nbreq;
+  if (nbreq > 0) {
+    --nbreq;
+    return;
+  }
+
+  ++nbreq;
   downloadUrl(tld + '/' + cxml + "?a=" + all + boundc + recc + parc + tz + hashy, function(data) {
     ++w;
     var planeurs = data.documentElement.getElementsByTagName("m");
@@ -823,16 +826,16 @@ function gesmark() {
       var tab = planeurs[i].getAttribute("a").split(",");
 
 
-      var fid = tab[12];		
-		if (wlt == 1) {
-			if (wlist.indexOf(fid) == -1) continue;
-		}
-		var ps = tab[3];
+      var fid = tab[12];
+      if (wlt == 1) {
+        if (wlist.indexOf(fid) == -1) continue;
+      }
+      var ps = tab[3];
       var lat = parseFloat(tab[0]);
       var lon = parseFloat(tab[1]);
       var cn = tab[2];
       if (cn == "") cn = "_";
-      
+
       var alt = tab[4];
       var tim = tab[5];
       var ddf = tab[6];
@@ -946,7 +949,7 @@ function gesmark() {
 
       colcn = window[polyvar].strokeColor;
 
-      if (ddf < 600) {		// if online (active during 10 last minutes)
+      if (ddf < 600) { // if online (active during 10 last minutes)
         if (ddf > 120) afdif = "n";
         else if (difalt === 0) afdif = "z";
         else if (difalt < -4) afdif = "mmm";
@@ -1026,10 +1029,9 @@ function gesmark() {
     // tri et affichage du tableau
     afftab();
     if (--nbreq < 0) {
-    	nbreq = 0;
-    }
-    else {
-    	tmgm = setTimeout(gesmark, 10000);
+      nbreq = 0;
+    } else {
+      tmgm = setTimeout(gesmark, 10000);
     }
   });
 
@@ -1072,7 +1074,7 @@ function loadtask(cont) {
     showTask(tasks[i]);
     filterDevices(tasks[i].wlist);
   }
- }
+}
 
 function parseJSONTasks(cont) {
   var res = JSON.parse(cont);
@@ -1205,7 +1207,7 @@ function filterDevices(wl) {
   }
 }
 
-function rtask() {	// select a task file
+function rtask() { // select a task file
   var files = document.getElementById('chfile').files;
   if (!files.length) {
     alert('Please select a file!');
@@ -1227,7 +1229,7 @@ function initialize() {
   var has = window.location.hash.substring(1).split('&'); // parse the parameters
   var parh = [];
   var cent = [];
-  var gmdelay = 0;  // to delay first call to gesmark if task file required 
+  var gmdelay = 0; // to delay first call to gesmark if task file required
   for (var i = 0; i < has.length; i++) {
     var x = has[i].split('=');
     parh[x[0]] = x[1];
@@ -1526,8 +1528,8 @@ function initialize() {
   }
 
   if (typeof(parh.t) != 'undefined') {
-	gmdelay = 1;
-		var xhr = new XMLHttpRequest();
+    gmdelay = 1;
+    var xhr = new XMLHttpRequest();
     xhr.open("GET", parh.t, true);
     xhr.onreadystatechange = function() {
       if (xhr.readyState === 4) {
@@ -1553,7 +1555,7 @@ function initialize() {
     }
   }
 
- // parameter n=0 (Hide the panel)
+  // parameter n=0 (Hide the panel)
   if (typeof(parh.n) != 'undefined') {
     if (parh.n == "0") {
       alist();
@@ -1599,20 +1601,20 @@ function initialize() {
 
   // parameter device type d=1 ICAO ,2 Flarm or 3 OGN tracker
   if (typeof(parh.y) != 'undefined') {
-  	if ((parh.y & 1) == 1) {
-  		document.getElementById('ICAObox').checked = true;
-  	}
-  	if ((parh.y & 2) == 2) {
-  		document.getElementById('Flarmbox').checked = true;
-  	}
-  	if ((parh.y & 4) == 4) {
-  		document.getElementById('OGNbox').checked = true;
-  	}
-  	devtype();
+    if ((parh.y & 1) == 1) {
+      document.getElementById('ICAObox').checked = true;
+    }
+    if ((parh.y & 2) == 2) {
+      document.getElementById('Flarmbox').checked = true;
+    }
+    if ((parh.y & 4) == 4) {
+      document.getElementById('OGNbox').checked = true;
+    }
+    devtype();
   } else {
-		document.getElementById('ICAObox').checked = true;
-		document.getElementById('Flarmbox').checked = true;
-		document.getElementById('OGNbox').checked = true;
+    document.getElementById('ICAObox').checked = true;
+    document.getElementById('Flarmbox').checked = true;
+    document.getElementById('OGNbox').checked = true;
   }
 
 
