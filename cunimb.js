@@ -48,7 +48,7 @@ var hnew = false;
 selrec = "";
 var ftype = ["unknown", "Glider/MotorGlider", "Tow Plane", "Helicopter", "Parachute", "Drop Plane", "Hangglider", "Paraglider", "Plane", "Jet", "UFO", "Balloon", "Airship", "Drone", "unknown", "Static Object" ];
 var ftypec = ["_b", "", "_g", "_r", "_b", "_b", "_p", "_p", "_b", "_b", "_b", "_b", "_b", "_b", "_b", "_b"];
-var taska = [];
+var taskFeatures = [];
 var initialResolution = 2 * Math.PI * 6378137 / 256; // == 156543.0339
 var originShift = 2 * Math.PI * 6378137 / 2.0; // == 20037508.34
 var m2ft={"m":1, "i":3.2808};
@@ -600,8 +600,8 @@ function taskbox() {
   	}
   }
   var j = -1;
-  while (taska[++j]) {
-    taska[j].setOptions({
+  while (taskFeatures[++j]) {
+    taskFeatures[j].setOptions({
       visible: vtas
     });
   }
@@ -1060,65 +1060,149 @@ function taskclic() {
   document.getElementById("chfile").click();
 }
 
-function task(cont) {
-  var res = JSON.parse(cont);
-  var tc, tn, ltp;
-  var tp = [];
-  var wl = [];
-  var tasks = res.tasks;
+function loadtask(cont) {
+  var tasks = [];
+  try {
+    tasks = tasks.concat(parseJSONTasks(cont));
+  } catch (err) {
+    tasks.push(parseXCSoarTask(cont));
+  }
+
   for (var i = 0; i < tasks.length; i++) {
-    tn = tasks[i].name || "task" + i;
-    tc = tasks[i].color || "FFFFFF";
-    tp.length = 0;
-    if (typeof tasks[i].wlist != 'undefined') {
-    	wlt = 1;
-    	wl = tasks[i].wlist;
-    	for(var ii= 0; ii < wl.length; ii++) {
-    		wlist.push(wl[ii]);
-			}    	
-    }
-    for (var ii = 0; ii < tasks[i].legs.length; ii++) {
-      if (typeof tasks[i].legs[ii][1] == 'undefined') { // circle
-        aatCircle = new google.maps.Circle({
-          strokeColor: '#' + tc,
-          strokeOpacity: 0.5,
-          strokeWeight: 2,
-          fillColor: '#' + tc,
-          fillOpacity: 0.1,
-          map: map,
-          center: ltp,
-          radius: tasks[i].legs[ii][0]
-        });
-        taska.push(aatCircle);
-      } else {
-        ltp = new google.maps.LatLng(tasks[i].legs[ii][0], tasks[i].legs[ii][1]);
-        tp.push(ltp);
+    showTask(tasks[i]);
+    filterDevices(tasks[i].wlist);
+  }
+ }
+
+function parseJSONTasks(cont) {
+  var res = JSON.parse(cont);
+
+  var tasks = [];
+
+  for (var i = 0; i < res.tasks.length; i++) {
+    var task = {};
+    task.name = res.tasks[i].name;
+    task.color = res.tasks[i].color;
+
+    var tp = [];
+    if (typeof res.tasks[i].legs != 'undefined') {
+      for (var ii = 0; ii < res.tasks[i].legs.length; ii++) {
+        if (typeof res.tasks[i].legs[ii][1] == 'undefined') { // circle
+          tp[tp.length - 1].type = "circle";
+          tp[tp.length - 1].radius = res.tasks[i].legs[ii][0];
+        } else {
+          tp.push({
+            lat: res.tasks[i].legs[ii][0],
+            lon: res.tasks[i].legs[ii][1]
+          });
+        }
       }
     }
-    var flightPath = new google.maps.Polyline({
-      path: tp,
-      strokeColor: "#" + tc,
-      strokeOpacity: 1.0,
-      strokeWeight: 2,
-      map: map
-    });
-    flightPath.set('nom', "" + tn);
-    taska.push(flightPath);
-    google.maps.event.addListener(flightPath, "mouseover", function() {
-      var bcol = this.strokeColor;
-      document.getElementById("divInfo").innerHTML = "<span style='background-color: " + bcol + "'>&nbsp;&nbsp;&nbsp;</span>&nbsp;task:&nbsp;" + this.get('nom');
-    });
+    task.turnpoints = tp;
 
-    google.maps.event.addListener(flightPath, "mouseout", function() {
-      document.getElementById("divInfo").innerHTML = "&nbsp;";
-    });
+    if (typeof res.tasks[i].wlist != 'undefined') {
+      task.wlist = [];
+      for (var ii = 0; ii < res.tasks[i].wlist.length; ii++) {
+        task.wlist.push(res.tasks[i].wlist[ii]);
+      }
+    }
+    tasks.push(task);
   }
-  if (wlt == 1) {
-  	reseton();
-  	resetoff();
-  }
-  document.getElementById("dtaskbox").innerHTML = "<INPUT type=\"checkbox\" id=\"taskbox\" onChange=\"javascript : taskbox();\" checked>";
+  return tasks;
+}
 
+function parseXCSoarTask(cont) {
+  var ltp;
+  var tp = [];
+  var wl = [];
+
+  tp.length = 0;
+
+  var oParser = new DOMParser();
+  var oDOM = oParser.parseFromString(cont, "text/xml");
+
+  var points = oDOM.getElementsByTagName("Point");
+  for (var i = 0; i < points.length; i++) {
+    var loc = points[i].getElementsByTagName("Waypoint")[0].getElementsByTagName("Location")[0];
+    var ltp = {
+      lat: loc.getAttribute("latitude"),
+      lon: loc.getAttribute("longitude")
+    };
+
+    if (points[i].getElementsByTagName("ObservationZone")[0].getAttribute("type") == "Cylinder") {
+      ltp.type = "circle";
+      ltp.radius = parseFloat(points[i].getElementsByTagName("ObservationZone")[0].getAttribute("radius"));
+    }
+    tp.push(ltp);
+  }
+
+  var task = {
+    turnpoints: tp
+  };
+  return task;
+}
+
+function showTask(task) {
+  var tc, tn, ltp;
+  var tp = [];
+
+  tn = task.name || 'task ' + taskFeatures.length;
+  tc = task.color || 'FF0000';
+
+  for (var ii = 0; ii < task.turnpoints.length; ii++) {
+    if ((task.turnpoints[ii].type == 'circle')) {
+      point = new google.maps.LatLng(task.turnpoints[ii].lat, task.turnpoints[ii].lon);
+      tp.push(point);
+
+      aatCircle = new google.maps.Circle({
+        strokeColor: '#' + tc,
+        strokeOpacity: 0.5,
+        strokeWeight: 2,
+        fillColor: '#' + tc,
+        fillOpacity: 0.1,
+        map: map,
+        center: point,
+        radius: task.turnpoints[ii].radius
+      });
+      taskFeatures.push(aatCircle);
+    } else { // Point
+      point = new google.maps.LatLng(task.turnpoints[ii].lat, task.turnpoints[ii].lon);
+      tp.push(point);
+    }
+  }
+  var flightPath = new google.maps.Polyline({
+    path: tp,
+    strokeColor: '#' + tc,
+    strokeOpacity: 1,
+    strokeWeight: 2,
+    map: map
+  });
+  flightPath.set('nom', '' + tn);
+  taskFeatures.push(flightPath);
+  google.maps.event.addListener(flightPath, 'mouseover', function() {
+    var bcol = this.strokeColor;
+    document.getElementById('divInfo').innerHTML = '<span style=\'background-color: ' + bcol + '\'>&nbsp;&nbsp;&nbsp;</span>&nbsp;task:&nbsp;' + this.get('nom');
+  });
+  google.maps.event.addListener(flightPath, 'mouseout', function() {
+    document.getElementById('divInfo').innerHTML = '&nbsp;';
+  });
+
+  document.getElementById('dtaskbox').innerHTML = '<INPUT type="checkbox" id="taskbox" onChange="javascript : taskbox();" checked>';
+}
+
+function filterDevices(wl) {
+  if (typeof wl != 'undefined') {
+    for (var i = 0; i < wl.length; i++) {
+      wlist.push(wl[i]);
+    }
+  }
+
+  if (wlist.length > 0) {
+    wlt = 1;
+
+    reseton();
+    resetoff();
+  }
 }
 
 function rtask() {	// select a task file
@@ -1133,7 +1217,7 @@ function rtask() {	// select a task file
     if (evt.target.readyState == FileReader.DONE) {
       var cont = evt.target.result;
       cont = cont.trim();
-      task(cont);
+      loadtask(cont);
     }
   };
   reader.readAsText(file);
@@ -1449,7 +1533,7 @@ function initialize() {
       if (xhr.readyState === 4) {
         var status = xhr.status;
         if ((status >= 200 && status < 300) || status === 304) {
-          task(xhr.responseText);
+          loadtask(xhr.responseText);
         } else {
           alert("Task Request unsuccessful" + status);
         }
