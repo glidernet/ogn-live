@@ -58,10 +58,8 @@ else
             if ($lon<$lonmin) $lonmin=$lon;
         }
     }
-}
-
-
-echo "<!DOCTYPE html>
+}?>
+<!DOCTYPE html>
 <!--
    ____                      _____ _ _     _             _   _      _                      _    
   / __ \                    / ____| (_)   | |           | \ | |    | |                    | |   
@@ -74,34 +72,34 @@ echo "<!DOCTYPE html>
 -->
 <html>
 <head>
-<meta name=\"viewport\" content=\"initial-scale=1.0, user-scalable=no\" />
-<meta http-equiv=\"content-type\" content=\"text/html; charset=UTF-8\"/>
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
 <title>Spot the gliders!</title>
-<link href=\"cunimb.css\" rel=\"stylesheet\" type=\"text/css\" />
+<link href="cunimb.css" rel="stylesheet" type="text/css" />
 
 
-<script type=\"text/javascript\" src=\"https://maps.googleapis.com/maps/api/js?libraries=geometry,weather&amp;sensor=false\"></script>
-<script type=\"text/javascript\" src=\"util.js\"></script>
-<script type=\"text/javascript\">
-var cxml = \"lxml.php\";
-var cxml1 = \"livexml1.php\";
-var dxml = \"dataxml.php\";
-var rxml = \"rec.php\";
-var tld = \"http://live.glidernet.org\";
-var vlon = $lon;
-var vlat = $lat;
-var vlatmin = $latmin;
-var vlonmin = $lonmin;
-var vlatmax = $latmax;
-var vlonmax = $lonmax;
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3&amp;libraries=geometry&amp;sensor=false"></script>
+<script type="text/javascript" src="util.js"></script>
+<script type="text/javascript">
+var cxml = "lxml.php";
+var cxml1 = "livexml1.php";
+var dxml = "dataxml.php";
+var rxml = "rec.php";
+var tld = "http://live.glidernet.org";
+var vlon = <?php echo $lon; ?>;
+var vlat = <?php echo $lat; ?>;
+var vlatmin = <?php echo $latmin;?>;
+var vlonmin = <?php echo $lonmin;?>;
+var vlatmax = <?php echo $latmax;?>;
+var vlonmax = <?php echo $lonmax;?>;
 var bound = false;
 var boundc = '';
 var amax = 85;
 var amin = -85;
 var omax = 180;
 var omin = -180;
-var recc = $recc;
-var parc = $parc;
+var recc = <?php echo $recc;?>;
+var parc = <?php echo $parc;?>;
 var tz;
 try {
     tz = new Date().getTimezoneOffset();
@@ -111,18 +109,18 @@ catch(e) {
 } 
 
 </script>
-<script type=\"text/javascript\" src=\"cunimb.js\"></script>
+<script type="text/javascript" src="cunimb.js"></script>
 
 </head>
-<body onload=\"initialize()\">
-	<div id=\"popup\" onclick=\"cp('popup');\"></div>
-  <div id=\"map_canvas\"></div>
-  <div id=\"ac\" class=\"acright\" onclick=\"this.style.display='none';\"></div>
-  <div id=\"dlist\" class=\"lright\">
-  	<DIV id=\"ett1\" ></DIV>
-		<DIV id=\"ett2\" ></DIV>	 		
-  	<DIV id=\"dtable\"></DIV>
+<body onload="initialize()">
+  <div id="popup" onclick="cp('popup');"></div>
+  <div id="map_canvas"></div>
+  <div id="ac" class="acright" onclick="this.style.display='none';"></div>
+  <div id="dlist" class="lright">
+    <DIV id="ett1" ></DIV>
+    <DIV id="ett2" ></DIV>
+    <DIV id="dtable"></DIV>
   </div>
 </body>
 
-</html>";
+</html>
