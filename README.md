@@ -64,6 +64,78 @@ generate such a file either of a .CUC (SeeYou competition scoring file),
 or of a .CUP file (with or without a task, but with is better).
 
 
+## Backend
+
+The backend code is not public.
+
+### AJAX endpoints
+
+
+Description   | name  | URL
+------------- | ----- | -----------------------------------------------------------------------
+Receiver list | rxml  | rec.php
+Flights       | cxml  | lxml.php?a={{ all }}{{ boundc }}{{ recc }}{{ parc }}{{ tz }}{{ hashy }}
+Flight path   | cxml1 | livexml1.php?id={{ p }}&l={{ lo }}
+Flight data   | dxml  | dataxml.php?i=M\_{{ p }}&f={{ fi }}
+
+
+Variable | Description          | Value
+-------- | -------------------- | -------------------
+all      | show offline gliders | 1 - true, 0 -false
+boundc   | Bounds               | &b={{ amax }}&c={{ amin }}&d={{ omax }}&e={{ omin }}
+amax     | Latitude             | eg. 50.123456789
+omax     | Longitude            | eg. -9.123456789
+recc     | unknown              | &r={{ rec }}
+parc     | unknown              | &p={{ pw }}
+tz       | timezone offset      | eg. -120
+hashy    |                      | &y={{ dt }}, "" for all types
+dt       | device type bitmask  | 0x1 ICAO, 0x2 Flarm, 0x4 OGN
+p        | flight identifier    | eg. 12345678
+lo       | longitude.toFixed()  | eg. 7
+fi       | flight id            | {{ reg }} or 'hidden'
+reg      | registry             | eg. XXXXXX
+encpath  | encoded path         |
+
+Examples:
+
+http://live.glidernet.org/rec.php
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<markers>
+<m e="0"/>
+<m a="EHTL" b="52.0607986" c="5.9376998" d="1"/>
+<m a="Musbach" b="48.5047989" c="8.4768000" d="1"/>
+</markers>
+```
+
+http://live.glidernet.org/lxml.php?a=0&b=48.86612088725434&c=48.84692039542289&d=2.413544128417925&e=2.3053974609374563&z=2
+http://live.glidernet.org/lxml.php?a=1&b=51.7568&c=47.3490&d=15.0239&e=1.0054&z=2
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<markers>
+<m a="48.660000,12.198000,_b8,8bde76b8,807,23:11:22,633,103,131,-0.4,3,Moosburg,0,8bde76b8"/>
+<m a="49.000500,9.080170,BF,D-9989,284,21:51:28,5427,0,0,-0.1,1,Loechgau,DDA286,fc73a533"/>
+</markers>
+```
+
+http://live.glidernet.org/livexml1.php?id=87183180&l=7
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<markers>
+<m e="0" i="{{ p }}" r="{{ enc_path }}"/>
+</markers>```
+
+http://live.glidernet.org/dataxml.php?i=M_4c4d735b&f=DDE1E1
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<markers>
+<m g="0" i="M_4c4d735b" a="" b="" c="Pegase" d="449" e=""/>
+</markers>
+```
+
+
+
+
 ## License
 
 Licensed under the [AGPLv3](LICENSE).
