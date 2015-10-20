@@ -1,6 +1,7 @@
 This script has been developped little by little, over a period of time depending on how much free time I had. The end product might look a bit haphazard but it works! :-)
 It deserves to be rewritten from scratch with modern tools (bootstrap, angularJS ...)
 
+Thanks to Cedric Busschots for writing the CSS management.
 
 Data come from aircraft position database
 	For each airfield we find geographic bounds of the runway 
