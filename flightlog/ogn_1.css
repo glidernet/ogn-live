@@ -1,0 +1,66 @@
+body {
+	background-color: #262626;
+	color: white;
+	font-family: 'Dosis', serif;
+}
+.bg1 {
+	background-color: #4B4B4B;
+}
+.bg2 {
+	background-color: #333333;
+}
+.tt {
+	width: 50px;
+}
+.cpYearNavigation,.cpMonthNavigation { 
+	background-color:#C0C0C0;
+	text-align:center;
+	vertical-align:middle;
+	text-decoration:none;
+	color:#000000;
+	font-weight:bold;
+}
+.cpDayColumnHeader, .cpYearNavigation,.cpMonthNavigation,.cpCurrentMonthDate,.cpCurrentMonthDateDisabled,.cpOtherMonthDate,.cpOtherMonthDateDisabled,.cpCurrentDate,.cpCurrentDateDisabled,.cpTodayText,.cpTodayTextDisabled,.cpText { font-family:arial; font-size:8pt; }
+TD.cpDayColumnHeader {
+	text-align:right; border:solid thin #C0C0C0;border-width:0px 0px 1px 0px; }
+.cpCurrentMonthDate, .cpOtherMonthDate, .cpCurrentDate  { text-align:right; text-decoration:none; }
+.cpCurrentMonthDateDisabled, .cpOtherMonthDateDisabled, .cpCurrentDateDisabled { color:#D0D0D0; text-align:right; text-decoration:line-through; }
+.cpCurrentMonthDate, .cpCurrentDate { color:#000000; }
+.cpOtherMonthDate { color:#808080; }
+TD.cpCurrentDate { color:white; background-color: #C0C0C0; border-width:1px; border:solid thin #800000; }
+TD.cpCurrentDateDisabled { border-width:1px; border:solid thin #FFAAAA; }
+TD.cpTodayText, TD.cpTodayTextDisabled { border:solid thin #C0C0C0; border-width:1px 0px 0px 0px;}
+A.cpTodayText, SPAN.cpTodayTextDisabled { height:20px; }
+A.cpTodayText { color:black; }
+.cpTodayTextDisabled {
+	color:#D0D0D0;
+}
+.cpBorder {
+	border:solid thin #808080;
+}
+.t1l {min-width:70px; background-color: #4B4B4B; text-align: center;}
+.t1c {min-width:70px; background-color: #4B4B4B; text-align: center;}
+.t2l {min-width:70px; background-color: #333333; text-align: center;}
+.t2c {min-width:70px; background-color: #333333; text-align: center;}
+.a1l {min-width:100px; background-color: #FF2B19; text-align: center;}
+.a1c {min-width:100px; background-color: #FF2B19; text-align: center;}
+.a2l {min-width:100px; background-color: #9C1A0F; text-align: center;}
+.a2c {min-width:100px; background-color: #9C1A0F; text-align: center;}	
+.p1l {min-width:100px; background-color: #15CF17; text-align: center;}
+.p1c {min-width:100px; background-color: #15CF17; text-align: center;}
+.p1n {min-width:30px; background-color: #15CF17; text-align: center;}
+.p2l {min-width:100px; background-color: #109C12; text-align: center;}
+.p2c {min-width:100px; background-color: #109C12; text-align: center;}
+.p2n {min-width:30px; background-color: #109C12; text-align: center;}
+.tt {min-width:70px;}
+.ag {text-align: left;}
+.ac {text-align: center;}
+a {
+    color: #FF2B19;
+}
+a:visited {
+    color: #15CF17;
+}
+a:hover {
+    color: #9C1A0F;
+}
