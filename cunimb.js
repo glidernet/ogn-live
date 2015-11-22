@@ -474,7 +474,7 @@ function alist() {
     document.getElementById("ett1").innerHTML = "<CENTER><IMG style=\"z-index:50\" onclick=\"alist();\" SRC=\"" + tld + "/pict/plu.png\"></CENTER>";
     document.getElementById('dlist').style.width = "20px";
     document.getElementById('dlist').style.height = "20px";
-    if (lside == 1) document.getElementById('ac').style.left = "65px";
+    if (lside == 1) document.getElementById('ac').style.left = "0px";
     else document.getElementById('ac').style.right = "0px";
     centeroff();
     aflist = false;
@@ -483,7 +483,7 @@ function alist() {
     document.getElementById("ett1").innerHTML = ett1;
     document.getElementById('dlist').style.width = "180px";
     document.getElementById('dlist').style.height = "90%";
-    if (lside == 1) document.getElementById('ac').style.left = "245px";
+    if (lside == 1) document.getElementById('ac').style.left = "180px";
     else document.getElementById('ac').style.right = "180px";
     aflist = true;
     afftab();
@@ -492,17 +492,40 @@ function alist() {
   rehash();
 }
 
-function sideclick() {
+function sideclick() {			// change list position (left<->right) 
   if (lside === 0) {
     document.getElementById('dlist').className = "lleft";
     document.getElementById('ac').className = "acleft";
     document.getElementById('ac').style.right = "";
     lside = 1;
+    map.setOptions({
+  		mapTypeControlOptions: {
+     		position: google.maps.ControlPosition.TOP_RIGHT
+			},
+			streetViewControlOptions: {
+        position: google.maps.ControlPosition.RIGHT_TOP
+    	},
+    	zoomControlOptions: {
+    		position: google.maps.ControlPosition.RIGHT_TOP
+    	}   	 
+  	});
   } else {
     document.getElementById('dlist').className = "lright";
     document.getElementById('ac').className = "acright";
     document.getElementById('ac').style.left = "";
     lside = 0;
+    map.setOptions({
+			mapTypeControlOptions: {
+  	  	position: google.maps.ControlPosition.TOP_LEFT
+   	 	},
+   		streetViewControlOptions: {
+      	position: google.maps.ControlPosition.LEFT_TOP
+    	},
+    	zoomControlOptions: {
+    		position: google.maps.ControlPosition.LEFT_TOP
+    	}   	 
+  	});
+
   }
 }
 
@@ -1314,20 +1337,29 @@ function initialize() {
 
   var myOptions = {
     mapTypeControlOptions: {
-      // mapTypeIds: ['RELIEF', google.maps.MapTypeId.ROADMAP, google.maps.MapTypeId.TERRAIN, google.maps.MapTypeId.SATELLITE, google.maps.MapTypeId.HYBRID ]
-      mapTypeIds: [google.maps.MapTypeId.ROADMAP, google.maps.MapTypeId.TERRAIN, google.maps.MapTypeId.SATELLITE, google.maps.MapTypeId.HYBRID]
+			mapTypeIds: [google.maps.MapTypeId.ROADMAP, google.maps.MapTypeId.TERRAIN, google.maps.MapTypeId.SATELLITE, google.maps.MapTypeId.HYBRID]
+    },
+    center: new google.maps.LatLng(vlat, vlon),
+    draggableCursor: 'default',
+    draggingCursor: 'default',
+    mapTypeControl: true,
+    mapTypeControlOptions: {
+        style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
+        position: google.maps.ControlPosition.TOP_LEFT
+    },
+    scaleControl: true,
+    streetViewControl: true,
+    streetViewControlOptions: {
+        position: google.maps.ControlPosition.LEFT_TOP
     },
     zoom: 13,
-    center: new google.maps.LatLng(vlat, vlon),
-    overviewMapControl: true,
-    scaleControl: true,
-    draggableCursor: 'default',
-    draggingCursor: 'default'
-      //mapTypeId: google.maps.MapTypeId.TERRAIN
+    zoomControl: true,
+    zoomControlOptions: {
+    	position: google.maps.ControlPosition.LEFT_TOP
+    }
   };
   map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
 
-  //map.mapTypes.set('RELIEF' , RELIEF);
 
   var mid = 'TERRAIN';
   var tmid = {
@@ -1344,7 +1376,7 @@ function initialize() {
   }
 
   map.setMapTypeId(google.maps.MapTypeId[mid]);
-
+  
   google.maps.event.addListener(map, 'maptypeid_changed', function() {
     hashm = "&m=" + map.getMapTypeId().substr(0, 1);
     rehash();
