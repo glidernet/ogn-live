@@ -100,6 +100,7 @@ $aero = array (		// code OACI => FullName , geographic bounds, airfield altitude
 	'EKKL'=> array('KALUNDBORG',"l.rec='EKKL' AND (l.alt < 700) AND (l.lat BETWEEN 55.69881 AND 55.70171 ) AND (l.lon BETWEEN 11.2384 AND 11.26378 )",0,''),	
 	'KAME'=> array('Kamen-Heeren',"l.rec='Kamen' AND (l.alt < 962) AND (l.lat BETWEEN 51.58551 AND 51.59574 ) AND (l.lon BETWEEN 7.69409 AND 7.72499 )",62,''),
 	'EGBP'=> array('KEMBLE',"l.rec='EGBP' AND (l.alt < 833) AND (l.lat BETWEEN 51.66166 AND 51.67333 ) AND (l.lon BETWEEN -2.07637 AND -2.03723 )",133,''),
+	'FYKH'=> array('Kiripotib',"l.rec='FYKH' AND (l.alt < 2064) AND (l.lat BETWEEN -23.3462 AND -23.32339 ) AND (l.lon BETWEEN 17.93251 AND 17.95517 )",1364,''),	
 	'KIRT'=> array('Kirton in Lindsey',"l.rec='UKKIR' AND (l.alt < 760) AND (l.lat BETWEEN 53.45239 AND 53.47199 ) AND (l.lon BETWEEN -0.59791 AND -0.55499 )",60,''),
 	'EDCI'=> array('KLIX',"l.rec='EDCI' AND (l.alt < 848) AND (l.lat BETWEEN 51.26202 AND 51.28471 ) AND (l.lon BETWEEN 14.48757 AND 14.52328 )",148,''),
 	'KOEND'=> array('Koenigsdorf',"l.rec='Koenigsdf' AND (l.alt < 1301) AND (l.lat BETWEEN 47.82641 AND 47.83135 ) AND (l.lon BETWEEN 11.45264 AND 11.47464 )",601,''),
