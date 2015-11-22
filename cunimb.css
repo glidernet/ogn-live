@@ -45,7 +45,7 @@ html, body {
 
 .lleft {
   border-radius: 0 10px 10px 10px;
-  left: 65px;
+  left: 0px;
   top: 45px;
 }
 
@@ -58,7 +58,7 @@ html, body {
 .acleft {
   border-radius: 0 10px 10px 0;
   top: 45px;
-  left: 245px;
+  left: 180px;
 }
 
 .pr {
