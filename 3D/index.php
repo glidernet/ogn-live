@@ -1,161 +1,135 @@
 <?php
-$uri = $_SERVER["REQUEST_URI"];
-$uri=explode("/",$uri);
-if ($uri[1]=="markers")
-	{
-	$fin=substr($uri[2],-6);
-	$png = explode(".",$uri[2]);
-	$cn1=$png[0];
-	$cn=substr($cn1,0,-2);
-	$x=5;
-	if (strlen($cn)==2) $x=8;
-	if (strlen($cn)==1) $x=12;
-	
-	
-	switch($fin) {
-		case "_o.png":		// old, gris
-			$filename = "../markers/".$cn."_o.png";
-		
-			if (file_exists($filename)) {}
-			else {
-				$source = imagecreatefrompng("../modele_off.png");
-	  		imagealphablending($source, true);
-	  		imagesavealpha($source, true);
-	  		$noir = imagecolorallocate($source, 0, 0, 0);
-				imagestring($source,4,$x,4,"$cn",$noir);
-				imagepng($source, "../markers/".$cn."_o.png");
-	  		header('Content-Type: image/png');
-				imagepng($source);
-				imagedestroy($source);
-			}
-			break;
-		case "_b.png":		// blue: bleu clair
-			$filename = "../markers/".$cn."_b.png";
-		
-			if (file_exists($filename)) {}
-			else {
-				$source = imagecreatefrompng("../modele_b.png");
-	  		imagealphablending($source, true);
-	  		imagesavealpha($source, true);
-	  		$noir = imagecolorallocate($source, 0, 0, 0);
-				imagestring($source,4,$x,4,"$cn",$noir);
-				imagepng($source, "../markers/".$cn."_b.png");
-	  		header('Content-Type: image/png');
-				imagepng($source);
-				imagedestroy($source);
-			}
-			break;
-		case "_g.png":		// green: vert
-			$filename = "../markers/".$cn."_g.png";
-		
-			if (file_exists($filename)) {}
-			else {
-				$source = imagecreatefrompng("../modele_g.png");
-	  		imagealphablending($source, true);
-	  		imagesavealpha($source, true);
-	  		$noir = imagecolorallocate($source, 0, 0, 0);
-				imagestring($source,4,$x,4,"$cn",$noir);
-				imagepng($source, "../markers/".$cn."_g.png");
-	  		header('Content-Type: image/png');
-				imagepng($source);
-				imagedestroy($source);
-			}
-			break;
-		case "_r.png":		// red: rouge
-			$filename = "../markers/".$cn."_r.png";
-		
-			if (file_exists($filename)) {}
-			else {
-				$source = imagecreatefrompng("../modele_r.png");
-	  		imagealphablending($source, true);
-	  		imagesavealpha($source, true);
-	  		$noir = imagecolorallocate($source, 0, 0, 0);
-				imagestring($source,4,$x,4,"$cn",$noir);
-				imagepng($source, "../markers/".$cn."_r.png");
-	  		header('Content-Type: image/png');
-				imagepng($source);
-				imagedestroy($source);
-			}
-			break;
-		case "_p.png":		// pink: rose
-			$filename = "../markers/".$cn."_p.png";
-		
-			if (file_exists($filename)) {}
-			else {
-				$source = imagecreatefrompng("../modele_p.png");
-	  		imagealphablending($source, true);
-	  		imagesavealpha($source, true);
-	  		$noir = imagecolorallocate($source, 0, 0, 0);
-				imagestring($source,4,$x,4,"$cn",$noir);
-				imagepng($source, "../markers/".$cn."_p.png");
-	  		header('Content-Type: image/png');
-				imagepng($source);
-				imagedestroy($source);
-			}
-			break;
-		case "_k.png":		// black: noir
-			$filename = "../markers/".$cn."_k.png";
-		
-			if (file_exists($filename)) {}
-			else {
-				$source = imagecreatefrompng("../modele_k.png");
-	  		imagealphablending($source, true);
-	  		imagesavealpha($source, true);
-	  		$blanc = imagecolorallocate($source, 255, 255, 255);
-				imagestring($source,4,$x,4,"$cn",$blanc);
-				imagepng($source, "../markers/".$cn."_k.png");
-	  		header('Content-Type: image/png');
-				imagepng($source);
-				imagedestroy($source);
-			}
-			break;			
-		case "_d.png":		// dark blue: bleu foncé
-			$filename = "../markers/".$cn."_d.png";
-		
-			if (file_exists($filename)) {}
-			else {
-				$source = imagecreatefrompng("../modele_d.png");
-	  		imagealphablending($source, true);
-	  		imagesavealpha($source, true);
-	  		$blanc = imagecolorallocate($source, 255, 255, 255);
-				imagestring($source,4,$x,4,"$cn",$blanc);
-				imagepng($source, "../markers/".$cn."_d.png");
-	  		header('Content-Type: image/png');
-				imagepng($source);
-				imagedestroy($source);
-			}
-			break;			
-						
-		default:
-			$filename = "../markers/".$cn1.".png";
-	
-	  		if (file_exists($filename)) {}
-		 	else {
-		 			$x=5;
-					if (strlen($cn1)==2) $x=8;
-					if (strlen($cn1)==1) $x=12;
-		   	$source = imagecreatefrompng("../modele.png");
-		   	imagealphablending($source, true);
-		   	imagesavealpha($source, true);
-		
-			    //imagestring($source,4,$x,5,"$cn",0);
-				imagestring($source,4,$x,4,"$cn1",0);
-	    	imagepng($source, "../markers/".$cn1.".png");
-	    	header('Content-Type: image/png');
-	    	imagepng($source);
-	    	imagedestroy($source);
-			}
+$link="";
+require('../sql.php');
+ouvrebase();
 
-		}
-	
-	
-	    
-    
-    
-    
-	}
-else {
-	echo "..:: 404_error ::..<BR>File not found<BR>Fichier non trouv&eacute;";
-	}
+$tld="http://live.glidernet.org";
 
+if (isset($_GET['offline'])) {
+	if ($_GET['offline']==1) $offl=1; else $offl=0;
+	}
+else $offl=0;
+
+
+$req="select * from live";
+
+$latmax=$latmin=$lonmax=$lonmin=0;
+
+if (!$result=@mysql_query ($req))
+  {
+  echo "<BR><BR><CENTER>Database Error</CENTER><BR><BR>";
+  @mysql_close($link);
+  exit();
+  }
+
+
+if (@mysql_num_rows($result)==0)
+  {
+  $latmax=60;
+  $latmin=35;
+  $lonmax=30;
+  $lonmin=-10;
+  $lon=2;
+  $lat=45;
+
+  }
+else
+  {
+
+  $aa=0;
+
+  while($ligne = @mysql_fetch_array($result))
+    {
+    extract($ligne);      
+    if ($aa==0)
+      {
+      $latmax=$latmin=$lat;
+      $lonmax=$lonmin=$lon;
+      $aa=1;
+      }
+    else
+      {
+      if ($lat>$latmax) $latmax=$lat;
+      if ($lat<$latmin) $latmin=$lat;
+      if ($lon>$lonmax) $lonmax=$lon;
+      if ($lon<$lonmin) $lonmin=$lon;
+      }
+    }
+    $lon = $lonmin + (($lonmax-$lonmin)/2);
+    $lat = $latmin + (($latmax-$latmin)/2);
+    
+  }
+
+
+echo "<!DOCTYPE html>
+<!--
+   ____                      _____ _ _     _             _   _      _                      _    
+  / __ \                    / ____| (_)   | |           | \ | |    | |                    | |   
+ | |  | |_ __   ___ _ __   | |  __| |_  __| | ___ _ __  |  \| | ___| |___      _____  _ __| | __
+ | |  | | '_ \ / _ \ '_ \  | | |_ | | |/ _` |/ _ \ '__| | . ` |/ _ \ __\ \ /\ / / _ \| '__| |/ /
+ | |__| | |_) |  __/ | | | | |__| | | | (_| |  __/ |    | |\  |  __/ |_ \ V  V / (_) | |  |   < 
+  \____/| .__/ \___|_| |_|  \_____|_|_|\__,_|\___|_|    |_| \_|\___|\__| \_/\_/ \___/|_|  |_|\_\
+        | |                                                                                     
+        |_|                                                                                     
+-->
+<html>
+<head>
+<meta name=\"viewport\" content=\"initial-scale=1.0, user-scalable=no\" />
+<meta http-equiv=\"content-type\" content=\"text/html; charset=UTF-8\"/>
+<title>Spot the gliders!</title>
+<link href=\"{$tld}/cunimb3d.css\" rel=\"stylesheet\" type=\"text/css\" />
+
+<script type=\"text/javascript\">
+var cxml = \"../lxml.php\";
+var cxml1 = \"../livexml1.php\";
+var dxml = \"../dataxml.php\";
+var rxml = \"../rec.php\";
+var tld = \"{$tld}\";
+var vlon = $lon;
+var vlat = $lat;
+var vlatmin = $latmin;
+var vlonmin = $lonmin;
+var vlatmax = $latmax;
+var vlonmax = $lonmax;
+var bound = false;
+var boundc = '';
+var amax = 85;
+var amin = -85;
+var omax = 180;
+var omin = -180;
+var all = $offl;
+var tz;
+try {
+    tz = new Date().getTimezoneOffset();
+}
+catch(e) {
+    tz = 0;
+} 
+
+</script>
+<script type=\"text/javascript\" src=\"https://www.google.com/jsapi\"> </script>
+<script type=\"text/javascript\" src=\"{$tld}/util.js\"></script>
+<script type=\"text/javascript\" src=\"{$tld}/cunimb3d.js\"></script>
+<script type=\"text/javascript\">
+var ge;
+google.load(\"earth\", \"1\");
+google.setOnLoadCallback(initialize);
+</script>
+
+
+</head>
+<body>
+	<div id=\"popup\" onclick=\"cp('popup');\"></div>
+  <div id=\"map_canvas\"></div>
+  <div id=\"divInfoac\" class=\"divInfoclass\" style=\"display: none;\" onclick=\"autocenteroff();\"></div>
+  <div id=\"ac\" class=\"acright\" onclick=\"this.style.display='none';\"></div>
+  <div id=\"dlist\" class=\"lright\">
+  	<DIV id=\"ett1\" ></DIV>
+		<DIV id=\"ett2\" ></DIV>	 		
+  	<DIV id=\"dtable\"></DIV>
+  </div>
+</body>
+
+</html>";
+@mysql_close($link);
 ?>
