@@ -106,6 +106,7 @@ $aero = array (		// code OACI => FullName , geographic bounds, airfield altitude
 	'KOEND'=> array('Koenigsdorf',"l.rec='Koenigsdf' AND (l.alt < 1301) AND (l.lat BETWEEN 47.82641 AND 47.83135 ) AND (l.lon BETWEEN 11.45264 AND 11.47464 )",601,''),
 	'KRONO'=> array('Kronobergshed',"l.rec='Kronobhed' AND (l.alt < 884) AND (l.lat BETWEEN 56.96932 AND 56.98165 ) AND (l.lon BETWEEN 14.56215 AND 14.57078 )",184,''),
 	'LKKU'=> array('KUNOVICE',"l.rec='LKKU' AND (l.alt < 877) AND (l.lat BETWEEN 49.01825 AND 49.03964 ) AND (l.lon BETWEEN 17.42954 AND 17.44911 )",177,''),
+	'LECD'=> array('LA CERDANYA',"l.rec='LECD' AND (l.alt < 1800) AND (l.lat BETWEEN 42.38275 AND 42.39099 ) AND (l.lon BETWEEN 1.85386 AND 1.87202 )",1100,''),
 	'LFMG'=> array('LA MONTAGNE NOIRE',"l.rec='LFMG' AND (l.alt < 1148) AND (l.lat BETWEEN 43.40437 AND 43.41594 ) AND (l.lon BETWEEN 1.9799 AND 2.00078 )",448,''),	
 	'LAMOT'=> array('La Motte du Caire',"l.rec='LaMotteDC' AND (l.alt < 1360) AND (l.lat BETWEEN 44.31547 AND 44.3328 ) AND (l.lon BETWEEN 6.02411 AND 6.03729 )",660,''),
 	'LFSU'=> array('LANGRES Rolampont',"l.rec='LFSU' AND (l.alt < 1120) AND (l.lat BETWEEN 47.95774 AND 47.97125 ) AND (l.lon BETWEEN 5.28878 AND 5.29802 )",420,''),		
