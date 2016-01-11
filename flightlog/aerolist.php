@@ -163,6 +163,7 @@ $aero = array (		// code OACI => FullName , geographic bounds, airfield altitude
 	'LFCO'=> array('OLORON Herrere',"l.rec='LFCO' AND (l.alt < 1000) AND (l.lat BETWEEN 43.15826 AND 43.16922 ) AND (l.lon BETWEEN -0.57303 AND -0.54985 )",300,''),	
 	'NZOA'=> array('OMARAMA',"(l.rec='NZOA' OR l.rec='Omarama') AND (l.alt < 1115) AND (l.lat BETWEEN -44.49279 AND -44.47863 ) AND (l.lon BETWEEN 169.96722 AND 170.00432 )",415,''),
 	'LFLK'=> array('OYONNAX Arbent',"l.rec='LFLK' AND (l.alt < 1235) AND (l.lat BETWEEN 46.27242 AND 46.28433 ) AND (l.lon BETWEEN 5.65976 AND 5.67407 )",535,''),
+	'LIPU'=> array('PADOVA',"l.rec='Padova' AND (l.alt < 913) AND (l.lat BETWEEN 45.390703 AND 45.400760 ) AND (l.lon BETWEEN 11.841197 AND 11.853479 )",13,'GVP'),
 	'UKPAR'=> array('PARHAM',"l.rec='UKPAR' AND (l.alt < 732) AND (l.lat BETWEEN 50.91835 AND 50.93022 ) AND (l.lon BETWEEN -0.48332 AND -0.46597 )",32,''),	
 	'EDTQ'=> array('PATTONVILLE',"l.rec='EDTQ' AND (l.alt < 979) AND (l.lat BETWEEN 48.85881 AND 48.86964 ) AND (l.lon BETWEEN 9.20921 AND 9.24011 )",279,''),
 	'LFHD'=> array('PIERRELATTE',"l.rec='LFHD' AND (l.alt < 759) AND (l.lat BETWEEN 44.38509 AND 44.40885 ) AND (l.lon BETWEEN 4.70249 AND 4.72768 )",59,''),		
