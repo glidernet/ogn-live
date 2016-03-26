@@ -5,6 +5,7 @@ $aero = array (		// code OACI => FullName , geographic bounds, airfield altitude
 	'LOXA'=> array('AIGEN IM ENNSTAL',"l.rec='LOXA' AND l.alt < 1340 AND (l.lat BETWEEN 47.53237 AND 47.53919 ) AND (l.lon BETWEEN 14.13251 AND 14.15038)",640,''),
 	'LFDA'=> array('AIRE SUR L\'ADOUR',"l.rec='LFDA' AND l.alt < 781 AND (l.lat BETWEEN 43.70396 AND 43.71272 ) AND (l.lon BETWEEN -0.25687 AND -0.23764)",81,''),
 	'LFAQ'=> array('ALBERT Bray',"l.rec='LFAQ' AND l.alt < 811 AND (l.lat BETWEEN 49.9649 AND 49.97537 ) AND (l.lon BETWEEN 2.67074 AND 2.71765)",111,''),		
+	'ESGI'=> array('Alingsås',"l.rec='ESGI' AND l.alt < 771 AND (l.lat BETWEEN 57.9457 AND 57.953) AND (l.lon BETWEEN 12.572 AND 12.579)",71,''),
 	'LFAY'=> array('AMIENS Glisy',"l.rec='LFAY' AND l.alt < 763 AND (l.lat BETWEEN 49.8679 AND 49.87699 ) AND (l.lon BETWEEN 2.37495 AND 2.4011)",63,''),
 	'LFJR'=> array('ANGERS Marce',"(l.rec='LFJR' OR l.rec='LFJR2') AND l.alt < 752 AND (l.lat BETWEEN 47.54773 AND 47.57006 ) AND (l.lon BETWEEN -0.34228 AND -0.28048)",52,''),
 	'LFBU'=> array('ANGOULEME Brie-Champniers',"l.rec='LFBU' AND l.alt < 833 AND (l.lat BETWEEN 45.72601 AND 45.73276 ) AND (l.lon BETWEEN 0.20141 AND 0.23725)",133,''),
