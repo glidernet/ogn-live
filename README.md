@@ -66,7 +66,8 @@ or of a .CUP file (with or without a task, but with is better).
 
 ## Backend
 
-The backend code is not public.
+The backend code used in production is not yet public.
+However there is a alternative backend [ogn-live-backend](https://github.com/Meisterschueler/ogn-live-backend).
 
 ### AJAX endpoints
 
