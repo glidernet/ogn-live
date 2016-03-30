@@ -1,6 +1,7 @@
 <?php
 $link="";
-require('../sql.php');
+require_once('../config.php');
+require_once('../sql.php');
 ouvrebase();
 
 $tld="http://live.glidernet.org";

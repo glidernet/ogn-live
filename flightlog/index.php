@@ -1,9 +1,10 @@
 <?php
 $link="";
-require('../sql.php');
-$dbh = Database::connect();
 
-require('aerolist.php');
+require_once('../config.php');
+require_once('../sql.php');
+require_once('aerolist.php');
+$dbh = Database::connect();
 date_default_timezone_set('GMT');
 
 ouvrebase();

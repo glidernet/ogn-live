@@ -1,6 +1,4 @@
 <?php
-include 'config.php';
-
 try
 {
     $dbh = new PDO($cfg['db_type'].':host='.$cfg['db_host'].';dbname='.$cfg['db_name'], $cfg['db_user'], $cfg['db_pass']);

@@ -1,5 +1,6 @@
 <?php
-require('sql.php');
+require_once('../config.php');
+require_once('../sql.php');
 
 $q="select * from live where tim > 0";
 
