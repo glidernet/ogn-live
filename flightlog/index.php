@@ -3,7 +3,7 @@ $link="";
 
 require_once('../config.php');
 require_once('../sql.php');
-require_once('aerolist.php');
+require($config_aerolist_path);
 $dbh = Database::connect();
 date_default_timezone_set('GMT');
 

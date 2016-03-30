@@ -1,0 +1,18 @@
+<?php
+$aero = array (
+   // key: code OACI
+   // value:
+   //   - FullName,
+   //   - geographic bounds,
+   //   - airfield altitude,
+   //   - password
+   'LFOI'=> array('ABBEVILLE',
+                  "l.rec='LFOI' AND l.alt < 767 AND (l.lat BETWEEN 50.13 AND 50.15 ) AND (l.lon BETWEEN 1.8 AND 1.86)",
+                  67,
+                  ''),
+   'LOXA'=> array('AIGEN IM ENNSTAL',
+                  "l.rec='LOXA' AND l.alt < 1340 AND (l.lat BETWEEN 47.53237 AND 47.53919 ) AND (l.lon BETWEEN 14.13251 AND 14.15038)",
+                  640,
+                  '')
+	);
+?>
