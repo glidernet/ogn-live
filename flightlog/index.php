@@ -243,7 +243,7 @@ else
 	$nomaf = $aero[$airfield][0];
 	if (array_key_exists($airfield, $passwords)) {
 		// if a password is requested for this airfield, check credentials
-		if (crypt($password, 'GliderNetdotOrg') != $passwords[$airfield]) exit();
+		if (crypt($password, $password_salt) != $passwords[$airfield]) exit();
 	}
 
 	$geo = $aero[$airfield][1];
