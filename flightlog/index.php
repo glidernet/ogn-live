@@ -4,6 +4,7 @@ $link="";
 require_once('../config.php');
 require_once('../sql.php');
 require($config_aerolist_path);
+require($config_passwords_path);
 $dbh = Database::connect();
 date_default_timezone_set('GMT');
 
@@ -154,9 +155,10 @@ if ($afget=="" || !isset($aero[$afget]) || strtoupper($date)=="NIL") 			// no ai
   } else {		// display airfields list  
   	echo "<select name=\"a\" size=\"1\">";
 		foreach ($aero as $k => $v) {
-			if ($v[3]!='') continue;		// if a password is needed for this airfield, it is not displayed on the list		
-    	echo "<option value=\"$k\">$v[0] ($k)";
-			}  
+			// if a password is needed for this airfield, it is not displayed on the list
+			if (array_key_exists($k, $passwords) continue;
+			echo "<option value=\"$k\">$v[0] ($k)";
+		}
   	echo "</select>";
   }
   echo "</TD></TR><TR><TD>Date</TD><TD>
@@ -239,10 +241,10 @@ else
 	{
 	$airfield = $afget;
 	$nomaf = $aero[$airfield][0];
-	$afpw = $aero[$airfield][3];
-	if ($afpw!="") {	// if a password is requested for this airfield
-		if ($afpw!=crypt($password, 'GliderNetdotOrg')) exit();
-		}
+	if (array_key_exists($airfield, $passwords)) {
+		// if a password is requested for this airfield, check credentials
+		if (crypt($password, 'GliderNetdotOrg') != $passwords[$airfield]) exit();
+	}
 
 	$geo = $aero[$airfield][1];
 	$airfieldaltitude = $aero[$airfield][2];

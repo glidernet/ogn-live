@@ -10,3 +10,4 @@ $cfg = [
 
 // Path to your aerolist_file
 $config_aerolist_path='flightlog/aerolist.php.dist';
+$config_passwords_path='flightlog/passwords.php.dist';
