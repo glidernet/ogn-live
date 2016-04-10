@@ -252,7 +252,7 @@ $aero = array (		// code OACI => FullName , geographic bounds, airfield altitude
 	'LFJT'=> array('TOURS Le Louroux',"l.rec='LFJT' AND l.alt < 826 AND (l.lat BETWEEN 47.14304 AND 47.15574 ) AND (l.lon BETWEEN 0.70445 AND 0.71771 )",126,''),
 	'LFQB'=> array('TROYES Barberey',"l.rec='LFQB' AND l.alt < 812 AND (l.lat BETWEEN 48.30495 AND 48.34176 ) AND (l.lon BETWEEN 3.98910 AND 4.03897 )",112,''),	
 	'TRUE'=> array('True',"l.rec='True' AND l.alt < 768 AND (l.lat BETWEEN 56.17536 AND 56.18217 ) AND (l.lon BETWEEN 10.06477 AND 10.08825 )",68,''),
-	'UNTER'=> array('Unterwossen',"(l.rec='UWoessen' OR l.rec='UWoessen2') AND l.alt < 1255 AND (l.lat BETWEEN 47.72564 AND 47.73572 ) AND (l.lon BETWEEN 12.42701 AND 12.45022 )",555,''),		
+	'UNTER'=> array('Unterwossen',"(l.rec='UWoessen1' OR l.rec='UWoessen3') AND l.alt < 1255 AND (l.lat BETWEEN 47.72564 AND 47.73572 ) AND (l.lon BETWEEN 12.42701 AND 12.45022 )",555,''),		
 	'ELUS'=> array('Useldange',"(l.rec='ELUS' OR l.rec='Useldange') AND l.alt < 983 AND (l.lat BETWEEN 49.76309 AND 49.77372 ) AND (l.lon BETWEEN 5.95041 AND 5.98131 )",283,''),	
 	'UKUSK'=> array('USK',"l.rec='UKUSK' AND l.alt < 724 AND (l.lat BETWEEN 51.7162 AND 51.72274 ) AND (l.lon BETWEEN -2.86385 AND -2.8398 )",24,''),
 	'LFLU'=> array('VALENCE Chabeuil',"l.rec='LFLU' AND l.alt < 860 AND (l.lat BETWEEN 44.90797 AND 44.93593 ) AND (l.lon BETWEEN 4.9614 AND 4.97715 )",160,''),	
