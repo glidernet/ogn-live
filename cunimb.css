@@ -155,6 +155,15 @@ div.divInfoclass {
   background-color:white;
 }
 
+#onoff {
+  font-size: 12px;
+  }
+
+
+#onoff b {
+  font-size: 15px;
+  }
+
 #dtable {
   position: absolute;
   top: 47px;
