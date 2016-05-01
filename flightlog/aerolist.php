@@ -267,6 +267,7 @@ $aero = array (		// code OACI => FullName , geographic bounds, airfield altitude
 	'ESSZ'=> array('VANGSO',"l.rec='ESSZ' AND l.alt < 717 AND (l.lat BETWEEN 59.09656 AND 59.10546 ) AND (l.lon BETWEEN 17.20024 AND 17.22153 )",17,''),	
 	'VEEN'=> array('Veendam',"l.rec='Veendam' AND l.alt < 701 AND (l.lat BETWEEN 53.07735 AND 53.09261 ) AND (l.lon BETWEEN 6.79723 AND 6.84589 )",1,''),
 	'LIPN'=> array('VERONA/BOSCOMANTICO',"l.rec='LIPN' AND l.alt < 791 AND (l.lat BETWEEN 45.46869 AND 45.47589 ) AND (l.lon BETWEEN 10.9174 AND 10.93874 )",91,''),
+	'EKVH'=> array('Vesthimmerland',"l.rec='EKVH' AND l.alt < 736 AND (l.lat BETWEEN 56.8509 AND 56.8438 ) AND (l.lon BETWEEN 9.4428 AND 9.4687)",36,''),
 	'VEIL'=> array('Vielbrunn',"l.rec='Vielbrunn' AND l.alt < 1103 AND (l.lat BETWEEN 49.71015 AND 49.72813 ) AND (l.lon BETWEEN 9.07142 AND 9.08959 )",461,''),
 	'LFHV'=> array('VILLEFRANCHE Tarare',"l.rec='LFHV' AND l.alt < 1028 AND (l.lat BETWEEN 45.91153 AND 45.92603 ) AND (l.lon BETWEEN 4.62766 AND 4.64318 )",328,''),
 	'LFNF'=> array('VINON',"l.rec='LFNF' AND l.alt < 975 AND (l.lat BETWEEN 43.7304 AND 43.74654 ) AND (l.lon BETWEEN 5.77138 AND 5.79678)",275,''),
