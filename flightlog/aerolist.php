@@ -1,5 +1,6 @@
 <?php
 $aero = array (		// code OACI => FullName , geographic bounds, airfield altitude , password
+        'EKMB'=> array('Maribo Airport',"l.rec='EKMB' AND (l.alt < 400) AND (l.lat BETWEEN 43.60377 AND 43.62095) AND (l.lon BETWEEN 6.6818 AND 6.7127)",16,''),
 	'LFOI'=> array('ABBEVILLE',"l.rec='LFOI' AND l.alt < 767 AND (l.lat BETWEEN 50.13 AND 50.15 ) AND (l.lon BETWEEN 1.8 AND 1.86)",67,''),
 	'ABOY'=> array('Aboyne',"l.rec='UKABO' AND l.alt < 840 AND (l.lat BETWEEN 57.07191 AND 57.07745 ) AND (l.lon BETWEEN -2.85071 AND -2.83011)",140,''),
 	'LOXA'=> array('AIGEN IM ENNSTAL',"l.rec='LOXA' AND l.alt < 1340 AND (l.lat BETWEEN 47.53237 AND 47.53919 ) AND (l.lon BETWEEN 14.13251 AND 14.15038)",640,''),
