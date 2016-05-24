@@ -293,7 +293,11 @@ $aero = array (		// code OACI => FullName , geographic bounds, airfield altitude
 	'LSGY'=> array('YVERDON-LES-BAINS',"l.rec='LSGY' AND l.alt < 1133 AND (l.lat BETWEEN 46.75775 AND 46.76644 ) AND (l.lon BETWEEN 6.60604 AND 6.61939)",433,''),	
 	'LKZM'=> array('ZAMBERK',"l.rec='LKZM' AND l.alt < 1129 AND (l.lat BETWEEN 50.08008 AND 50.08735 ) AND (l.lon BETWEEN 16.43624 AND 16.45073)",429,''),
 	'EPZR'=> array('ZAR',"l.rec='EPZR' AND l.alt < 1093 AND (l.lat BETWEEN 49.76534 AND 49.77856 ) AND (l.lon BETWEEN 19.20728 AND 19.2293)",393,''),
-	'EBZR'=> array('ZOERSEL',"l.rec='EBZR' AND l.alt < 716 AND (l.lat BETWEEN 51.2511 AND 51.28014 ) AND (l.lon BETWEEN 4.72632 AND 4.78073)",16,'')
+	'EBZR'=> array('ZOERSEL',"l.rec='EBZR' AND l.alt < 716 AND (l.lat BETWEEN 51.2511 AND 51.28014 ) AND (l.lon BETWEEN 4.72632 AND 4.78073)",16,''),
+	'LZPT'=> array('PARTIZANSKE',"l.rec='LZPT' AND l.alt < 883 AND (l.lat BETWEEN 48.61460 AND 48.62589 ) AND (l.lon BETWEEN 18.31449 AND 18.34140)",183,''),
+	'LKPL'=> array('PLZEN-LETKOV',"l.rec='LKPL' AND l.alt < 1119 AND (l.lat BETWEEN 49.72163 AND 49.72504 ) AND (l.lon BETWEEN 13.44711 AND 13.46043 )",419,''),
+	'LKZN'=> array('ZNOJMO',"l.rec='LKZN' AND l.alt < 952 AND (l.lat BETWEEN 48.81558 AND 48.82013 ) AND (l.lon BETWEEN 16.05637 AND 16.07446)",252,''),
+	'LOAB'=> array('DOBERSBERG',"l.rec='LOAB' AND l.alt < 1222 AND (l.lat BETWEEN 48.91476 AND 48.92762 ) AND (l.lon BETWEEN 15.28881 AND 15.30675)",522,'')
 	);
 
 ?>
