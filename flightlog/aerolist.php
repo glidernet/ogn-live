@@ -57,6 +57,7 @@ $aero = array (		// code OACI => FullName , geographic bounds, airfield altitude
 	'CELL'=> array('Celle-Scheuen',"l.rec='EDVC' AND l.alt < 755 AND (l.lat BETWEEN 52.66731 AND 52.67129 ) AND (l.lon BETWEEN 10.07655 AND 10.0998)",55,''),
 	'LFQK'=> array('CHALON Ecury sur Coole',"l.rec='LFQK' AND l.alt < 797 AND (l.lat BETWEEN 48.89664 AND 48.91241 ) AND (l.lon BETWEEN 4.33942 AND 4.36159)",97,''),	
 	'LFLE'=> array('CHAMBERY Challes-Les-Eaux',"l.rec='LFLE' AND l.alt < 997 AND (l.lat BETWEEN 45.55 AND 45.567 ) AND (l.lon BETWEEN 5.96 AND 5.99)",297,''),
+	'CHAMJ'=> array('Cham-Janahof',"l.rec='Cham' AND l.alt < 1066 AND (l.lat BETWEEN 49.210965 AND 49.213979) AND (l.lon BETWEEN 12.646970 AND 12.660230)",366,''),
 	'LFOR'=> array('CHARTRES Champhol',"l.rec='LFOR' AND l.alt < 855 AND (l.lat BETWEEN 48.45204 AND 48.46295 ) AND (l.lon BETWEEN 1.50418 AND 1.53508)",155,''),
 	'LFMX'=> array('CHATEAU ARNOUX Saint Auban',"l.rec='LFMX' AND l.alt < 1159 AND (l.lat BETWEEN 44.04676 AND 44.07041 ) AND (l.lon BETWEEN 5.97311 AND 6.03491)",459,''),	
 	'UKCHP'=> array('CHIPPING',"l.rec='UKCHP' AND l.alt < 890 AND (l.lat BETWEEN 53.88139 AND 53.887841 ) AND (l.lon BETWEEN -2.63071 AND -2.60936)",190,''),
