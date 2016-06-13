@@ -741,6 +741,7 @@ function affinfo(mark) {
   document.getElementById("acfi").innerHTML = fi;
   document.getElementById("acre").innerHTML = rg;
   document.getElementById("acty").innerHTML = ftype[mrk.get('type') * 1];
+  document.getElementById("acmo").innerHTML = "";
   if (fi != "hidden") {
     document.getElementById("acif").innerHTML = "<A HREF='https://www.google.com/search?nfpr=1&q=\"" + rg + "\"' target='_blank' onclick=\"event.stopPropagation();\">Infos</a>&nbsp;&nbsp;&nbsp;&nbsp;<A HREF='https://www.google.com/search?nfpr=1&q=\"" + rg + "\"&tbm=isch' target='_blank' onclick=\"event.stopPropagation();\">Pictures</a>";
     if (mrk.get('dinfo') === "") {
@@ -1070,7 +1071,7 @@ function wd() {
 }
 
 function rehash() {
-  window.location.hash = hashc + hashz + hashm + hasho + hashb + hashs + hashl + hashw + hashp + hashu + hashn + hashy;
+  window.location.replace("#" + hashc + hashz + hashm + hasho + hashb + hashs + hashl + hashw + hashp + hashu + hashn + hashy);
 }
 
 function rempl(po, c) {
