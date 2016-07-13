@@ -33,6 +33,7 @@ CREATE TABLE `flightlog` (
   `maxaltitude` smallint(6) NOT NULL,
   `gliderfid` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
   `planefid` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  UNIQUE KEY `fdate_2` (`fdate`,`airfield`,`num`,`planereg`,`planemodel`,`planelanding`,`gliderreg`,`glidercn`,`glidermodel`,`gliderlanding`,`takeoff`,`maxaltitude`,`gliderfid`,`planefid`),
   KEY `fdate` (`fdate`),
   KEY `airfield` (`airfield`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
