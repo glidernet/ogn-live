@@ -1,6 +1,5 @@
 <?php
 $aero = array (		// code OACI => FullName , geographic bounds, airfield altitude , password
-	'EDWN'=> array('NORDHORN-LINGEN',"l.rec='EDWN' AND l.alt < 726 AND (l.lat BETWEEN 52.45306 AND 52.46316) AND (l.lon BETWEEN 7.17380 AND 7.19330)",26,''),
 	'LFOI'=> array('ABBEVILLE',"l.rec='LFOI' AND l.alt < 767 AND (l.lat BETWEEN 50.13 AND 50.15 ) AND (l.lon BETWEEN 1.8 AND 1.86)",67,''),
 	'ABOY'=> array('Aboyne',"l.rec='UKABO' AND l.alt < 840 AND (l.lat BETWEEN 57.07191 AND 57.07745 ) AND (l.lon BETWEEN -2.85071 AND -2.83011)",140,''),
 	'LOXA'=> array('AIGEN IM ENNSTAL',"l.rec='LOXA' AND l.alt < 1340 AND (l.lat BETWEEN 47.53237 AND 47.53919 ) AND (l.lon BETWEEN 14.13251 AND 14.15038)",640,''),
@@ -198,6 +197,7 @@ $aero = array (		// code OACI => FullName , geographic bounds, airfield altitude
 	'NISTELRODE'=> array('Nistelrode',"l.rec='Nistelr' AND l.alt < 708 AND (l.lat BETWEEN 51.67911 AND 51.6874 ) AND (l.lon BETWEEN 5.53637 AND 5.56245 )",8,''),
 	'LZNI'=> array('NITRA',"l.rec='LZNI' AND l.alt < 835 AND (l.lat BETWEEN 48.27188 AND 48.28692 ) AND (l.lon BETWEEN 18.12162 AND 18.14258 )",135,''),	
 	'LFCN'=> array('NOGARO',"l.rec='LFCN' AND l.alt < 793 AND (l.lat BETWEEN 43.76314 AND 43.77772 ) AND (l.lon BETWEEN -0.04825 AND -0.02481 )",93,''),
+	'EDWN'=> array('NORDHORN-LINGEN',"l.rec='EDWN' AND l.alt < 726 AND (l.lat BETWEEN 52.45306 AND 52.46316) AND (l.lon BETWEEN 7.17380 AND 7.19330)",26,''),
 	'NHL'=> array('North Hill',"l.rec='UKNHL' AND l.alt < 980 AND (l.lat BETWEEN 50.84547 AND 50.85676 ) AND (l.lon BETWEEN -3.29046 AND -3.25986 )",280,''),	
 	'EFNU'=> array('NUMMELA',"l.rec='EFNU' AND l.alt < 812 AND (l.lat BETWEEN 60.32471 AND 60.34066 ) AND (l.lon BETWEEN 24.27825 AND 24.31374 )",112,''),
 	'NYMP'=> array('Nympsfield',"l.rec='UKAST' AND l.alt < 910 AND (l.lat BETWEEN 51.70906 AND 51.71911 ) AND (l.lon BETWEEN -2.30065 AND -2.269754 )",210,''),
