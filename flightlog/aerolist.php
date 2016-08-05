@@ -197,6 +197,7 @@ $aero = array (		// code OACI => FullName , geographic bounds, airfield altitude
 	'NISTELRODE'=> array('Nistelrode',"l.rec='Nistelr' AND l.alt < 708 AND (l.lat BETWEEN 51.67911 AND 51.6874 ) AND (l.lon BETWEEN 5.53637 AND 5.56245 )",8,''),
 	'LZNI'=> array('NITRA',"l.rec='LZNI' AND l.alt < 835 AND (l.lat BETWEEN 48.27188 AND 48.28692 ) AND (l.lon BETWEEN 18.12162 AND 18.14258 )",135,''),	
 	'LFCN'=> array('NOGARO',"l.rec='LFCN' AND l.alt < 793 AND (l.lat BETWEEN 43.76314 AND 43.77772 ) AND (l.lon BETWEEN -0.04825 AND -0.02481 )",93,''),
+	'EDWN'=> array('NORDHORN-LINGEN',"l.rec='EDWN' AND l.alt < 726 AND (l.lat BETWEEN 52.45306 AND 52.46316) AND (l.lon BETWEEN 7.17380 AND 7.19330)",26,''),
 	'NHL'=> array('North Hill',"l.rec='UKNHL' AND l.alt < 980 AND (l.lat BETWEEN 50.84547 AND 50.85676 ) AND (l.lon BETWEEN -3.29046 AND -3.25986 )",280,''),	
 	'EFNU'=> array('NUMMELA',"l.rec='EFNU' AND l.alt < 812 AND (l.lat BETWEEN 60.32471 AND 60.34066 ) AND (l.lon BETWEEN 24.27825 AND 24.31374 )",112,''),
 	'NYMP'=> array('Nympsfield',"l.rec='UKAST' AND l.alt < 910 AND (l.lat BETWEEN 51.70906 AND 51.71911 ) AND (l.lon BETWEEN -2.30065 AND -2.269754 )",210,''),
@@ -307,5 +308,4 @@ $aero = array (		// code OACI => FullName , geographic bounds, airfield altitude
 	'LKZN'=> array('ZNOJMO',"l.rec='LKZN' AND l.alt < 952 AND (l.lat BETWEEN 48.81558 AND 48.82013 ) AND (l.lon BETWEEN 16.05637 AND 16.07446)",252,''),
 	'EBZR'=> array('ZOERSEL',"l.rec='EBZR' AND l.alt < 716 AND (l.lat BETWEEN 51.2511 AND 51.28014 ) AND (l.lon BETWEEN 4.72632 AND 4.78073)",16,'')
 	);
-
 ?>
