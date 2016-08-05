@@ -125,6 +125,7 @@ $aero = array (		// code OACI => FullName , geographic bounds, airfield altitude
 	'ESSX'=> array('JOHANNISBERG',"l.rec='ESSX' AND l.alt < 709 AND (l.lat BETWEEN 59.56728 AND 59.58799 ) AND (l.lon BETWEEN 16.47721 AND 16.52352 )",9,''),	
 	'LFFJ'=> array('JOINVILLE Mussey',"l.rec='LFFJ' AND l.alt < 1012 AND (l.lat BETWEEN 48.38243 AND 48.38745 ) AND (l.lon BETWEEN 5.13424 AND 5.15317 )",312,''),	
 	'EDWJ'=> array('JUIST',"l.rec='EDWJ' AND l.alt < 702 AND (l.lat BETWEEN 53.67761 AND 53.68318 ) AND (l.lon BETWEEN 7.04817 AND 7.06534 )",2,''),
+	'EDWN'=> array('NORDHORN-LINGEN',"l.rec='EDWN' AND l.alt < 726 AND (l.lat BETWEEN 52.4510 AND 52.4652) AND (l.lon BETWEEN 7.1681 AND 7.1979)",26,''),
 	'EKKL'=> array('KALUNDBORG',"l.rec='EKKL' AND l.alt < 700 AND (l.lat BETWEEN 55.69881 AND 55.70171 ) AND (l.lon BETWEEN 11.2384 AND 11.26378 )",0,''),	
 	'KAME'=> array('Kamen-Heeren',"l.rec='Kamen' AND l.alt < 962 AND (l.lat BETWEEN 51.58551 AND 51.59574 ) AND (l.lon BETWEEN 7.69409 AND 7.72499 )",62,''),
 	'EGBP'=> array('KEMBLE',"l.rec='EGBP' AND l.alt < 833 AND (l.lat BETWEEN 51.66166 AND 51.67333 ) AND (l.lon BETWEEN -2.07637 AND -2.03723 )",133,''),
