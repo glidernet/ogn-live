@@ -1,5 +1,6 @@
 <?php
 $aero = array (		// code OACI => FullName , geographic bounds, airfield altitude , password
+	'EDWN'=> array('NORDHORN-LINGEN',"l.rec='EDWN' AND l.alt < 726 AND (l.lat BETWEEN 52.45306 AND 52.46316) AND (l.lon BETWEEN 7.17380 AND 7.19330)",26,''),
 	'LFOI'=> array('ABBEVILLE',"l.rec='LFOI' AND l.alt < 767 AND (l.lat BETWEEN 50.13 AND 50.15 ) AND (l.lon BETWEEN 1.8 AND 1.86)",67,''),
 	'ABOY'=> array('Aboyne',"l.rec='UKABO' AND l.alt < 840 AND (l.lat BETWEEN 57.07191 AND 57.07745 ) AND (l.lon BETWEEN -2.85071 AND -2.83011)",140,''),
 	'LOXA'=> array('AIGEN IM ENNSTAL',"l.rec='LOXA' AND l.alt < 1340 AND (l.lat BETWEEN 47.53237 AND 47.53919 ) AND (l.lon BETWEEN 14.13251 AND 14.15038)",640,''),
@@ -307,5 +308,4 @@ $aero = array (		// code OACI => FullName , geographic bounds, airfield altitude
 	'LKZN'=> array('ZNOJMO',"l.rec='LKZN' AND l.alt < 952 AND (l.lat BETWEEN 48.81558 AND 48.82013 ) AND (l.lon BETWEEN 16.05637 AND 16.07446)",252,''),
 	'EBZR'=> array('ZOERSEL',"l.rec='EBZR' AND l.alt < 716 AND (l.lat BETWEEN 51.2511 AND 51.28014 ) AND (l.lon BETWEEN 4.72632 AND 4.78073)",16,'')
 	);
-
 ?>
