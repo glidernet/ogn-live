@@ -72,6 +72,7 @@ $aero = array (		// code OACI => FullName , geographic bounds, airfield altitude
 	'LFPK'=> array('COULOMMIERS Voisins',"l.rec='LFPK' AND l.alt < 843 AND (l.lat BETWEEN 48.83033 AND 48.84709 ) AND (l.lon BETWEEN 2.98776 AND 3.030938)",143,''),
 	'LSZJ'=> array('COURTELARY',"l.rec='LSZJ' AND l.alt < 1385 AND (l.lat BETWEEN 47.18129 AND 47.18572 ) AND (l.lon BETWEEN 7.08527 AND 7.09594)",685,''),
 	'ESKD'=> array('DALA Jarna',"l.rec='ESKD' AND l.alt < 935 AND (l.lat BETWEEN 60.54754 AND 60.56577 ) AND (l.lon BETWEEN 14.36361 AND 14.39129)",235,''),
+	'EDMD'=> array('Dachau-Groebenried',"l.rec='EDMD' AND l.alt < 1190 AND (l.lat BETWEEN 48.2285 AND 48.2485 ) AND (l.lon BETWEEN 11.4262 AND 11.4462)",490,''),
 	'EHDL'=> array('DEELEN',"l.rec='EHDL' AND l.alt < 745 AND (l.lat BETWEEN 52.0425 AND 52.07636 ) AND (l.lon BETWEEN 5.85792 AND 5.89667)",45,''),
 	'DVOO'=> array('DeVoorst',"l.rec='DeVoorst' AND l.alt < 701 AND (l.lat BETWEEN 52.6813 AND 52.68835 ) AND (l.lon BETWEEN 5.89866 AND 5.92218)",1,''),
 	'EBDT'=> array('DIEST SCHAFFEN',"l.rec='EBDT' AND l.alt < 730 AND (l.lat BETWEEN 50.99792 AND 51.01076 ) AND (l.lon BETWEEN 5.0477 AND 5.07746)",30,''),
