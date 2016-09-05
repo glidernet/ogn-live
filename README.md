@@ -32,7 +32,7 @@ Flag | Description                      | Value
    s | auto set to map                  | 1 - true
    l | show special layers              | v:wind, p:pressure, z:airspaces, a:airports, r:recievers
    u | use imperial units               | i - activated
-   p | path lenght                      | default: 5 min, p=2: 10 min, p=3 all points
+   p | path length                      | default: 5 min, p=2: 10 min, p=3 all points
    n | show side panel                  | 0 - hidden
    t | load task file, (see [Tasks](#task-file-format)) | URL
 
@@ -54,7 +54,7 @@ The devices need to be registered in the [OGN database](http://ddb.glidernet.org
 ```
 {"tasks": [
     {"name": "15m", "color": "0000FF", "legs": [ [47.3,1.55],[48.2,2.3],[30000],[47.5,-1.3],[50000],[47.3,1.5] ] },
-    {"name": "standart","color": "FFFF00","legs": [ [47.2,1.55],[46.5,2.3],[46.5,-0.2],[47,-0.2],[47.2,1.5] ] },
+    {"name": "standard","color": "FFFF00","legs": [ [47.2,1.55],[46.5,2.3],[46.5,-0.2],[47,-0.2],[47.2,1.5] ] },
     {"name": "open","color": "FFFFFF","legs": [ [47.25,1.6],[48,3],[46,3],[47.22,1.6] ],"wlist": ["DD1111", "DD2222", "DD3333", "DD4444"]}
 ]}
 ```
