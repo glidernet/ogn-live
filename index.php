@@ -72,6 +72,8 @@ else
 -->
 <html>
 <head>
+<link rel="shortcut icon" href="favicon.gif"/>
+<link rel="icon" type="image/gif" href="favicon.gif"/>
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
 <title>Spot the gliders!</title>
