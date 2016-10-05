@@ -171,7 +171,7 @@ $aero = array (		// code OACI => FullName , geographic bounds, airfield altitude
 	'LSZO'=> array('LUZERN-BEROMUNSTER',"l.rec='LSZO' AND l.alt < 1354 AND (l.lat BETWEEN 47.18296 AND 47.19415 ) AND (l.lon BETWEEN 8.19432 AND 8.2138)",654,''),
 	'LFHJ'=> array('LYON Corbas',"l.rec='LFHJ' AND l.alt < 899 AND (l.lat BETWEEN 45.64365 AND 45.66555 ) AND (l.lon BETWEEN 4.90281 AND 4.925)",199,''),
 	'LFFC'=> array('MANTES Cherence',"l.rec='LFFC' AND l.alt < 856 AND (l.lat BETWEEN 49.07102 AND 49.09233 ) AND (l.lon BETWEEN 1.66177 AND 1.70941)",156,''),
-	'EKMB'=> array('Maribo Airport',"l.rec='EKMB' AND (l.alt < 705) AND (l.lat BETWEEN 54.69626 AND 54.70184) AND (l.lon BETWEEN 11.42468 AND 11.45234)",5,''),		
+	'EKMB'=> array('Maribo Airport',"l.rec='EKMB' AND l.alt < 705 AND (l.lat BETWEEN 54.69626 AND 54.70184) AND (l.lon BETWEEN 11.42468 AND 11.45234)",5,''),		
 	'LFQJ'=> array('MAUBEUGE Elesmes',"l.rec='LFQJ' AND l.alt < 838 AND (l.lat BETWEEN 50.30048 AND 50.321508 ) AND (l.lon BETWEEN 4.01924 AND 4.050141)",138,''),
 	'EFME'=> array('MENKIJARVI',"l.rec='EFME' AND l.alt < 801 AND (l.lat BETWEEN 62.94008 AND 62.95219 ) AND (l.lon BETWEEN 23.50186 AND 23.53018)",101,''),
 	'LFNB'=> array('MENDE Brenoux',"l.rec='LFNB' AND l.alt < 1725 AND (l.lat BETWEEN 44.49475 AND 44.50815 ) AND (l.lon BETWEEN 3.52056 AND 3.5442)",1025,''),	
