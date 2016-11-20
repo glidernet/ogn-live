@@ -229,6 +229,7 @@ $aero = array (		// code OACI => FullName , geographic bounds, airfield altitude
 	'LFSV'=> array('PONT SAINT VINCENT',"l.rec='LFSV' AND l.alt < 1107 AND (l.lat BETWEEN 48.59432 AND 48.60714 ) AND (l.lon BETWEEN 6.0482 AND 6.09133 )",407,''),	
 	'LFGO'=> array('PONT SUR YONNE',"l.rec='LFGO' AND l.alt < 771 AND (l.lat BETWEEN 48.28417 AND 48.29721 ) AND (l.lon BETWEEN 3.23484 AND 3.25284 )",71,''),
 	'PORT'=> array('Portmoak',"l.rec='Portmoak' AND l.alt < 810 AND (l.lat BETWEEN 56.184498 AND 56.197309 ) AND (l.lon BETWEEN -3.34453 AND -3.313957 )",110,''),
+	'FAPS'=> array('POTCHEFSTROOM',"l.rec='FAPS' AND l.alt < 2078 AND (l.lat BETWEEN 27.0785951614 AND 27.0912927389 ) AND (l.lon BETWEEN -26.6609979233 AND x -26.6793145454)",1378,''),
 	'LZPE'=> array('PRIEVIDZA',"l.rec='LZPE' AND l.alt < 960 AND (l.lat BETWEEN 48.75943 AND 48.77225 ) AND (l.lon BETWEEN 18.57778 AND 18.59604 )",260,''),
 	'LFTP'=> array('PUIMOISSON',"l.rec='LFTP' AND l.alt < 1471 AND (l.lat BETWEEN 43.86327 AND 43.87234 ) AND (l.lon BETWEEN 6.15561 AND 6.17295 )",771,''),	
 	'LFNW'=> array('PUIVERT',"l.rec='LFNW' AND l.alt < 1191 AND (l.lat BETWEEN 42.90532 AND 42.91614 ) AND (l.lon BETWEEN 2.04651 AND 2.06258 )",491,''),
