@@ -1139,7 +1139,7 @@ function wd() {
 }
 
 function rehash() {
-  window.location.hash = hashc + hashz + hashm + hasho + hashb + hashs + hashl + hashw + hashp + hashu + hashn + hashy + hasha ;
+  window.location.replace ("#" + hashc + hashz + hashm + hasho + hashb + hashs + hashl + hashw + hashp + hashu + hashn + hashy + hasha);
 }
 
 function rempl(po, c) {
