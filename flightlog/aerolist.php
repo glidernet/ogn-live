@@ -80,6 +80,7 @@ $aero = array (		// code OACI => FullName , geographic bounds, airfield altitude
 	'EDPD'=> array('DINGOLFING',"(l.rec='Edpd' OR l.rec='EDPD') AND l.alt < 1055 AND (l.lat BETWEEN 48.65454 AND 48.6594 ) AND (l.lon BETWEEN 12.49023 AND 12.50596)",355,''),
 	'LIVD'=> array('DOBBIACO',"l.rec='LIVD' AND l.alt < 1901 AND (l.lat BETWEEN 46.72403 AND 46.7305 ) AND (l.lon BETWEEN 12.21977 AND 12.2447)",1201,''),	
 	'EDTD'=> array('DONAUESCHINGEN',"l.rec='EDTD' AND l.alt < 1380 AND (l.lat BETWEEN 47.96635 AND 47.98276 ) AND (l.lon BETWEEN 8.51159 AND 8.52721)",680,''),
+	'EDPM'=> array('DONZDORF',"l.rec='EDPM' AND l.alt < 1392 AND (l.lat BETWEEN 48.67264 AND 48.68356) AND (l.lon BETWEEN 9.83096 AND 9.86188)",692,''),
 	'LOAB'=> array('DOBERSBERG',"l.rec='LOAB' AND l.alt < 1224 AND (l.lat BETWEEN 48.91927 AND 48.92457 ) AND (l.lon BETWEEN 15.28944 AND 15.30401)",524,''),
 	'DUNS'=> array('Dunstable',"(l.rec='UKDUN' OR l.rec='UKDUN2') AND l.alt < 850 AND (l.lat BETWEEN 51.861056 AND 51.87608 ) AND (l.lon BETWEEN -0.562687 AND -0.533418)",150,''),
 	'LKDK'=> array('DVUR KRALOVE',"l.rec='LKDK' AND l.alt < 982 AND (l.lat BETWEEN 50.4118 AND 50.41631 ) AND (l.lon BETWEEN 15.82833 AND 15.84573)",282,''),
@@ -317,8 +318,7 @@ $aero = array (		// code OACI => FullName , geographic bounds, airfield altitude
 	'LKZM'=> array('ZAMBERK',"l.rec='LKZM' AND l.alt < 1129 AND (l.lat BETWEEN 50.08008 AND 50.08735 ) AND (l.lon BETWEEN 16.43624 AND 16.45073)",429,''),
 	'EPZR'=> array('ZAR',"l.rec='EPZR' AND l.alt < 1093 AND (l.lat BETWEEN 49.76534 AND 49.77856 ) AND (l.lon BETWEEN 19.20728 AND 19.2293)",393,''),
 	'LKZN'=> array('ZNOJMO',"l.rec='LKZN' AND l.alt < 952 AND (l.lat BETWEEN 48.81558 AND 48.82013 ) AND (l.lon BETWEEN 16.05637 AND 16.07446)",252,''),
-	'EBZR'=> array('ZOERSEL',"l.rec='EBZR' AND l.alt < 716 AND (l.lat BETWEEN 51.2511 AND 51.28014 ) AND (l.lon BETWEEN 4.72632 AND 4.78073)",16,''),
-	'EDPM'=> array('DONZDORF',"l.rec='EDPM' AND l.alt < 1392 AND (l.lat BETWEEN 48.67264 AND 48.68356) AND (l.lon BETWEEN 9.83096 AND 9.86188)",692,'')
+	'EBZR'=> array('ZOERSEL',"l.rec='EBZR' AND l.alt < 716 AND (l.lat BETWEEN 51.2511 AND 51.28014 ) AND (l.lon BETWEEN 4.72632 AND 4.78073)",16,'')
 	);
 
 ?>
