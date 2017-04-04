@@ -89,6 +89,7 @@ $aero = array (		// code OACI => FullName , geographic bounds, airfield altitude
 	'LFSE'=> array('EPINAL Dogneville',"(l.rec='EPINAL' OR l.rec='LFSE') AND l.alt < 1017 AND (l.lat BETWEEN 48.20662 AND 48.21596 ) AND (l.lon BETWEEN 6.44288 AND 6.45367)",317,''),
 	'EDNE'=> array('ERBACH',"l.rec='EDNE' AND l.alt < 1175 AND (l.lat BETWEEN 48.33617 AND 48.34696 ) AND (l.lon BETWEEN 9.91051 AND 9.92117)",475,''),	
 	'ESSC'=> array('Eskilstuna',"l.rec='ESSC' AND l.alt < 713 AND (l.lat BETWEEN 59.37518 AND 59.39293 ) AND (l.lon BETWEEN 16.42153 AND 16.46526)",13,''),	
+	'EDTE'=> array('EUTINGEN',"l.rec='EDTE' AND (l.alt < 1000) AND (l.lat BETWEEN 48.4857280 AND 48.4870500 ) AND (l.lon BETWEEN 8.7828450 AND 8.7729110)",496,''),
 	'LFAS'=> array('FALAISE Monts-d\'Eraines',"l.rec='LFAS' AND l.alt < 856 AND (l.lat BETWEEN 48.92 AND 48.932) AND (l.lon BETWEEN -0.15 AND -0.12)",156,''),
 	'ESGK'=> array('FALKOPING',"l.rec='ESGK' AND l.alt < 939 AND (l.lat BETWEEN 58.16011 AND 58.17705) AND (l.lon BETWEEN 13.57348 AND 13.59734)",239,''),
 	'LFMF'=> array('FAYENCE',"l.rec='LFMF' AND l.alt < 920 AND (l.lat BETWEEN 43.60377 AND 43.62095) AND (l.lon BETWEEN 6.6818 AND 6.7127)",220,''),	
