@@ -1,5 +1,5 @@
 <?php
-$aero = array (		// code OACI => FullName , geographic bounds, airfield altitude , password
+$aero = array (		// code OACI => FullName , geographic bounds, airfield altitude (in meters) , password
 	'LFOI'=> array('ABBEVILLE',"l.rec='LFOI' AND l.alt < 767 AND (l.lat BETWEEN 50.13 AND 50.15 ) AND (l.lon BETWEEN 1.8 AND 1.86)",67,''),
 	'ABOY'=> array('Aboyne',"l.rec='UKABO' AND l.alt < 840 AND (l.lat BETWEEN 57.07191 AND 57.07745 ) AND (l.lon BETWEEN -2.85071 AND -2.83011)",140,''),
 	'LOXA'=> array('AIGEN IM ENNSTAL',"l.rec='LOXA' AND l.alt < 1340 AND (l.lat BETWEEN 47.53237 AND 47.53919 ) AND (l.lon BETWEEN 14.13251 AND 14.15038)",640,''),
@@ -107,7 +107,8 @@ $aero = array (		// code OACI => FullName , geographic bounds, airfield altitude
 	'EDSG'=> array('GRABENSTETTEN',"l.rec='EDSG' AND l.alt < 1410 AND (l.lat BETWEEN 48.52 AND 48.54 ) AND (l.lon BETWEEN 9.41 AND 9.45)",710,''),
 	'GRAN'=> array('Gransden Lodge Airfield',"l.rec='UKGRL' AND l.alt < 773 AND (l.lat BETWEEN 52.172092 AND 52.188959 ) AND (l.lon BETWEEN -0.12695 AND -0.10283)",73,''),
 	'LFCQ'=> array('GRAULHET Montdragon',"l.rec='LFCQ' AND l.alt < 878 AND (l.lat BETWEEN 43.76683 AND 43.77108 ) AND (l.lon BETWEEN 2.00233 AND 2.01777)",178,''),
-	'LOWG'=> array('GRAZ',"l.rec='LOWG' AND l.alt < 1400 AND (l.lat BETWEEN 46.96942 AND 47.01433 ) AND (l.lon BETWEEN 15.41786 AND 15.46284)",340,''),	
+	'LOWG'=> array('GRAZ',"l.rec='LOWG' AND l.alt < 1400 AND (l.lat BETWEEN 46.96942 AND 47.01433 ) AND (l.lon BETWEEN 15.41786 AND 15.46284)",340,''),
+	'LSZG'=> array('Grenchen',"l.rec='LSZG' AND l.alt < 1130 AND (l.lat BETWEEN 47.1784 AND 47.1839) AND (l.lon BETWEEN 7.4107 AND 7.4236)",430,''),
 	'LFLG'=> array('GRENOBLE Le Versoud',"l.rec='LFLG' AND l.alt < 920 AND (l.lat BETWEEN 45.21311 AND 45.22349 ) AND (l.lon BETWEEN 5.8385 AND 5.8561)",220,''),
 	'EFHP'=> array('HAAPAVESI',"l.rec='EFHP' AND l.alt < 796 AND (l.lat BETWEEN 64.10695 AND 64.11594 ) AND (l.lon BETWEEN 25.49233 AND 25.52134)",96,''),	
 	'HABE'=> array('Habere Poche',"l.rec='HPoche' AND l.alt < 1792 AND (l.lat BETWEEN 46.26112 AND 46.28147 ) AND (l.lon BETWEEN 6.44935 AND 6.47918)",1092,''),	
