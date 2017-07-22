@@ -317,7 +317,8 @@ $aero = array (		// code OACI => FullName , geographic bounds, airfield altitude
 	'LKZM'=> array('ZAMBERK',"l.rec='LKZM' AND l.alt < 1129 AND (l.lat BETWEEN 50.08008 AND 50.08735 ) AND (l.lon BETWEEN 16.43624 AND 16.45073)",429,''),
 	'EPZR'=> array('ZAR',"l.rec='EPZR' AND l.alt < 1093 AND (l.lat BETWEEN 49.76534 AND 49.77856 ) AND (l.lon BETWEEN 19.20728 AND 19.2293)",393,''),
 	'LKZN'=> array('ZNOJMO',"l.rec='LKZN' AND l.alt < 952 AND (l.lat BETWEEN 48.81558 AND 48.82013 ) AND (l.lon BETWEEN 16.05637 AND 16.07446)",252,''),
-	'EBZR'=> array('ZOERSEL',"l.rec='EBZR' AND l.alt < 716 AND (l.lat BETWEEN 51.2511 AND 51.28014 ) AND (l.lon BETWEEN 4.72632 AND 4.78073)",16,'')
-	);
+	'EBZR'=> array('ZOERSEL',"l.rec='EBZR' AND l.alt < 716 AND (l.lat BETWEEN 51.2511 AND 51.28014 ) AND (l.lon BETWEEN 4.72632 AND 4.78073)",16,''),
+	'LFLD'=> array('BOURGES',"l.rec='LFLD' AND l.alt < 1229 AND (l.lat BETWEEN 47.05641 AND 47.06448 ) AND (l.lon BETWEEN 2.35991 AND 2.37922)",529,'')
+);
 
 ?>
