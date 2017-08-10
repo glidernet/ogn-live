@@ -81,6 +81,7 @@ $aero = array (		// code OACI => FullName , geographic bounds, airfield altitude
 	'DVOO'=> array('DeVoorst',"l.rec='DeVoorst' AND l.alt < 701 AND (l.lat BETWEEN 52.6813 AND 52.68835 ) AND (l.lon BETWEEN 5.89866 AND 5.92218)",1,''),
 	'EBDT'=> array('DIEST SCHAFFEN',"l.rec='EBDT' AND l.alt < 730 AND (l.lat BETWEEN 50.99792 AND 51.01076 ) AND (l.lon BETWEEN 5.0477 AND 5.07746)",30,''),
 	'LFGI'=> array('DIJON Darois',"l.rec='LFGI' AND l.alt < 1182 AND (l.lat BETWEEN 47.37963 AND 47.39091 ) AND (l.lon BETWEEN 4.94028 AND 4.95204)",482,''),	
+        'LSPD'=> array('Dittingen', "l.rec='LSPD' AND l.alt < 750 AND (l.alt BETWEEN 47.44119 AND 47.43928 ) AND (l.lon BETWEEN 7.48541 AND 7.49411)",536, ''),
 	'EDPD'=> array('DINGOLFING',"(l.rec='Edpd' OR l.rec='EDPD') AND l.alt < 1055 AND (l.lat BETWEEN 48.65454 AND 48.6594 ) AND (l.lon BETWEEN 12.49023 AND 12.50596)",355,''),
 	'LSPD'=> array('DITTINGEN',"l.rec='LSPD' AND l.alt < 1236 AND (l.lat BETWEEN 47.43662 AND 47.44186 ) AND (l.lon BETWEEN 7.48346 AND 7.4971)",536,''),
 	'LIVD'=> array('DOBBIACO',"l.rec='LIVD' AND l.alt < 1901 AND (l.lat BETWEEN 46.72403 AND 46.7305 ) AND (l.lon BETWEEN 12.21977 AND 12.2447)",1201,''),	
