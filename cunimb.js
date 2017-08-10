@@ -44,10 +44,12 @@ var vstm = false;
 var vapt = false;
 var vwin = false;
 var vpre = false;
+var vtem = false;
+var vrai = false;
 var hnew = false;
 selrec = "";
 var ftype = ["unknown", "Glider/MotorGlider", "Tow Plane", "Helicopter", "Parachute", "Drop Plane", "Hangglider", "Paraglider", "Plane", "Jet", "UFO", "Balloon", "Airship", "Drone", "unknown", "Static Object"];
-var ftypec = ["_b", "", "_g", "_r", "_b", "_b", "_p", "_p", "_b", "_b", "_b", "_b", "_b", "_b", "_b", "_b"];
+var ftypec = ["_b", "", "_g", "_r", "_b", "_b", "_p", "_p", "_b", "_b", "_b", "_b", "_b", "_k", "_b", "_b"];
 var taskFeatures = [];
 var initialResolution = 2 * Math.PI * 6378137 / 256; // == 156543.0339
 var originShift = 2 * Math.PI * 6378137 / 2.0; // == 20037508.34
@@ -330,6 +332,37 @@ function pres() {
   rehash();
 }
 
+function tempe() {
+  if (document.getElementById('tembox').checked) {
+    vtem = true;
+    tempoverlay.setOpacity(1);
+    map.overlayMapTypes.setAt(5, tempoverlay);
+    if (map.getZoom() > 7) map.setZoom(7);
+    rempl(1, "t");
+  } else {
+    vtem = false;
+    tempoverlay.setOpacity(0);
+    map.overlayMapTypes.removeAt(5);
+    rempl(1, " ");
+  }
+  rehash();
+}
+
+function rain() {
+  if (document.getElementById('raibox').checked) {
+    vrai = true;
+    rainoverlay.setOpacity(.3);
+    map.overlayMapTypes.setAt(6, rainoverlay);
+    if (map.getZoom() > 7) map.setZoom(7);
+    rempl(7, "n");
+  } else {
+    vrai = false;
+    rainoverlay.setOpacity(0);
+    map.overlayMapTypes.removeAt(6);
+    rempl(7, " ");
+  }
+  rehash();
+}
 
 function hidenew() {
   if (document.getElementById('hnewbox').checked) hnew = true;
@@ -713,15 +746,16 @@ function affinfodata(mark) {
   document.getElementById("acsp").innerHTML = vx.toFixed() + "&thinsp;" + akh2kt[unit];
   document.getElementById("actr").innerHTML = mrk.get('track');
   document.getElementById("acvz").innerHTML = ((vz >= 0) ? "+" : "&ndash;") + Math.abs(vz).toFixed(1) + "&thinsp;" + am2kt[unit];
-  var re = mrk.get('rec');
+	var re = mrk.get('rec');
+  var red = "<A HREF='http://ognrange.onglide.com/#" + re + "' target='_blank' onclick=\"event.stopPropagation();\">" + re + "</a>";
   if (typeof(window["R_" + re]) != 'undefined') {
     var mre = window["R_" + re];
     var di = dist(mrk.getPosition().lat(), mrk.getPosition().lng(), mre.getPosition().lat(), mre.getPosition().lng());
-    re += " (" + di.toFixed() + " Km)";
+    red += " (" + di.toFixed() + " Km)";
   } else {
-    re += " (?)";
+    red += " (?)";
   }
-  document.getElementById("acrx").innerHTML = re;
+  document.getElementById("acrx").innerHTML = red;
 }
 
 function affinfodata2(mark) {
@@ -738,11 +772,11 @@ function affinfo(mark) {
   if (fi == rg) vd = "none";
   document.getElementById("ac1").style.display = vd;
   document.getElementById("accn").innerHTML = mrk.get('cn');
-  document.getElementById("acfi").innerHTML = fi;
   document.getElementById("acre").innerHTML = rg;
   document.getElementById("acty").innerHTML = ftype[mrk.get('type') * 1];
   document.getElementById("acmo").innerHTML = "";
   if (fi != "hidden") {
+  	document.getElementById("acfi").innerHTML = "<A HREF='http://www.kisstech.ch/cgi-bin/flarm-txrange.cgi?command=plot&flarmid=" + fi + "' target='_blank' onclick=\"event.stopPropagation();\">" + fi + "</a>";
     document.getElementById("acif").innerHTML = "<A HREF='https://www.google.com/search?nfpr=1&q=\"" + rg + "\"' target='_blank' onclick=\"event.stopPropagation();\">Infos</a>&nbsp;&nbsp;&nbsp;&nbsp;<A HREF='https://www.google.com/search?nfpr=1&q=\"" + rg + "\"&tbm=isch' target='_blank' onclick=\"event.stopPropagation();\">Pictures</a>";
     if (mrk.get('dinfo') === "") {
       downloadUrl(tld + '/' + dxml + '?i=' + mark + '&f=' + fi, function(data) {
@@ -770,6 +804,7 @@ function affinfo(mark) {
       }
     }
   } else {
+  	document.getElementById("acfi").innerHTML = fi;
     document.getElementById("ac2").style.display = "none";
     document.getElementById("acif").innerHTML = "";
     document.getElementById("acmo").innerHTML = "";
@@ -1318,7 +1353,7 @@ function initialize() {
   windoverlay = new google.maps.ImageMapType({
     getTileUrl: function(tile, zoom) {
       if (zoom > 7) return;
-      return "http://www.openportguide.org/tiles/actual/wind_vector/5/" + zoom + "/" + tile.x + "/" + tile.y + ".png";
+			return "http://weather.openportguide.de/tiles/actual/wind_stream/0h/" + zoom + "/" + tile.x + "/" + tile.y + ".png";
     },
     maxZoom: 7,
     opacity: 0,
@@ -1328,14 +1363,33 @@ function initialize() {
   presoverlay = new google.maps.ImageMapType({
     getTileUrl: function(tile, zoom) {
       if (zoom > 7) return;
-      return "http://www.openportguide.org/tiles/actual/surface_pressure/5/" + zoom + "/" + tile.x + "/" + tile.y + ".png";
+			return "http://weather.openportguide.de/tiles/actual/surface_pressure/0h/" + zoom + "/" + tile.x + "/" + tile.y + ".png";
     },
     maxZoom: 7,
     opacity: 0,
     tileSize: new google.maps.Size(256, 256)
   });
 
+  tempoverlay = new google.maps.ImageMapType({
+    getTileUrl: function(tile, zoom) {
+      if (zoom > 7) return;
+			return "http://weather.openportguide.de/tiles/actual/air_temperature/0h/" + zoom + "/" + tile.x + "/" + tile.y + ".png";
+    },
+    maxZoom: 7,
+    opacity: 0,
+    tileSize: new google.maps.Size(256, 256)
+  });
 
+  rainoverlay = new google.maps.ImageMapType({
+    getTileUrl: function(tile, zoom) {
+      if (zoom > 7) return;
+			return "http://weather.openportguide.de/tiles/actual/precipitation_shaded/0h/" + zoom + "/" + tile.x + "/" + tile.y + ".png";
+    },
+    maxZoom: 7,
+    opacity: 0,
+    tileSize: new google.maps.Size(256, 256)
+  });
+	
   var myOptions = {
     mapTypeControlOptions: {
 			mapTypeIds: [google.maps.MapTypeId.ROADMAP, google.maps.MapTypeId.TERRAIN, google.maps.MapTypeId.SATELLITE, google.maps.MapTypeId.HYBRID]
@@ -1518,7 +1572,7 @@ function initialize() {
   document.getElementById("ett2").innerHTML = "<TABLE class=\"tt\"><TR width=\"12\"><TH class=\"cgv\" ondblclick=\"allmarker();\"><IMG src='" + tld + "/pict/ico.png'></TH><TH class=\"cgv\" ondblclick=\"allpath();\"><IMG src='" + tld + "/pict/tra.gif'></TH><TH class=\"cgn\" onclick=\"tricn();\">CN</TH><TH class=\"cgc\" ondblclick=\"deleteallpath();\"><IMG border =\"0\" src='" + tld + "/pict/a.gif'></TH><TH class=\"cga\" onclick=\"trialti();\">Alti.</TH><TH class=\"cgz\">Vz</TH></TR></table>";
   document.getElementById("ac").innerHTML = "<span style=\"color: #333; font-weight: bold; font-size: 1.1em; line-height: 1.3em;\">&nbsp;&nbsp;&nbsp;..::Aircraft::..</span><BR><span class=\"act\">CN: </span><span id=\"accn\" class=\"aca\"></span><BR><DIV id=\"ac1\"><span class=\"act\">Regist.: </span><span id=\"acre\" class=\"aca\"></span><BR></DIV><span class=\"act\">Device Id: </span><span id=\"acfi\" class=\"aca\"></span><BR><span class=\"act\">Type: </span><span id=\"acty\" class=\"aca\"></span><BR><DIV id=\"ac2\"><span class=\"act\">Model: </span><span id=\"acmo\" class=\"aca\"></span></DIV><span class=\"act\">Last time: </span><span id=\"aclt\" class=\"aca\"></span><BR><span class=\"act\">Latitude: </span><span id=\"acla\" class=\"aca\"></span><BR><span class=\"act\">Longitude: </span><span id=\"aclo\" class=\"aca\"></span><BR><span class=\"act\">Altitude: </span><span id=\"acal\" class=\"aca\"></span><BR><span class=\"act\">G.Speed: </span><span id=\"acsp\" class=\"aca\"></span><BR><span class=\"act\">Track: </span><span id=\"actr\" class=\"aca\"></span><span class=\"aca\">&thinsp;&deg;</span><BR><span class=\"act\">Vz: </span><span id=\"acvz\" class=\"aca\"></span><BR><span class=\"act\">Receiver: </span><span id=\"acrx\" class=\"aca\"></span><BR><span id=\"acif\" class=\"aca\"></span>";
   document.getElementById("dtable").innerHTML = "<DIV id=\"menu\" style=\"display:none;\"></DIV><DIV id=\"dtlist\" style=\"display:block\"></DIV>";
-  document.getElementById("menu").innerHTML = "<TABLE class=\"tt\"><TR><TD><INPUT type=\"checkbox\" id=\"hnewbox\" onChange='javascript : hidenew();'> Hide new gliders<BR><INPUT type=\"checkbox\" id=\"offl\" onChange='javascript : lineoff();'" + ((all === 0) ? " checked" : "") + "> Ignore Offline<HR><INPUT type=\"checkbox\" id=\"boundsbox\" onChange='javascript : bounds();'" + ((bound === true) ? " checked" : "") + "> Bounds<BR><TABLE cellspacing=\"0\" cellpading=\"0\"><TR align=\"center\"><TD colspan=\"2\"><INPUT type=\"text\" id=\"latmax\" name=\"latmax\" size=\"7\" value=\"" + amax + "\"></TD></TR><TR align=\"center\"><TD><INPUT type=\"text\" id=\"lonmin\" name=\"lonmin\" size=\"7\" value=\"" + omin + "\"></TD><TD><INPUT type=\"text\" id=\"lonmax\" name=\"lonmax\" size=\"7\" value=\"" + omax + "\"></TD></TR><TR align=\"center\"><TD colspan=\"2\"><INPUT type=\"text\" id=\"latmin\" name=\"latmin\" size=\"7\" value=\"" + amin + "\"></TD></TR></TABLE><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<INPUT type=\"button\" onclick=\"settomap()\" value=\"Set to map\"><BR><INPUT type=\"checkbox\" id=\"astmbox\" onChange='javascript : astm();'> Auto Set to map<HR>..:: Devices ::..<BR><INPUT type=\"checkbox\" id=\"ICAObox\" onChange=\"javascript : devtype();\"> ICAO<BR><INPUT type=\"checkbox\" id=\"Flarmbox\" onChange=\"javascript : devtype();\"> Flarm<BR><INPUT type=\"checkbox\" id=\"OGNbox\" onChange=\"javascript : devtype();\"> OGN Trackers<HR>..:: Layers ::..<BR><INPUT type=\"checkbox\" id=\"winbox\" onChange=\"javascript : wind();\"> Wind <BR><INPUT type=\"checkbox\" id=\"prebox\" onChange=\"javascript : pres();\"> Pressure <BR><INPUT type=\"checkbox\" id=\"aspbox\" onChange=\"javascript : asp();\"> AirSpaces <A HREF=\"http://www.openaip.net\" target=\"_blank\" style=\"font-size:10px;\">( openaip.net )</A><BR><INPUT type=\"checkbox\" id=\"aptbox\" onChange=\"javascript : apt();\"> Airports <A HREF=\"http://www.openaip.net\" target=\"_blank\" style=\"font-size:10px;\">( openaip.net )</A><BR><INPUT type=\"checkbox\" id=\"reclbox\" onChange=\"javascript : reclbox();\"> Receivers<BR><span id=\"dtaskbox\"><INPUT type=\"checkbox\" disabled></span> <span onclick=\"taskclic();\">Tasks</span><BR> <DIV style=\"display:none\"><input type=\"file\" id=\"chfile\" onchange=\"rtask()\" /></DIV><HR>..::Units::..<BR><input type=\"radio\" name=\"units\" id=\"unm\" value=\"m\" onclick=\"chunit()\" checked>Met. <input type=\"radio\" name=\"units\" id=\"uni\" value=\"i\" onclick=\"chunit()\">Imp.<HR>..::Path length::..<BR><input type=\"radio\" name=\"pl\" id=\"rp1\" value=\"1\" checked onclick=\"chpl()\">5' <input type=\"radio\" name=\"pl\" id=\"rp2\" value=\"2\" onclick=\"chpl()\">10' <input type=\"radio\" name=\"pl\" id=\"rp3\" value=\"3\" onclick=\"chpl()\">All<HR><CENTER>Join the<BR><A HREF=\"http://ddb.glidernet.org\" target=\"_blank\">OGN DataBase</A></CENTER><HR><CENTER><A HREF=\"https://github.com/glidernet/ogn-live\" target=\"_blank\">Sources</A></CENTER></TD></TR></TABLE>";
+  document.getElementById("menu").innerHTML = "<TABLE class=\"tt\"><TR><TD><INPUT type=\"checkbox\" id=\"hnewbox\" onChange='javascript : hidenew();'> Hide new gliders<BR><INPUT type=\"checkbox\" id=\"offl\" onChange='javascript : lineoff();'" + ((all === 0) ? " checked" : "") + "> Ignore Offline<HR><INPUT type=\"checkbox\" id=\"boundsbox\" onChange='javascript : bounds();'" + ((bound === true) ? " checked" : "") + "> Bounds<BR><TABLE cellspacing=\"0\" cellpading=\"0\"><TR align=\"center\"><TD colspan=\"2\"><INPUT type=\"text\" id=\"latmax\" name=\"latmax\" size=\"7\" value=\"" + amax + "\"></TD></TR><TR align=\"center\"><TD><INPUT type=\"text\" id=\"lonmin\" name=\"lonmin\" size=\"7\" value=\"" + omin + "\"></TD><TD><INPUT type=\"text\" id=\"lonmax\" name=\"lonmax\" size=\"7\" value=\"" + omax + "\"></TD></TR><TR align=\"center\"><TD colspan=\"2\"><INPUT type=\"text\" id=\"latmin\" name=\"latmin\" size=\"7\" value=\"" + amin + "\"></TD></TR></TABLE><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<INPUT type=\"button\" onclick=\"settomap()\" value=\"Set to map\"><BR><INPUT type=\"checkbox\" id=\"astmbox\" onChange='javascript : astm();'> Auto Set to map<HR>..:: Devices ::..<BR><INPUT type=\"checkbox\" id=\"ICAObox\" onChange=\"javascript : devtype();\"> ICAO<BR><INPUT type=\"checkbox\" id=\"Flarmbox\" onChange=\"javascript : devtype();\"> Flarm<BR><INPUT type=\"checkbox\" id=\"OGNbox\" onChange=\"javascript : devtype();\"> OGN Trackers<HR>..:: Layers ::..<BR><INPUT type=\"checkbox\" id=\"tembox\" onChange=\"javascript : tempe();\"> Temperature <BR><INPUT type=\"checkbox\" id=\"winbox\" onChange=\"javascript : wind();\"> Wind <a title=\"openportguide.de\" href=\"http://openportguide.de/index.php/en\" target=\"_blank\"><img src=\"pict/OpenPortGuideLogo_32.png\" style=\"float: right;\" border=\"0\" alt=\"\"></a><BR><INPUT type=\"checkbox\" id=\"prebox\" onChange=\"javascript : pres();\"> Pressure <BR><INPUT type=\"checkbox\" id=\"raibox\" onChange=\"javascript : rain();\"> Precipitation <BR><INPUT type=\"checkbox\" id=\"aspbox\" onChange=\"javascript : asp();\"> AirSpaces <A HREF=\"http://www.openaip.net\" target=\"_blank\" style=\"font-size:10px;\">( openaip.net )</A><BR><INPUT type=\"checkbox\" id=\"aptbox\" onChange=\"javascript : apt();\"> Airports <A HREF=\"http://www.openaip.net\" target=\"_blank\" style=\"font-size:10px;\">( openaip.net )</A><BR><INPUT type=\"checkbox\" id=\"reclbox\" onChange=\"javascript : reclbox();\"> Receivers<BR><span id=\"dtaskbox\"><INPUT type=\"checkbox\" disabled></span> <span onclick=\"taskclic();\">Tasks</span><BR> <DIV style=\"display:none\"><input type=\"file\" id=\"chfile\" onchange=\"rtask()\" /></DIV><HR>..::Units::..<BR><input type=\"radio\" name=\"units\" id=\"unm\" value=\"m\" onclick=\"chunit()\" checked>Met. <input type=\"radio\" name=\"units\" id=\"uni\" value=\"i\" onclick=\"chunit()\">Imp.<HR>..::Path length::..<BR><input type=\"radio\" name=\"pl\" id=\"rp1\" value=\"1\" checked onclick=\"chpl()\">5' <input type=\"radio\" name=\"pl\" id=\"rp2\" value=\"2\" onclick=\"chpl()\">10' <input type=\"radio\" name=\"pl\" id=\"rp3\" value=\"3\" onclick=\"chpl()\">All<HR><CENTER>Join the<BR><A HREF=\"http://ddb.glidernet.org\" target=\"_blank\">OGN DataBase</A></CENTER><HR><CENTER><A HREF=\"https://github.com/glidernet/ogn-live\" target=\"_blank\">Sources</A></CENTER></TD></TR></TABLE>";
 
   // parameter b=lat1,lon1,lat2,lon2 bounds
   if (typeof(parh.b) != 'undefined') {
@@ -1537,6 +1591,10 @@ function initialize() {
   if (typeof(parh.l) != 'undefined') {
     for (var i = 0; i < parh.l.length; i++) {
       switch (parh.l[i]) {
+        case 't': // temperature
+          document.getElementById('tembox').checked = true;
+          tempe();
+          break;				
         case 'v': // wind
           document.getElementById('winbox').checked = true;
           wind();
@@ -1545,6 +1603,10 @@ function initialize() {
           document.getElementById('prebox').checked = true;
           pres();
           break;
+        case 'n': // precipitation
+          document.getElementById('raibox').checked = true;
+          rain();
+          break;					
         case 'z': // airspace
           document.getElementById('aspbox').checked = true;
           asp();
