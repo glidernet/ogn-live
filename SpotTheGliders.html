@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<!--
+   ____                      _____ _ _     _             _   _      _                      _    
+  / __ \                    / ____| (_)   | |           | \ | |    | |                    | |   
+ | |  | |_ __   ___ _ __   | |  __| |_  __| | ___ _ __  |  \| | ___| |___      _____  _ __| | __
+ | |  | | '_ \ / _ \ '_ \  | | |_ | | |/ _` |/ _ \ '__| | . ` |/ _ \ __\ \ /\ / / _ \| '__| |/ /
+ | |__| | |_) |  __/ | | | | |__| | | | (_| |  __/ |    | |\  |  __/ |_ \ V  V / (_) | |  |   < 
+  \____/| .__/ \___|_| |_|  \_____|_|_|\__,_|\___|_|    |_| \_|\___|\__| \_/\_/ \___/|_|  |_|\_\
+        | |                                                                                     
+        |_|                                                                                     
+-->
+<html>
+<head>
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+<title>Spot the gliders!</title>
+<link href="SpotTheGliders_files/cunimb.css" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3&amp;libraries=geometry&amp;sensor=false"></script>
+
+<script type="text/javascript" src="SpotTheGliders_files/util.js"></script>
+<script type="text/javascript">
+var cxml = "lxml.php";
+var cxml1 = "livexml1.php";
+var dxml = "dataxml.php";
+var rxml = "rec.php";
+var tld = "http://live.glidernet.org";
+var vlon = 1.691230;
+var vlat = 49.079071;
+var vlatmin = -33.380550;
+var vlonmin = -70.590874;
+var vlatmax = 62.650501;
+var vlonmax = 26.169880;
+var bound = false;
+var boundc = '';
+var amax = 85;
+var amin = -85;
+var omax = 180;
+var omin = -180;
+var recc = "";
+var parc = "";
+var tz;
+try {
+    tz = new Date().getTimezoneOffset();
+}
+catch(e) {
+    tz = 0;
+} 
+
+</script>
+<script type="text/javascript" src="SpotTheGliders_files/cunimb.js"></script>
+<script type="text/javascript" src="SpotTheGliders_files/barogram.js"></script>
+<script type="text/javascript" src="SpotTheGliders_files/horizZoomControl.js"></script>
+
+</head>
+<body onload="initialize()">
+  <div id="popup" onclick="cp('popup');"></div>
+  <div id="map_canvas"></div>
+  <div id="ac" class="acright" onclick="this.style.display='none';"></div>
+  <div id="dlist" class="lright">
+  	<DIV id="ett1" ></DIV>
+	<DIV id="ett2" ></DIV>	 		
+  	<DIV id="dtable"></DIV>
+  </div>
+<!--  -->
+  <div id="dbaro" class="baroleft" style="display:none">
+    <canvas id="div_baroScale" height="600" width="45"></canvas>
+    <canvas id="div_baro" height="600" width="70"></canvas>
+    <canvas id="div_baroMark" height="600" width="30"></canvas>
+  </div>
+</body>
+
+</html>
