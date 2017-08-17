@@ -117,6 +117,7 @@ $aero = array (		// code OACI => FullName , geographic bounds, airfield altitude
 	'LOWG'=> array('GRAZ',"l.rec='LOWG' AND l.alt < 1400 AND (l.lat BETWEEN 46.96942 AND 47.01433 ) AND (l.lon BETWEEN 15.41786 AND 15.46284)",340,''),	
 	'LSZG'=> array('GRENCHEN / GRANGES',"l.rec='LSZG' AND l.alt < 1130 AND (l.lat BETWEEN 47.17724 AND 47.18546 ) AND (l.lon BETWEEN 7.40725 AND 7.42772)",430,''),
 	'LFLG'=> array('GRENOBLE Le Versoud',"l.rec='LFLG' AND l.alt < 920 AND (l.lat BETWEEN 45.21311 AND 45.22349 ) AND (l.lon BETWEEN 5.8385 AND 5.8561)",220,''),
+	'LSGT'=> array('GRUYERE',"l.rec='LSGT' AND l.alt < 1396 AND (l.lat BETWEEN 46.58972 AND 46.6 ) AND (l.lon BETWEEN 7.091667 AND 7.09722)",688,''),
 	'EFHP'=> array('HAAPAVESI',"l.rec='EFHP' AND l.alt < 796 AND (l.lat BETWEEN 64.10695 AND 64.11594 ) AND (l.lon BETWEEN 25.49233 AND 25.52134)",96,''),	
 	'HABE'=> array('Habere Poche',"l.rec='HPoche' AND l.alt < 1792 AND (l.lat BETWEEN 46.26112 AND 46.28147 ) AND (l.lon BETWEEN 6.44935 AND 6.47918)",1092,''),	
 	'LFSH'=> array('HAGUENAU',"l.rec='LFSH' AND l.alt < 850 AND (l.lat BETWEEN 48.7874 AND 48.80125 ) AND (l.lon BETWEEN 7.80606 AND 7.82395)",150,''),
