@@ -110,6 +110,8 @@ catch(e) {
 
 </script>
 <script type="text/javascript" src="cunimb.js"></script>
+<script type="text/javascript" src="barogram.js"></script>
+<script type="text/javascript" src="horizZoomControl.js"></script>
 
 </head>
 <body onload="initialize()">
@@ -120,6 +122,11 @@ catch(e) {
     <DIV id="ett1" ></DIV>
     <DIV id="ett2" ></DIV>
     <DIV id="dtable"></DIV>
+  </div>
+  <div id="dbaro" class="baroleft" style="display:none">
+    <canvas id="div_baroScale" height="600" width="45"></canvas>
+    <canvas id="div_baro" height="600" width="70"></canvas>
+    <canvas id="div_baroMark" height="600" width="30"></canvas>
   </div>
 </body>
 
