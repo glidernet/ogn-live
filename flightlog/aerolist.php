@@ -1,5 +1,12 @@
 <?php
-$aero = array (		// code OACI => FullName , geographic bounds, airfield altitude , password
+$aero = array (
+				// code OACI => array(
+				// FullName,
+				// candidate track selection SQL snippet (l.rec for receiver name, alt for altitude (in meters), lat/lon for geographic position),
+				//                                                                 /\ airfield altitude + 700m for good winch launch take-off detection
+				// airfield altitude (in meters),
+				// password
+				// )
 	'LFOI'=> array('ABBEVILLE',"l.rec='LFOI' AND l.alt < 767 AND (l.lat BETWEEN 50.13 AND 50.15 ) AND (l.lon BETWEEN 1.8 AND 1.86)",67,''),
 	'ABOY'=> array('Aboyne',"l.rec='UKABO' AND l.alt < 840 AND (l.lat BETWEEN 57.07191 AND 57.07745 ) AND (l.lon BETWEEN -2.85071 AND -2.83011)",140,''),
 	'LOXA'=> array('AIGEN IM ENNSTAL',"l.rec='LOXA' AND l.alt < 1340 AND (l.lat BETWEEN 47.53237 AND 47.53919 ) AND (l.lon BETWEEN 14.13251 AND 14.15038)",640,''),
@@ -67,6 +74,7 @@ $aero = array (		// code OACI => FullName , geographic bounds, airfield altitude
 	'CELL'=> array('Celle-Scheuen',"l.rec='EDVC' AND l.alt < 755 AND (l.lat BETWEEN 52.66731 AND 52.67129 ) AND (l.lon BETWEEN 10.07655 AND 10.0998)",55,''),
 	'LFQK'=> array('CHALON Ecury sur Coole',"l.rec='LFQK' AND l.alt < 797 AND (l.lat BETWEEN 48.89664 AND 48.91241 ) AND (l.lon BETWEEN 4.33942 AND 4.36159)",97,''),	
 	'LFLE'=> array('CHAMBERY Challes-Les-Eaux',"l.rec='LFLE' AND l.alt < 997 AND (l.lat BETWEEN 45.55 AND 45.567 ) AND (l.lon BETWEEN 5.96 AND 5.99)",297,''),
+	'CHAMJ'=> array('Cham-Janahof',"l.rec='Cham' AND l.alt < 1066 AND (l.lat BETWEEN 49.210965 AND 49.213979) AND (l.lon BETWEEN 12.646970 AND 12.660230)",366,''),
 	'LFOR'=> array('CHARTRES Champhol',"l.rec='LFOR' AND l.alt < 855 AND (l.lat BETWEEN 48.45204 AND 48.46295 ) AND (l.lon BETWEEN 1.50418 AND 1.53508)",155,''),
 	'LFMX'=> array('CHATEAU ARNOUX Saint Auban',"l.rec='LFMX' AND l.alt < 1159 AND (l.lat BETWEEN 44.04676 AND 44.07041 ) AND (l.lon BETWEEN 5.97311 AND 6.03491)",459,''),	
 	'UKCHP'=> array('CHIPPING',"l.rec='UKCHP' AND l.alt < 890 AND (l.lat BETWEEN 53.88139 AND 53.887841 ) AND (l.lon BETWEEN -2.63071 AND -2.60936)",190,''),
@@ -188,7 +196,7 @@ $aero = array (		// code OACI => FullName , geographic bounds, airfield altitude
 	'LSZO'=> array('LUZERN-BEROMUNSTER',"l.rec='LSZO' AND l.alt < 1354 AND (l.lat BETWEEN 47.18296 AND 47.19415 ) AND (l.lon BETWEEN 8.19432 AND 8.2138)",654,''),
 	'LFHJ'=> array('LYON Corbas',"l.rec='LFHJ' AND l.alt < 899 AND (l.lat BETWEEN 45.64365 AND 45.66555 ) AND (l.lon BETWEEN 4.90281 AND 4.925)",199,''),
 	'LFFC'=> array('MANTES Cherence',"l.rec='LFFC' AND l.alt < 856 AND (l.lat BETWEEN 49.07102 AND 49.09233 ) AND (l.lon BETWEEN 1.66177 AND 1.70941)",156,''),
-	'EKMB'=> array('Maribo Airport',"l.rec='EKMB' AND (l.alt < 705) AND (l.lat BETWEEN 54.69626 AND 54.70184) AND (l.lon BETWEEN 11.42468 AND 11.45234)",5,''),		
+	'EKMB'=> array('Maribo Airport',"l.rec='EKMB' AND l.alt < 705 AND (l.lat BETWEEN 54.69626 AND 54.70184) AND (l.lon BETWEEN 11.42468 AND 11.45234)",5,''),		
 	'LFQJ'=> array('MAUBEUGE Elesmes',"l.rec='LFQJ' AND l.alt < 838 AND (l.lat BETWEEN 50.30048 AND 50.321508 ) AND (l.lon BETWEEN 4.01924 AND 4.050141)",138,''),
 	'EFME'=> array('MENKIJARVI',"l.rec='EFME' AND l.alt < 801 AND (l.lat BETWEEN 62.94008 AND 62.95219 ) AND (l.lon BETWEEN 23.50186 AND 23.53018)",101,''),
 	'LFNB'=> array('MENDE Brenoux',"l.rec='LFNB' AND l.alt < 1725 AND (l.lat BETWEEN 44.49475 AND 44.50815 ) AND (l.lon BETWEEN 3.52056 AND 3.5442)",1025,''),	
