@@ -30,7 +30,7 @@ Flag | Description                      | Value
    m | map type                         | s:sattelite, h:hybrid, r:roadmap, t:relief
    b | bounds                           | lat_max,lat_min,lon_max,lon_min
    s | auto set to map                  | 1 - true
-   l | show special layers              | v:wind, p:pressure, z:airspaces, a:airports, r:recievers
+   l | show special layers              | v:wind, p:pressure, z:airspaces, a:airports, r:receivers
    u | use imperial units               | i - activated
    p | path length                      | default: 5 min, p=2: 10 min, p=3 all points
    n | show side panel                  | 0 - hidden
