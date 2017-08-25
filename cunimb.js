@@ -12,7 +12,8 @@ var map;
 var autoc = "";
 var acaff = "";
 var cton = false;
-var tcolor = ["000000", "FF0000", "00FF00", "0000FF", "FFFF00", "00FFFF", "FF00FF", "C0C0C0", "FFFFFF"];
+//var tcolor = ["000000", "FF0000", "00FF00", "0000FF", "FFFF00", "00FFFF", "FF00FF", "C0C0C0", "FFFFFF"];
+var tcolor = ["000000","FF0000","00B000","0000FF","808000","008080","FF00FF","606060","505028","500000","800080","FF8040","80B000","4040FF","804000","000080"];
 var ccolor = 0;
 var aflist = true;
 var vallpolon = true;
@@ -25,6 +26,7 @@ var online = []; //         ([cn,alt*1,cn+"_"+ps,colcn,afdif]);
 var offline = []; //         ([cn,alt*1,cn+"_"+ps,colcn,afdif]);
 var receivers = [];
 var all = 0;
+var stick = 0;
 var pathl = 30; // path length 5' (30points)
 var unit = "m"; // metric units
 var onoff = 1; // 1: online, 2: offline, 3: Menu
@@ -61,8 +63,8 @@ var m2kt={"m":1, "i":1.94384};
 var am2kt={"m":"m/s", "i":"kt"};
 
 
-var hashc="",hashz="",hashm="",hasho="",hashb="",hashs="",hashl="",hasht="",hl="       ",hashw="",hashu="",hashp="",hashn="",hashy="";
-// center     zoom    maptype  offline  bound   autoset2ma  layers  tasks                warning   units   pathlength nolist devtype
+var hashc="",hashz="",hashm="",hasho="",hashb="",hashs="",hashl="",hasht="",hl="       ",hashw="",hashu="",hashp="",hashn="",hashy="",hasha="";
+// center     zoom    maptype  offline  bound   autoset2ma  layers  tasks                warning   units   pathlength nolist devtype altitudestick
 
 
 //  close popup
@@ -92,6 +94,16 @@ function chunit() { // change units
   rehash();
 }
 
+function chstick() { // change altitude stick
+  if (document.getElementById('stick').checked === true) { // stick visible
+    stick = 1;
+    hasha = "&a=1";
+  } else { // no altitude stick
+    stick = 0;
+    hasha = "";
+  }
+  rehash();
+}
 
 function chpl() { // change path length
   if (document.getElementById('rp1').checked === true) { // 5 minutes
@@ -165,6 +177,7 @@ function delpon() { // delete all online path
   while (online[++j]) {
     window["P_" + online[j][2]].getPath().clear();
     window["M_" + online[j][2]].set('tra', 0);
+    window["S_" + online[j][2]].getPath().clear();
   }
 }
 
@@ -173,8 +186,8 @@ function delpoff() { // delete all offline path
   while (offline[++j]) {
     window["P_" + offline[j][2]].getPath().clear();
     window["M_" + offline[j][2]].set('tra', 0);
+    window["S_" + offline[j][2]].getPath().clear();
   }
-
 }
 
 function deletepath(pol) {
@@ -222,12 +235,18 @@ function allmarker() {
       window["M_" + online[j][2]].setOptions({
         visible: vallmaron
       });
+      window["S_" + online[j][2]].setOptions({
+        visible: vallmaron
+      });
     }
   } else {
     if (vallmaroff === true) vallmaroff = false;
     else vallmaroff = true;
     while (offline[++j]) {
       window["M_" + offline[j][2]].setOptions({
+        visible: vallmaroff
+      });
+      window["S_" + offline[j][2]].setOptions({
         visible: vallmaroff
       });
     }
@@ -374,6 +393,8 @@ function reseton() { // delete all online markers and their path
   while (online[++j]) {
     window["M_" + online[j][2]].setMap(null);
     delete window["M_" + online[j][2]];
+    window["S_" + online[j][2]].setMap(null);
+    delete window["S_" + online[j][2]];
     window["P_" + online[j][2]].setMap(null);
     delete window["P_" + online[j][2]];
   }
@@ -384,6 +405,8 @@ function resetoff() { // delete all offline markers and their path
   while (offline[++j]) {
     window["M_" + offline[j][2]].setMap(null);
     delete window["M_" + offline[j][2]];
+    window["S_" + offline[j][2]].setMap(null);
+    delete window["S_" + offline[j][2]];
     window["P_" + offline[j][2]].setMap(null);
     delete window["P_" + offline[j][2]];
   }
@@ -458,7 +481,9 @@ function afftab() {
       while (online[++j]) {
         mar = "M_" + online[j][2];
         pol = "P_" + online[j][2];
-        dlistd += "<TR id=\"" + pol + "\" onmouseover=\"focuson('" + pol + "');\" onmouseout=\"focusoff('" + pol + "');\"><TD class=\"cgv\"><input onchange=\"vpolmar(this.checked ,'" + mar + "');\" type=\"checkbox\" " + isvisib(mar) + " ></TD><TD class=\"cgv\"><input onchange=\"vpolmar(this.checked ,'" + pol + "');\" type=\"checkbox\" " + isvisib(pol) + " ></TD><TD class=\"cgn\" onmousedown=\"centeron('" + mar + "');\" onmouseup=\"centeroff();\" oncontextmenu=\"event.stopPropagation(); redraw('" + pol + "'); return false;\" ondblclick=\"event.stopPropagation(); autocenter('" + mar + "');\" >" + online[j][0] + "</TD><TD class=\"cgc\"><span style='background-color: " + online[j][3] + "' ondblclick=\"deletepath('" + pol + "'); return false;\" oncontextmenu=\"this.style.backgroundColor=changecolor('" + mar + "'); return false;\">&nbsp;&nbsp;</span></TD><TD onclick=\"affinfo('" + mar + "')\" class=\"cga\">";
+        stk = "S_" + online[j][2];
+        dlistd += "<TR id=\"" + pol + "\" onmouseover=\"focuson('" + pol + "');\" onmouseout=\"focusoff('" + pol + "');\"><TD class=\"cgv\"><input onchange=\"vpolmar(this.checked ,'" + mar + "');vpolmar(this.checked ,'" + stk + "');\" type=\"checkbox\" " + isvisib(mar) + " ></TD><TD class=\"cgv\"><input onchange=\"vpolmar(this.checked ,'" + pol + "');\" type=\"checkbox\" " + isvisib(pol) + " ></TD><TD class=\"cgn\" onmousedown=\"centeron('" + mar + "');\" onmouseup=\"centeroff();\" oncontextmenu=\"event.stopPropagation(); redraw('" + pol + "'); return false;\" ondblclick=\"event.stopPropagation(); autocenter('" + mar + "');\" >" + online[j][0] + "</TD><TD class=\"cgc\"><span style='background-color: " + online[j][3] + "' ondblclick=\"deletepath('" + pol + "'); return false;\" oncontextmenu=\"this.style.backgroundColor=changecolor('" + mar + "'); return false;\">&nbsp;&nbsp;</span></TD><TD onclick=\"affinfo('" + mar + "')\" class=\"cga\">";
+//        dlistd += "<TR id=\"" + pol + "\" onmouseover=\"focuson('" + pol + "');\" onmouseout=\"focusoff('" + pol + "');\"><TD class=\"cgv\"><input onchange=\"vpolmar(this.checked ,'" + mar + "');\" type=\"checkbox\" " + isvisib(mar) + " ></TD><TD class=\"cgv\"><input onchange=\"vpolmar(this.checked ,'" + pol + "');\" type=\"checkbox\" " + isvisib(pol) + " ></TD><TD class=\"cgn\" onmousedown=\"centeron('" + mar + "');\" onmouseup=\"centeroff();\" oncontextmenu=\"event.stopPropagation(); redraw('" + pol + "'); return false;\" ondblclick=\"event.stopPropagation(); autocenter('" + mar + "');\" >" + online[j][0] + "</TD><TD class=\"cgc\"><span style='background-color: " + online[j][3] + "' ondblclick=\"deletepath('" + pol + "'); return false;\" oncontextmenu=\"this.style.backgroundColor=changecolor('" + mar + "'); return false;\">&nbsp;&nbsp;</span></TD><TD onclick=\"affinfo('" + mar + "')\" class=\"cga\">";
         if (unit == "i") {
           dlistd += (online[j][1] * m2ft[unit]).toFixed();
         } // { var tv=online[j][1]*m2ft[unit];   dlistd+= tv.toFixed(); }
@@ -473,7 +498,9 @@ function afftab() {
       while (offline[++j]) {
         mar = "M_" + offline[j][2];
         pol = "P_" + offline[j][2];
-        dlistd += "<TR id=\"" + pol + "\" onmouseover=\"focuson('" + pol + "');\" onmouseout=\"focusoff('" + pol + "');\"><TD class=\"cgv\"><input onchange=\"vpolmar(this.checked ,'" + mar + "');\" type=\"checkbox\" " + isvisib(mar) + " ></TD><TD class=\"cgv\"><input onchange=\"vpolmar(this.checked ,'" + pol + "');\" type=\"checkbox\" " + isvisib(pol) + " ></TD><TD class=\"cgn\" onmousedown=\"centeron('" + mar + "');\" onmouseup=\"centeroff();\" oncontextmenu=\"event.stopPropagation(); redraw('" + pol + "'); return false;\" ondblclick=\"event.stopPropagation(); autocenter('" + mar + "');\" >" + offline[j][0] + "</TD><TD class=\"cgc\"><span style='background-color: " + offline[j][3] + "' ondblclick=\"deletepath('" + pol + "'); return false;\" oncontextmenu=\"this.style.backgroundColor=changecolor('" + mar + "'); return false;\">&nbsp;&nbsp;</span></TD><TD onclick=\"affinfo('" + mar + "')\" class=\"cga\">";
+        stk = "S_" + offline[j][2];
+        dlistd += "<TR id=\"" + pol + "\" onmouseover=\"focuson('" + pol + "');\" onmouseout=\"focusoff('" + pol + "');\"><TD class=\"cgv\"><input onchange=\"vpolmar(this.checked ,'" + mar + "');vpolmar(this.checked ,'" + stk + "');\" type=\"checkbox\" " + isvisib(mar) + " ></TD><TD class=\"cgv\"><input onchange=\"vpolmar(this.checked ,'" + pol + "');\" type=\"checkbox\" " + isvisib(pol) + " ></TD><TD class=\"cgn\" onmousedown=\"centeron('" + mar + "');\" onmouseup=\"centeroff();\" oncontextmenu=\"event.stopPropagation(); redraw('" + pol + "'); return false;\" ondblclick=\"event.stopPropagation(); autocenter('" + mar + "');\" >" + offline[j][0] + "</TD><TD class=\"cgc\"><span style='background-color: " + offline[j][3] + "' ondblclick=\"deletepath('" + pol + "'); return false;\" oncontextmenu=\"this.style.backgroundColor=changecolor('" + mar + "'); return false;\">&nbsp;&nbsp;</span></TD><TD onclick=\"affinfo('" + mar + "')\" class=\"cga\">";
+//        dlistd += "<TR id=\"" + pol + "\" onmouseover=\"focuson('" + pol + "');\" onmouseout=\"focusoff('" + pol + "');\"><TD class=\"cgv\"><input onchange=\"vpolmar(this.checked ,'" + mar + "');\" type=\"checkbox\" " + isvisib(mar) + " ></TD><TD class=\"cgv\"><input onchange=\"vpolmar(this.checked ,'" + pol + "');\" type=\"checkbox\" " + isvisib(pol) + " ></TD><TD class=\"cgn\" onmousedown=\"centeron('" + mar + "');\" onmouseup=\"centeroff();\" oncontextmenu=\"event.stopPropagation(); redraw('" + pol + "'); return false;\" ondblclick=\"event.stopPropagation(); autocenter('" + mar + "');\" >" + offline[j][0] + "</TD><TD class=\"cgc\"><span style='background-color: " + offline[j][3] + "' ondblclick=\"deletepath('" + pol + "'); return false;\" oncontextmenu=\"this.style.backgroundColor=changecolor('" + mar + "'); return false;\">&nbsp;&nbsp;</span></TD><TD onclick=\"affinfo('" + mar + "')\" class=\"cga\">";
         if (unit == "i") {
           dlistd += (offline[j][1] * m2ft[unit]).toFixed();
         } else dlistd += offline[j][1] + "m";
@@ -609,7 +636,8 @@ function dec2dms(dec) {
 
 function changecolor(mark) {
   var colactive = window[mark].get('icol');
-  if (++colactive == 9) colactive = 0;
+//  if (++colactive == 9) colactive = 0;
+  if (++colactive == tcolor.length) colactive = 0;
   var ncol = tcolor[colactive];
   window[window[mark].get('poly')].setOptions({
     strokeColor: '#' + ncol
@@ -909,8 +937,18 @@ function gesmark() {
 
 
       var posi = new google.maps.LatLng(lat, lon);
+      var te = 0; //altitude sol
+//      elevator.getElevationForLocations({'locations': [posi]}, function(results, status) {
+//      if (status == google.maps.ElevationStatus.OK) {
+//          if (results[0]) {
+//            te = Math.round(results[0].elevation);
+//          }
+//        }
+//      });
+      var posiBaton = new google.maps.LatLng(lat+(0.00001*(alt-te)), lon);
       var polyvar = "P_" + crc;
       var markvar = "M_" + crc;
+      var stickvar = "S_" + crc;
       var visib = true;
 
 
@@ -945,9 +983,26 @@ function gesmark() {
           document.getElementById("divInfo").innerHTML = "&nbsp;";
         });
 
+        // création du Baton d'altitude
+        var stickOptions = {
+//          strokeColor: '#' + hcol,
+          strokeColor: '#' + '000000',  // black for now
+          strokeOpacity: 0.75,
+          strokeWeight: 2,
+          visible: visib
+        };
+        window[stickvar] = new google.maps.Polyline(stickOptions);
+        window[stickvar].setMap(map);
+        window[stickvar].set('nom', "" + cn + " - " + ps);
+        window[stickvar].set('baton', "" + stickvar);
+
+        window[stickvar].getPath().push(posi);
+        window[stickvar].getPath().push(posiBaton);
+
         // création du Marker
         window[markvar] = new google.maps.Marker({
-          position: posi,
+//          position: posi,
+          position: posiBaton,
           title: cn + " - " + ps + " @ " + alt + "m",
           map: map,
           icon: "" + tld + "/markers/" + cn + ftypec[typ * 1] + ".png",
@@ -955,6 +1010,7 @@ function gesmark() {
         });
         window[markvar].set('poly', "" + polyvar);
         window[markvar].set('mark', "" + markvar);
+        window[markvar].set('stick', "" + stickvar);
         window[markvar].set('nom', "" + cn + " - " + ps);
         window[markvar].set('cn', "" + cn);
         window[markvar].set('reg', "" + ps);
@@ -978,11 +1034,13 @@ function gesmark() {
           var bcol = window[this.get('poly')].strokeColor;
           document.getElementById("divInfo").innerHTML = "<span style='background-color: " + bcol + "'>&nbsp;&nbsp;&nbsp;</span>&nbsp;" + this.get('nom');
           focuson(this.get('poly'));
+          focuson(this.get('stick'));
         });
 
         google.maps.event.addListener(window[markvar], "mouseout", function() {
           document.getElementById("divInfo").innerHTML = "&nbsp;";
           focusoff(this.get('poly'));
+          focusoff(this.get('stick'));
         });
 
         google.maps.event.addListener(window[markvar], "click", function() {
@@ -1001,7 +1059,8 @@ function gesmark() {
           redraw(pol);
         });
 
-        if (++ccolor == 9) ccolor = 0;
+//        if (++ccolor == 9) ccolor = 0;
+        if (++ccolor == tcolor.length) ccolor = 0;
       } // fin du if typeof...
 
       var difalt = vz * 1;
@@ -1033,7 +1092,18 @@ function gesmark() {
 
 
         window[polyvar].getPath().push(posi); // ajout d'une position sur le tracé
-        window[markvar].setPosition(posi); // déplace le marker
+//        window[markvar].setPosition(posi); // déplace le marker
+        if (stick === 1) {
+          window[stickvar].setOptions({visible: true});
+          window[markvar].setPosition(posiBaton); // déplace le marker
+          window[stickvar].getPath().pop(); // déplace le baton
+          window[stickvar].getPath().pop(); // for now - better way ?
+          window[stickvar].getPath().push(posi);
+          window[stickvar].getPath().push(posiBaton);
+        } else {
+          window[stickvar].setOptions({visible: false});
+          window[markvar].setPosition(posi); // déplace le marker
+        }
 
         // change l'altitude affichée
         window[markvar].setTitle("" + cn + " - " + ps + " @ " + (alt * m2ft[unit]).toFixed() + am2ft[unit] + " @ " + tim);
@@ -1047,7 +1117,11 @@ function gesmark() {
       } else {
         if (all === 0) {
           if (typeof(window[polyvar]) != 'undefined') { // si pas déjà effacé
-            // efface et détruit le PolyLine et le Marker
+//            // efface et détruit le PolyLine et le Marker
+            // efface et détruit le baton, le PolyLine et le Marker
+            window[stickvar].setMap(null);
+            delete window[stickvar];
+		  
             window[polyvar].setMap(null);
             delete window[polyvar];
 
@@ -1106,7 +1180,8 @@ function wd() {
 }
 
 function rehash() {
-  window.location.replace("#" + hashc + hashz + hashm + hasho + hashb + hashs + hashl + hashw + hashp + hashu + hashn + hashy);
+//  window.location.replace("#" + hashc + hashz + hashm + hasho + hashb + hashs + hashl + hashw + hashp + hashu + hashn + hashy);
+  window.location.replace("#" + hashc + hashz + hashm + hasho + hashb + hashs + hashl + hashw + hashp + hashu + hashn + hashy + hasha);
 }
 
 function rempl(po, c) {
@@ -1572,7 +1647,8 @@ function initialize() {
   document.getElementById("ett2").innerHTML = "<TABLE class=\"tt\"><TR width=\"12\"><TH class=\"cgv\" ondblclick=\"allmarker();\"><IMG src='" + tld + "/pict/ico.png'></TH><TH class=\"cgv\" ondblclick=\"allpath();\"><IMG src='" + tld + "/pict/tra.gif'></TH><TH class=\"cgn\" onclick=\"tricn();\">CN</TH><TH class=\"cgc\" ondblclick=\"deleteallpath();\"><IMG border =\"0\" src='" + tld + "/pict/a.gif'></TH><TH class=\"cga\" onclick=\"trialti();\">Alti.</TH><TH class=\"cgz\">Vz</TH></TR></table>";
   document.getElementById("ac").innerHTML = "<span style=\"color: #333; font-weight: bold; font-size: 1.1em; line-height: 1.3em;\">&nbsp;&nbsp;&nbsp;..::Aircraft::..</span><BR><span class=\"act\">CN: </span><span id=\"accn\" class=\"aca\"></span><BR><DIV id=\"ac1\"><span class=\"act\">Regist.: </span><span id=\"acre\" class=\"aca\"></span><BR></DIV><span class=\"act\">Device Id: </span><span id=\"acfi\" class=\"aca\"></span><BR><span class=\"act\">Type: </span><span id=\"acty\" class=\"aca\"></span><BR><DIV id=\"ac2\"><span class=\"act\">Model: </span><span id=\"acmo\" class=\"aca\"></span></DIV><span class=\"act\">Last time: </span><span id=\"aclt\" class=\"aca\"></span><BR><span class=\"act\">Latitude: </span><span id=\"acla\" class=\"aca\"></span><BR><span class=\"act\">Longitude: </span><span id=\"aclo\" class=\"aca\"></span><BR><span class=\"act\">Altitude: </span><span id=\"acal\" class=\"aca\"></span><BR><span class=\"act\">G.Speed: </span><span id=\"acsp\" class=\"aca\"></span><BR><span class=\"act\">Track: </span><span id=\"actr\" class=\"aca\"></span><span class=\"aca\">&thinsp;&deg;</span><BR><span class=\"act\">Vz: </span><span id=\"acvz\" class=\"aca\"></span><BR><span class=\"act\">Receiver: </span><span id=\"acrx\" class=\"aca\"></span><BR><span id=\"acif\" class=\"aca\"></span>";
   document.getElementById("dtable").innerHTML = "<DIV id=\"menu\" style=\"display:none;\"></DIV><DIV id=\"dtlist\" style=\"display:block\"></DIV>";
-  document.getElementById("menu").innerHTML = "<TABLE class=\"tt\"><TR><TD><INPUT type=\"checkbox\" id=\"hnewbox\" onChange='javascript : hidenew();'> Hide new gliders<BR><INPUT type=\"checkbox\" id=\"offl\" onChange='javascript : lineoff();'" + ((all === 0) ? " checked" : "") + "> Ignore Offline<HR><INPUT type=\"checkbox\" id=\"boundsbox\" onChange='javascript : bounds();'" + ((bound === true) ? " checked" : "") + "> Bounds<BR><TABLE cellspacing=\"0\" cellpading=\"0\"><TR align=\"center\"><TD colspan=\"2\"><INPUT type=\"text\" id=\"latmax\" name=\"latmax\" size=\"7\" value=\"" + amax + "\"></TD></TR><TR align=\"center\"><TD><INPUT type=\"text\" id=\"lonmin\" name=\"lonmin\" size=\"7\" value=\"" + omin + "\"></TD><TD><INPUT type=\"text\" id=\"lonmax\" name=\"lonmax\" size=\"7\" value=\"" + omax + "\"></TD></TR><TR align=\"center\"><TD colspan=\"2\"><INPUT type=\"text\" id=\"latmin\" name=\"latmin\" size=\"7\" value=\"" + amin + "\"></TD></TR></TABLE><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<INPUT type=\"button\" onclick=\"settomap()\" value=\"Set to map\"><BR><INPUT type=\"checkbox\" id=\"astmbox\" onChange='javascript : astm();'> Auto Set to map<HR>..:: Devices ::..<BR><INPUT type=\"checkbox\" id=\"ICAObox\" onChange=\"javascript : devtype();\"> ICAO<BR><INPUT type=\"checkbox\" id=\"Flarmbox\" onChange=\"javascript : devtype();\"> Flarm<BR><INPUT type=\"checkbox\" id=\"OGNbox\" onChange=\"javascript : devtype();\"> OGN Trackers<HR>..:: Layers ::..<BR><INPUT type=\"checkbox\" id=\"tembox\" onChange=\"javascript : tempe();\"> Temperature <BR><INPUT type=\"checkbox\" id=\"winbox\" onChange=\"javascript : wind();\"> Wind <a title=\"openportguide.de\" href=\"http://openportguide.de/index.php/en\" target=\"_blank\"><img src=\"pict/OpenPortGuideLogo_32.png\" style=\"float: right;\" border=\"0\" alt=\"\"></a><BR><INPUT type=\"checkbox\" id=\"prebox\" onChange=\"javascript : pres();\"> Pressure <BR><INPUT type=\"checkbox\" id=\"raibox\" onChange=\"javascript : rain();\"> Precipitation <BR><INPUT type=\"checkbox\" id=\"aspbox\" onChange=\"javascript : asp();\"> AirSpaces <A HREF=\"http://www.openaip.net\" target=\"_blank\" style=\"font-size:10px;\">( openaip.net )</A><BR><INPUT type=\"checkbox\" id=\"aptbox\" onChange=\"javascript : apt();\"> Airports <A HREF=\"http://www.openaip.net\" target=\"_blank\" style=\"font-size:10px;\">( openaip.net )</A><BR><INPUT type=\"checkbox\" id=\"reclbox\" onChange=\"javascript : reclbox();\"> Receivers<BR><span id=\"dtaskbox\"><INPUT type=\"checkbox\" disabled></span> <span onclick=\"taskclic();\">Tasks</span><BR> <DIV style=\"display:none\"><input type=\"file\" id=\"chfile\" onchange=\"rtask()\" /></DIV><HR>..::Units::..<BR><input type=\"radio\" name=\"units\" id=\"unm\" value=\"m\" onclick=\"chunit()\" checked>Met. <input type=\"radio\" name=\"units\" id=\"uni\" value=\"i\" onclick=\"chunit()\">Imp.<HR>..::Path length::..<BR><input type=\"radio\" name=\"pl\" id=\"rp1\" value=\"1\" checked onclick=\"chpl()\">5' <input type=\"radio\" name=\"pl\" id=\"rp2\" value=\"2\" onclick=\"chpl()\">10' <input type=\"radio\" name=\"pl\" id=\"rp3\" value=\"3\" onclick=\"chpl()\">All<HR><CENTER>Join the<BR><A HREF=\"http://ddb.glidernet.org\" target=\"_blank\">OGN DataBase</A></CENTER><HR><CENTER><A HREF=\"https://github.com/glidernet/ogn-live\" target=\"_blank\">Sources</A></CENTER></TD></TR></TABLE>";
+//  document.getElementById("menu").innerHTML = "<TABLE class=\"tt\"><TR><TD><INPUT type=\"checkbox\" id=\"hnewbox\" onChange='javascript : hidenew();'> Hide new gliders<BR><INPUT type=\"checkbox\" id=\"offl\" onChange='javascript : lineoff();'" + ((all === 0) ? " checked" : "") + "> Ignore Offline<HR><INPUT type=\"checkbox\" id=\"boundsbox\" onChange='javascript : bounds();'" + ((bound === true) ? " checked" : "") + "> Bounds<BR><TABLE cellspacing=\"0\" cellpading=\"0\"><TR align=\"center\"><TD colspan=\"2\"><INPUT type=\"text\" id=\"latmax\" name=\"latmax\" size=\"7\" value=\"" + amax + "\"></TD></TR><TR align=\"center\"><TD><INPUT type=\"text\" id=\"lonmin\" name=\"lonmin\" size=\"7\" value=\"" + omin + "\"></TD><TD><INPUT type=\"text\" id=\"lonmax\" name=\"lonmax\" size=\"7\" value=\"" + omax + "\"></TD></TR><TR align=\"center\"><TD colspan=\"2\"><INPUT type=\"text\" id=\"latmin\" name=\"latmin\" size=\"7\" value=\"" + amin + "\"></TD></TR></TABLE><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<INPUT type=\"button\" onclick=\"settomap()\" value=\"Set to map\"><BR><INPUT type=\"checkbox\" id=\"astmbox\" onChange='javascript : astm();'> Auto Set to map<HR>..:: Devices ::..<BR><INPUT type=\"checkbox\" id=\"ICAObox\" onChange=\"javascript : devtype();\"> ICAO<BR><INPUT type=\"checkbox\" id=\"Flarmbox\" onChange=\"javascript : devtype();\"> Flarm<BR><INPUT type=\"checkbox\" id=\"OGNbox\" onChange=\"javascript : devtype();\"> OGN Trackers<HR>..:: Layers ::..<BR><INPUT type=\"checkbox\" id=\"tembox\" onChange=\"javascript : tempe();\"> Temperature <BR><INPUT type=\"checkbox\" id=\"winbox\" onChange=\"javascript : wind();\"> Wind <a title=\"openportguide.de\" href=\"http://openportguide.de/index.php/en\" target=\"_blank\"><img src=\"pict/OpenPortGuideLogo_32.png\" style=\"float: right;\" border=\"0\" alt=\"\"></a><BR><INPUT type=\"checkbox\" id=\"prebox\" onChange=\"javascript : pres();\"> Pressure <BR><INPUT type=\"checkbox\" id=\"raibox\" onChange=\"javascript : rain();\"> Precipitation <BR><INPUT type=\"checkbox\" id=\"aspbox\" onChange=\"javascript : asp();\"> AirSpaces <A HREF=\"http://www.openaip.net\" target=\"_blank\" style=\"font-size:10px;\">( openaip.net )</A><BR><INPUT type=\"checkbox\" id=\"aptbox\" onChange=\"javascript : apt();\"> Airports <A HREF=\"http://www.openaip.net\" target=\"_blank\" style=\"font-size:10px;\">( openaip.net )</A><BR><INPUT type=\"checkbox\" id=\"reclbox\" onChange=\"javascript : reclbox();\"> Receivers<BR><span id=\"dtaskbox\"><INPUT type=\"checkbox\" disabled></span> <span onclick=\"taskclic();\">Tasks</span><BR> <DIV style=\"display:none\"><input type=\"file\" id=\"chfile\" onchange=\"rtask()\" /></DIV><HR>..::Units::..<BR><input type=\"radio\" name=\"units\" id=\"unm\" value=\"m\" onclick=\"chunit()\" checked>Met. <input type=\"radio\" name=\"units\" id=\"uni\" value=\"i\" onclick=\"chunit()\">Imp.<HR>..::Path length::..<BR><input type=\"radio\" name=\"pl\" id=\"rp1\" value=\"1\" checked onclick=\"chpl()\">5' <input type=\"radio\" name=\"pl\" id=\"rp2\" value=\"2\" onclick=\"chpl()\">10' <input type=\"radio\" name=\"pl\" id=\"rp3\" value=\"3\" onclick=\"chpl()\">All<HR><CENTER>Join the<BR><A HREF=\"http://ddb.glidernet.org\" target=\"_blank\">OGN DataBase</A></CENTER><HR><CENTER><A HREF=\"https://github.com/glidernet/ogn-live\" target=\"_blank\">Sources</A></CENTER></TD></TR></TABLE>";
+  document.getElementById("menu").innerHTML = "<TABLE class=\"tt\"><TR><TD><INPUT type=\"checkbox\" id=\"hnewbox\" onChange='javascript : hidenew();'> Hide new gliders<BR><INPUT type=\"checkbox\" id=\"offl\" onChange='javascript : lineoff();'" + ((all === 0) ? " checked" : "") + "> Ignore Offline<HR><INPUT type=\"checkbox\" id=\"boundsbox\" onChange='javascript : bounds();'" + ((bound === true) ? " checked" : "") + "> Bounds<BR><TABLE cellspacing=\"0\" cellpading=\"0\"><TR align=\"center\"><TD colspan=\"2\"><INPUT type=\"text\" id=\"latmax\" name=\"latmax\" size=\"7\" value=\"" + amax + "\"></TD></TR><TR align=\"center\"><TD><INPUT type=\"text\" id=\"lonmin\" name=\"lonmin\" size=\"7\" value=\"" + omin + "\"></TD><TD><INPUT type=\"text\" id=\"lonmax\" name=\"lonmax\" size=\"7\" value=\"" + omax + "\"></TD></TR><TR align=\"center\"><TD colspan=\"2\"><INPUT type=\"text\" id=\"latmin\" name=\"latmin\" size=\"7\" value=\"" + amin + "\"></TD></TR></TABLE><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<INPUT type=\"button\" onclick=\"settomap()\" value=\"Set to map\"><BR><INPUT type=\"checkbox\" id=\"astmbox\" onChange='javascript : astm();'> Auto Set to map<HR>..:: Devices ::..<BR><INPUT type=\"checkbox\" id=\"ICAObox\" onChange=\"javascript : devtype();\"> ICAO<BR><INPUT type=\"checkbox\" id=\"Flarmbox\" onChange=\"javascript : devtype();\"> Flarm<BR><INPUT type=\"checkbox\" id=\"OGNbox\" onChange=\"javascript : devtype();\"> OGN Trackers<HR>..:: Layers ::..<BR><INPUT type=\"checkbox\" id=\"tembox\" onChange=\"javascript : tempe();\"> Temperature <BR><INPUT type=\"checkbox\" id=\"winbox\" onChange=\"javascript : wind();\"> Wind <a title=\"openportguide.de\" href=\"http://openportguide.de/index.php/en\" target=\"_blank\"><img src=\"pict/OpenPortGuideLogo_32.png\" style=\"float: right;\" border=\"0\" alt=\"\"></a><BR><INPUT type=\"checkbox\" id=\"prebox\" onChange=\"javascript : pres();\"> Pressure <BR><INPUT type=\"checkbox\" id=\"raibox\" onChange=\"javascript : rain();\"> Precipitation <BR><INPUT type=\"checkbox\" id=\"aspbox\" onChange=\"javascript : asp();\"> AirSpaces <A HREF=\"http://www.openaip.net\" target=\"_blank\" style=\"font-size:10px;\">( openaip.net )</A><BR><INPUT type=\"checkbox\" id=\"aptbox\" onChange=\"javascript : apt();\"> Airports <A HREF=\"http://www.openaip.net\" target=\"_blank\" style=\"font-size:10px;\">( openaip.net )</A><BR><INPUT type=\"checkbox\" id=\"reclbox\" onChange=\"javascript : reclbox();\"> Receivers<BR><span id=\"dtaskbox\"><INPUT type=\"checkbox\" disabled></span> <span onclick=\"taskclic();\">Tasks</span><BR> <DIV style=\"display:none\"><input type=\"file\" id=\"chfile\" onchange=\"rtask()\" /></DIV><HR>..::Units::..<BR><input type=\"radio\" name=\"units\" id=\"unm\" value=\"m\" onclick=\"chunit()\" checked>Met. <input type=\"radio\" name=\"units\" id=\"uni\" value=\"i\" onclick=\"chunit()\">Imp.<HR>..::Path length::..<BR><input type=\"radio\" name=\"pl\" id=\"rp1\" value=\"1\" checked onclick=\"chpl()\">5' <input type=\"radio\" name=\"pl\" id=\"rp2\" value=\"2\" onclick=\"chpl()\">10' <input type=\"radio\" name=\"pl\" id=\"rp3\" value=\"3\" onclick=\"chpl()\">All<HR>..:: Altitude ::..<BR><INPUT type=\"checkbox\" id=\"stick\" onChange=\"javascript : chstick();\"> Altitude stick<HR><CENTER>Join the<BR><A HREF=\"http://ddb.glidernet.org\" target=\"_blank\">OGN DataBase</A></CENTER><HR><CENTER><A HREF=\"https://github.com/glidernet/ogn-live\" target=\"_blank\">Sources</A></CENTER></TD></TR></TABLE>";
 
   // parameter b=lat1,lon1,lat2,lon2 bounds
   if (typeof(parh.b) != 'undefined') {
@@ -1680,6 +1756,14 @@ function initialize() {
     }
   }
 
+  // parameter a=0 (Display an altitude stick)
+  if (typeof(parh.a) != 'undefined') {
+    if (parh.a == "1") {
+      document.getElementById('stick').checked = true;
+      stick = 1;
+      hasha = "&a=1";
+    }
+  }
 
   // parameter p=1,2 or 3 path length 5", 10" or all points
   if (typeof(parh.p) != 'undefined') {
