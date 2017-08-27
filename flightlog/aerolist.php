@@ -353,6 +353,7 @@ $aero = array (
 	'EDLX'=> array('WESEL',"l.rec='EDLX' AND l.alt < 722 AND (l.lat BETWEEN 51.6577 AND 51.66791 ) AND (l.lon BETWEEN 6.58123 AND 6.61213)",22,''),
 	'WEST'=> array('Weston on the green',"(l.rec='UKWOG' OR l.rec='Bicester')AND l.alt < 778 AND (l.lat BETWEEN 51.868923 AND 51.889031 ) AND (l.lon BETWEEN -1.24235 AND -1.20042)",78,''),
 	'EHWO'=> array('WOENSDRECHT',"l.rec='EHWO' AND l.alt < 719 AND (l.lat BETWEEN 51.43654 AND 51.46238 ) AND (l.lon BETWEEN 4.31046 AND 4.37681)",19,''),
+	'FAWC'=> array('WORCESTER South Africa',"l.rec='FAWC' AND l.alt < 900 AND (l.lat BETWEEN -33.668565 AND -33.658453 ) AND (l.lon BETWEEN 19.407191 AND 19.422630)",200,''),
 	'EGTB'=> array('Wycombe Air Park/Booker',"(l.rec='EGTB' OR l.rec='Booker') AND l.alt < 858 AND (l.lat BETWEEN 51.60505 AND 51.61511 ) AND (l.lon BETWEEN -0.817 AND -0.799)",158,''),
 	'LSGY'=> array('YVERDON-LES-BAINS',"l.rec='LSGY' AND l.alt < 1133 AND (l.lat BETWEEN 46.75775 AND 46.76644 ) AND (l.lon BETWEEN 6.60604 AND 6.61939)",433,''),
 	'LKZM'=> array('ZAMBERK',"l.rec='LKZM' AND l.alt < 1129 AND (l.lat BETWEEN 50.08008 AND 50.08735 ) AND (l.lon BETWEEN 16.43624 AND 16.45073)",429,''),
