@@ -120,7 +120,6 @@ $aero = array (
 	'LFNA'=> array('GAP Tallard',"l.rec='LFNA' AND l.alt < 1300 AND (l.lat BETWEEN 44.44532 AND 44.46301) AND (l.lon BETWEEN 6.02482 AND 6.04675)",600,''),
 	'EDPT'=> array('GERSTETTEN',"l.rec='EDPT' AND l.alt < 1302 AND (l.lat BETWEEN 48.61 AND 48.6248 ) AND (l.lon BETWEEN 10.04425 AND 10.071395)",602,''),
 	'EHGR'=> array('GILZE-RIJEN',"l.rec='EHGR' AND l.alt < 715 AND (l.lat BETWEEN 51.54732 AND 51.58251 ) AND (l.lon BETWEEN 4.89347 AND 4.96355)",15,''),
-	//'EDLG'=> array('GOCH-ASPERDEN',"l.rec='EDLG' AND l.alt < 716 AND (l.lat BETWEEN 51.68631 AND 51.696414 ) AND (l.lon BETWEEN 6.0874 AND 6.1183056)",16,'Glvimav57osf.'),
 	'EDLG'=> array('GOCH-ASPERDEN',"l.rec='EDLG' AND l.alt < 716 AND (l.lat BETWEEN 51.68631 AND 51.696414 ) AND (l.lon BETWEEN 6.0874 AND 6.1183056)",16,''),
 	'EKGL'=> array('GORLOSE',"l.rec='EKGL' AND l.alt < 716 AND (l.lat BETWEEN 55.88152 AND 55.88856 ) AND (l.lon BETWEEN 12.21481 AND 12.23807)",16,''),
 	'EDSG'=> array('GRABENSTETTEN',"l.rec='EDSG' AND l.alt < 1410 AND (l.lat BETWEEN 48.52 AND 48.54 ) AND (l.lon BETWEEN 9.41 AND 9.45)",710,''),
@@ -353,13 +352,13 @@ $aero = array (
 	'EDLX'=> array('WESEL',"l.rec='EDLX' AND l.alt < 722 AND (l.lat BETWEEN 51.6577 AND 51.66791 ) AND (l.lon BETWEEN 6.58123 AND 6.61213)",22,''),
 	'WEST'=> array('Weston on the green',"(l.rec='UKWOG' OR l.rec='Bicester')AND l.alt < 778 AND (l.lat BETWEEN 51.868923 AND 51.889031 ) AND (l.lon BETWEEN -1.24235 AND -1.20042)",78,''),
 	'EHWO'=> array('WOENSDRECHT',"l.rec='EHWO' AND l.alt < 719 AND (l.lat BETWEEN 51.43654 AND 51.46238 ) AND (l.lon BETWEEN 4.31046 AND 4.37681)",19,''),
-	'FAWC'=> array('WORCESTER South Africa',"l.rec='FAWC' AND l.alt < 900 AND (l.lat BETWEEN -33.668565 AND -33.658453 ) AND (l.lon BETWEEN 19.407191 AND 19.422630)",200,''),
 	'EGTB'=> array('Wycombe Air Park/Booker',"(l.rec='EGTB' OR l.rec='Booker') AND l.alt < 858 AND (l.lat BETWEEN 51.60505 AND 51.61511 ) AND (l.lon BETWEEN -0.817 AND -0.799)",158,''),
 	'LSGY'=> array('YVERDON-LES-BAINS',"l.rec='LSGY' AND l.alt < 1133 AND (l.lat BETWEEN 46.75775 AND 46.76644 ) AND (l.lon BETWEEN 6.60604 AND 6.61939)",433,''),
 	'LKZM'=> array('ZAMBERK',"l.rec='LKZM' AND l.alt < 1129 AND (l.lat BETWEEN 50.08008 AND 50.08735 ) AND (l.lon BETWEEN 16.43624 AND 16.45073)",429,''),
 	'EPZR'=> array('ZAR',"l.rec='EPZR' AND l.alt < 1093 AND (l.lat BETWEEN 49.76534 AND 49.77856 ) AND (l.lon BETWEEN 19.20728 AND 19.2293)",393,''),
 	'EPZP'=> array('ZIELONA GORA-PRZYLEP',"l.rec='EPZP' AND l.alt < 777 AND (l.lat BETWEEN 51.9745 AND 51.98353 ) AND (l.lon BETWEEN 15.44851 AND 15.47366)",77,''),
 	'LKZN'=> array('ZNOJMO',"l.rec='LKZN' AND l.alt < 952 AND (l.lat BETWEEN 48.81558 AND 48.82013 ) AND (l.lon BETWEEN 16.05637 AND 16.07446)",252,''),
+	'LKKR'=> array('KRNOV',"l.rec='LKKR' AND l.alt < 1074 AND (l.lat BETWEEN 50.07143 AND 50.0785 ) AND (l.lon BETWEEN 17.68805 AND 17.70232)",374,''),
 	'EBZR'=> array('ZOERSEL',"l.rec='EBZR' AND l.alt < 716 AND (l.lat BETWEEN 51.2511 AND 51.28014 ) AND (l.lon BETWEEN 4.72632 AND 4.78073)",16,'')
 	);
 
