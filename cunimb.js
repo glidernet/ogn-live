@@ -109,6 +109,7 @@ function chstick() { // change altitude stick
 function chbaro() { // change barogram
   if (document.getElementById('baro').checked === true) { // barogram visible
     document.getElementById('dbaro').style.display = "block";
+		document.getElementById('dbaro').style.visibility = "visible";
     barogram = 1;
     hashg = "&g=1";
   } else { // no barogram
@@ -579,7 +580,7 @@ function alist() {
     document.getElementById('dlist').style.height = "90%";
     if (lside == 1) document.getElementById('ac').style.left = "180px";
     else document.getElementById('ac').style.right = "180px";
-    document.getElementById('dbaro').style.display = "block";
+    if (document.getElementById('baro').checked) document.getElementById('dbaro').style.display = "block";
     aflist = true;
     afftab();
     hashn = "";
@@ -1876,6 +1877,7 @@ function initialize() {
     if (parh.g == "1") {
       document.getElementById('baro').checked = true;
       document.getElementById('dbaro').style.display = "block";
+			document.getElementById('dbaro').style.visibility = "visible";
       barogram = 1;
       hashg = "&g=1";
     }

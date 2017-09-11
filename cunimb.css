@@ -164,8 +164,8 @@ div.divInfoclass {
   border-color: black;
   border-width: 1px;
   border-style: solid;
-  height: 605px;
-/*  height: 90%; */
+  /* height: 605px; */
+	height: 90%;
   width: 155px;
   overflow: hidden;
   cursor: default;

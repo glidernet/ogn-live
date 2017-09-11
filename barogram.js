@@ -89,16 +89,19 @@ function baro_Init() {
 	Y_min = 0;
 		
 	baroCanvas = document.getElementById("div_baro");
+	baroCanvas.height = parseInt(document.getElementById("dbaro").offsetHeight, 10);
 	baroCtx = baroCanvas.getContext("2d");
 	baroCtx.fillStyle = "#808080";  // color of text
 	baroCtx.font = "12px Arial";
 	
 	baroScale = document.getElementById("div_baroScale");
+	baroScale.height = parseInt(document.getElementById("dbaro").offsetHeight, 10);
 	baroScaleCtx = baroScale.getContext("2d");
 	baroScaleCtx.fillStyle = "#808080";  // color of text
 	baroScaleCtx.font = "12px Arial";
 
 	baroMarker = document.getElementById("div_baroMark");
+	baroMarker.height = parseInt(document.getElementById("dbaro").offsetHeight, 10);
 	baroMarkCtx = baroMarker.getContext("2d");
 	baroMarkCtx.fillStyle = "#808080";  // color of text
 	baroMarkCtx.font = "12px Arial";

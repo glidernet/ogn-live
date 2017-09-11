@@ -87,7 +87,7 @@ var cxml = "lxml.php";
 var cxml1 = "livexml1.php";
 var dxml = "dataxml.php";
 var rxml = "rec.php";
-var tld = "http://live.glidernet.org";
+var tld = "http://<?php echo $_SERVER['HTTP_HOST'];?>";
 var vlon = <?php echo $lon; ?>;
 var vlat = <?php echo $lat; ?>;
 var vlatmin = <?php echo $latmin;?>;
@@ -117,18 +117,18 @@ catch(e) {
 
 </head>
 <body onload="initialize()">
-  <div id="popup" onclick="cp('popup');"></div>
+	<div id="popup" onclick="cp('popup');"></div>
   <div id="map_canvas"></div>
   <div id="ac" class="acright" onclick="this.style.display='none';"></div>
   <div id="dlist" class="lright">
-    <DIV id="ett1" ></DIV>
-    <DIV id="ett2" ></DIV>
-    <DIV id="dtable"></DIV>
+		<DIV id="ett1" ></DIV>
+		<DIV id="ett2" ></DIV>
+		<DIV id="dtable"></DIV>
   </div>
-  <div id="dbaro" class="baroleft" style="display:none">
-    <canvas id="div_baroScale" height="600" width="45"></canvas>
-    <canvas id="div_baro" height="600" width="70"></canvas>
-    <canvas id="div_baroMark" height="600" width="30"></canvas>
+  <div id="dbaro" class="baroleft" style="display:block; visibility:hidden;">
+    <canvas id="div_baroScale" width="45" ></canvas>
+    <canvas id="div_baro" width="70"></canvas>
+    <canvas id="div_baroMark" width="30" ></canvas>
   </div>
 </body>
 
