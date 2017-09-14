@@ -134,7 +134,7 @@ yHeight = baroCanvas.height - X_legend - 2*margin;
   // auto adjust the range
 //  (unit == "i") ? maxRange = Math.ceil((maxRange+250)/2000)*2000 : maxRange = Math.ceil((maxRange+100)/1000)*1000; // 2000 ft or 1000 m increments
   (unit == "i") ? maxRange = Math.ceil((maxRange+500)/1000)*1000 : maxRange = Math.ceil((maxRange+250)/500)*500; // 1000 ft or 500 m increments
-  if ((maxRange != Y_max) || (unit != currentUnit) || (reScale == 1) {
+  if ((maxRange != Y_max) || (unit != currentUnit) || (reScale == 1)) {
     reScale = 0;
     currentUnit = unit;
     Y_max = maxRange;
