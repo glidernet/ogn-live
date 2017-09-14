@@ -1926,4 +1926,10 @@ function initialize() {
 
   // barogram plotting
   baro_Init();
+
+  // re-scale baro after window resize
+  google.maps.event.addDomListener(window, "resize", function() {
+    baro_update();
+  });
+	
 }
