@@ -309,6 +309,7 @@ $aero = array (
 	'LOAS'=> array('SPITZERBERG',"l.rec='LOAS' AND l.alt < 883 AND (l.lat BETWEEN 48.09325 AND 48.10676 ) AND (l.lon BETWEEN 16.9268 AND 16.94188)",183,''),
 	'EDHS'=> array('STADE',"l.rec='EDHS' AND l.alt < 719 AND (l.lat BETWEEN 53.55839 AND 53.56531 ) AND (l.lon BETWEEN 9.485951 AND 9.50728)",19,''),
 	'EDLS'=> array('STADTLOHN',"l.rec='EDLS' AND l.alt < 748 AND (l.lat BETWEEN 51.99218 AND 51.99908 ) AND (l.lon BETWEEN 6.82864 AND 6.85208)",48,''),
+	'LKSR'=> array('STRUNKOVICE',"l.rec='LKSR' AND l.alt < 1177 AND (l.lat BETWEEN 49.08202 AND 49.08213 ) AND (l.lon BETWEEN 14.07311 AND 14.07992)",477,''),
 	'LKSU'=> array('SUMPERK',"l.rec='LKSU' AND l.alt < 1035 AND (l.lat BETWEEN 49.95551 AND 49.96463 ) AND (l.lon BETWEEN 17.00938 AND 17.02498)",335,''),
 	'ESKC'=> array('SUNDBRO',"l.rec='ESKC' AND l.alt < 722 AND (l.lat BETWEEN 59.91515 AND 59.92899 ) AND (l.lon BETWEEN 17.523 AND 17.548 )",22,''),
 	'SUTT'=> array('Sutton Bank',"l.rec='SuttonBnk' AND l.alt < 990 AND (l.lat BETWEEN 54.2219 AND 54.240428 ) AND (l.lon BETWEEN -1.22449 AND -1.19759 )",290,''),
