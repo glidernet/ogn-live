@@ -1069,8 +1069,8 @@ function gesmark() {
         window[stickvar].set('nom', "" + cn + " - " + ps);
         window[stickvar].set('baton', "" + stickvar);
 
-//        window[stickvar].getPath().push(posi);
-//        window[stickvar].getPath().push(posiBaton);
+        window[stickvar].getPath().push(posi);
+        window[stickvar].getPath().push(posiBaton);
 
         // création du Marker
         window[markvar] = new google.maps.Marker({
@@ -1142,6 +1142,14 @@ function gesmark() {
         if (++ccolor == tcolor.length) ccolor = 0;
       } // fin du if typeof...
 
+      if (stick === 1) {
+        window[stickvar].setOptions({visible: true});
+        window[markvar].setPosition(posiBaton); // déplace le marker
+      } else {
+        window[stickvar].setOptions({visible: false});
+        window[markvar].setPosition(posi); // déplace le marker
+      }
+	  
       var difalt = vz * 1;
 
       colcn = window[polyvar].strokeColor;
@@ -1169,22 +1177,21 @@ function gesmark() {
           if (window[polyvar].getPath().getLength() >= pathl) window[polyvar].getPath().removeAt(0); // remove first point of the trace
         }
 
-
         window[polyvar].getPath().push(posi); // ajout d'une position sur le tracé
 //        window[markvar].setPosition(posi); // déplace le marker
-        if (stick === 1) {
-          window[stickvar].setOptions({visible: true});
-          window[markvar].setPosition(posiBaton); // déplace le marker
+   //     if (stick === 1) {
+   //       window[stickvar].setOptions({visible: true});
+   //       window[markvar].setPosition(posiBaton); // déplace le marker
 //          window[stickvar].getPath().pop(); // déplace le baton
 //          window[stickvar].getPath().pop(); // for now - better way ?
 //          window[stickvar].getPath().push(posi);
 //          window[stickvar].getPath().push(posiBaton);
           window[stickvar].getPath().setAt(0,posi);
           window[stickvar].getPath().setAt(1,posiBaton);
-        } else {
-          window[stickvar].setOptions({visible: false});
-          window[markvar].setPosition(posi); // déplace le marker
-        }
+   //     } else {
+   //       window[stickvar].setOptions({visible: false});
+   //       window[markvar].setPosition(posi); // déplace le marker
+   //     }
 
         // change l'altitude affichée
         window[markvar].setTitle("" + cn + " - " + ps + " @ " + (alt * m2ft[unit]).toFixed() + am2ft[unit] + " @ " + tim);
