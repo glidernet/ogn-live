@@ -28,13 +28,14 @@ var yAxis = [];   // optional scale labels
 var margin = 10;  // all around line graph
 var X_legend = 0;
 var Y_legend = 0;
-var maxAlt = 5000;
+var maxAlt = 1000;
 var X_lines = 5+1;
-var	Y_lines = 5+1;
+var Y_lines = 5+1;
 var currentUnit = "";
 var scaleFlag = 0;
 var X_offset = 0;
 var Y_offset = margin+X_legend;
+var reScale = 0;
 
 // show altitude scale on the graph
 function plotScale() {
@@ -89,37 +90,17 @@ function baro_Init() {
 	Y_min = 0;
 		
 	baroCanvas = document.getElementById("div_baro");
-	baroCanvas.height = parseInt(document.getElementById("dbaro").offsetHeight, 10);
 	baroCtx = baroCanvas.getContext("2d");
-	baroCtx.fillStyle = "#808080";  // color of text
-	baroCtx.font = "12px Arial";
 	
 	baroScale = document.getElementById("div_baroScale");
-	baroScale.height = parseInt(document.getElementById("dbaro").offsetHeight, 10);
 	baroScaleCtx = baroScale.getContext("2d");
-	baroScaleCtx.fillStyle = "#808080";  // color of text
-	baroScaleCtx.font = "12px Arial";
 
 	baroMarker = document.getElementById("div_baroMark");
-	baroMarker.height = parseInt(document.getElementById("dbaro").offsetHeight, 10);
 	baroMarkCtx = baroMarker.getContext("2d");
-	baroMarkCtx.fillStyle = "#808080";  // color of text
-	baroMarkCtx.font = "12px Arial";
 
-	xWidth = baroCanvas.width;
-	yHeight = baroCanvas.height - X_legend - 2*margin;
-	
-	yScale = (yHeight) / (Y_max - Y_min);
-	xScale = (xWidth) / (X_max - X_min);
-	
-    plotScale();
-	plotGrid();
-
-    // create a clipping region - simpler than checking X_min
-//	baroCtx.beginPath();
-//    baroCtx.rect(0, margin+X_legend, 0+xWidth, margin+X_legend+yHeight);
-//    baroCtx.clip();
+	baro_update();
 }
+
 String.prototype.toSeconds = function () { if (!this) return null; var hms = this.split(':'); return (+hms[0]) * 60 * 60 + (+hms[1]) * 60 + (+hms[2] || 0); }
 
 // plot a line with color and [x,y] array - rely on clipping region
@@ -153,7 +134,8 @@ yHeight = baroCanvas.height - X_legend - 2*margin;
   // auto adjust the range
 //  (unit == "i") ? maxRange = Math.ceil((maxRange+250)/2000)*2000 : maxRange = Math.ceil((maxRange+100)/1000)*1000; // 2000 ft or 1000 m increments
   (unit == "i") ? maxRange = Math.ceil((maxRange+500)/1000)*1000 : maxRange = Math.ceil((maxRange+250)/500)*500; // 1000 ft or 500 m increments
-  if ((maxRange != Y_max) || (unit != currentUnit)) {
+  if ((maxRange != Y_max) || (unit != currentUnit) || (reScale == 1)) {
+    reScale = 0;
     currentUnit = unit;
     Y_max = maxRange;
     yScale = (yHeight) / (Y_max - Y_min) * m2ft[unit]; // adjust scale with unit here to avoid and extra multiply every y point
@@ -171,6 +153,31 @@ yHeight = baroCanvas.height - X_legend - 2*margin;
   baroMarkCtx.clearRect(0, 0, baroMarker.width, baroMarker.height);
   // reset the flag
   scaleFlag = 0;
+}
+
+// on window re-size, update the baro scaling
+function baro_update() {
+//    document.getElementById('div_baro').height = dbaro.clientHeight;
+    baroCanvas.height = dbaro.clientHeight;
+	// need to update after size change (?)
+	baroScaleCtx.fillStyle = "#808080";  // color of text
+	baroScaleCtx.font = "12px Arial";
+
+//    document.getElementById('div_baroScale').height = dbaro.clientHeight;
+    baroScale.height = dbaro.clientHeight;
+	// need to update after size change (?)
+	baroScaleCtx.fillStyle = "#808080";  // color of text
+	baroScaleCtx.font = "12px Arial";
+
+//    document.getElementById('div_baroMark').height = dbaro.clientHeight;
+    baroMarker.height = dbaro.clientHeight;
+	// need to update after size change (?)
+	baroMarkCtx.fillStyle = "#808080";  // color of text
+	baroMarkCtx.font = "12px Arial";
+
+	// flag re-scale required at next refresh
+	reScale = 1;
+    baro_plotRefresh();
 }
 
 // set the time and altitude scales on the barogram
