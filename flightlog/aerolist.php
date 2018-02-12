@@ -54,6 +54,7 @@ $aero = array (
 	'LFCS'=> array('BORDEAUX Leognan Saucats',"l.rec='LFCS' AND l.alt < 759 AND (l.lat BETWEEN 44.69173 AND 44.70616 ) AND (l.lon BETWEEN -0.60316 AND -0.58913)",59,''),
 	'ESGE'=> array('BORAS VIARED',"l.rec='ESGE' AND l.alt < 874 AND (l.lat BETWEEN 57.69142 AND 57.69951 ) AND (l.lon BETWEEN 12.83719 AND 12.85215)",174,''),
 	'EDLB'=> array('BORKENBERGE',"l.rec='EDLB' AND l.alt < 748 AND (l.lat BETWEEN 51.77524 AND 51.7821 ) AND (l.lon BETWEEN 7.27991 AND 7.29729)",48,''),
+	'EDLY'=> array('Borken-Hoxfeld',"l.rec='EDLY' AND l.alt < 348 AND (l.lat BETWEEN 51.85082 AND 51.85654 ) AND (l.lon BETWEEN 6.80755 AND 6.82435)",48,''),
 	'ESSD'=> array('BORLANGE',"l.rec='ESSD' AND l.alt < 853 AND (l.lat BETWEEN 60.40585 AND 60.43835 ) AND (l.lon BETWEEN 15.4701 AND 15.55001)",153,''),
 	'LFHS'=> array('BOURG Ceyzeriat',"l.rec='LFHS' AND l.alt < 961 AND (l.lat BETWEEN 46.19381 AND 46.21038 ) AND (l.lon BETWEEN 5.28514 AND 5.29763)",261,''),
 	'LFLD'=> array('BOURGES',"l.rec='LFLD' AND l.alt < 861 AND (l.lat BETWEEN 47.05394 AND 47.06581 ) AND (l.lon BETWEEN 2.35675 AND 2.38254)",161,''),
