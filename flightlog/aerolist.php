@@ -267,6 +267,7 @@ $aero = array (
 	'EFRY'=> array('RAYSKALA',"l.rec='EFRY' AND l.alt < 824 AND (l.lat BETWEEN 60.73876 AND 60.75214 ) AND (l.lon BETWEEN 24.08811 AND 24.12652 )",124,''),
 	'LFQA'=> array('REIMS Prunay',"l.rec='LFQA' AND l.alt < 795 AND (l.lat BETWEEN 49.20463 AND 49.21261 ) AND (l.lon BETWEEN 4.14573 AND 4.16903 )",95,''),
 	'EDOX'=> array('RENNERITZ',"l.rec='EDOX' AND l.alt < 794 AND (l.lat BETWEEN 51.59022 AND 51.59903 ) AND (l.lon BETWEEN 12.22317 AND 12.2512 )",94,''),
+	'RHST'=> array('Rheinstetten',"l.rec='RHST' AND l.alt < 816 AND (l.lat BETWEEN 48.97193 AND 48.98245 ) AND (l.lon BETWEEN 8.33938 AND 8.34496 )",116,''),
 	'LOLK'=> array('RIED-KIRCHHEIM',"l.rec='LOLK' AND l.alt < 1120 AND (l.lat BETWEEN 48.2092 AND 48.21527 ) AND (l.lon BETWEEN 13.33668 AND 13.3529 )",420,''),
 	'LFIL'=> array('RION DES LANDES',"l.rec='LFIL' AND l.alt < 778 AND (l.lat BETWEEN 43.90782 AND 43.92202 ) AND (l.lon BETWEEN -0.96356 AND -0.94034 )",78,''),
 	'LFLO'=> array('ROANNE Renaison',"l.rec='LFLO' AND l.alt < 1037 AND (l.lat BETWEEN 46.046 AND 46.0655 ) AND (l.lon BETWEEN 3.989 AND 4.009 )",337,''),
