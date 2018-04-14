@@ -349,6 +349,7 @@ $aero = array (
 	'EBWE'=> array('WEELDE',"l.rec='EBWE' AND l.alt < 732 AND (l.lat BETWEEN 51.38047 AND 51.40757 ) AND (l.lon BETWEEN 4.9221 AND 4.99471)",32,''),
 	'EDQW'=> array('WEIDEN-OPF',"l.rec='EDQW' AND l.alt < 1105 AND (l.lat BETWEEN 49.67523 AND 49.68242 ) AND (l.lon BETWEEN 12.11198 AND 12.12167)",405,''),
 	'EDNW'=> array('WEISSENHORN',"l.rec='EDNW' AND l.alt < 1200 AND (l.lat BETWEEN 48.28667 AND 48.29147 ) AND (l.lon BETWEEN 10.12956 AND 10.1494)",500,''),
+	'EDKW'=> array('WERDOHL-KUENTROP',"l.rec='EDKW' AND l.alt < 1000 AND (l.lat BETWEEN 51.294703 AND 51.299848 ) AND (l.lon BETWEEN 7.811830 AND 7.822692)",300,''),
 	'EDLX'=> array('WESEL',"l.rec='EDLX' AND l.alt < 722 AND (l.lat BETWEEN 51.6577 AND 51.66791 ) AND (l.lon BETWEEN 6.58123 AND 6.61213)",22,''),
 	'WEST'=> array('Weston on the green',"(l.rec='UKWOG' OR l.rec='Bicester')AND l.alt < 778 AND (l.lat BETWEEN 51.868923 AND 51.889031 ) AND (l.lon BETWEEN -1.24235 AND -1.20042)",78,''),
 	'EHWO'=> array('WOENSDRECHT',"l.rec='EHWO' AND l.alt < 719 AND (l.lat BETWEEN 51.43654 AND 51.46238 ) AND (l.lon BETWEEN 4.31046 AND 4.37681)",19,''),
