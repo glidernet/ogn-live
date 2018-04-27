@@ -22,6 +22,7 @@ $aero = array (
 	'LFCH'=> array('ARCACHON La teste de buch',"l.rec='LFCH' AND l.alt < 716 AND (l.lat BETWEEN 44.58919 AND 44.60001 ) AND (l.lon BETWEEN -1.1248 AND -1.10139)",16,''),
 	'LFEG'=> array('ARGENTON SUR CREUSE',"(l.rec='LFEG' OR l.rec='LFEG2') AND l.alt < 900 AND (l.lat BETWEEN 46.58849 AND 46.60363 ) AND (l.lon BETWEEN 1.58867 AND 1.61369)",200,''),
 	'EKAB'=> array('ARNBORG',"l.rec='EKAB' AND l.alt < 745 AND (l.lat BETWEEN 56.00799 AND 56.01325 ) AND (l.lon BETWEEN 9.00121 AND 9.02882)",45,''),
+	'EKVB'=> array('VIBORG',"l.rec='EKVB' AND l.alt < 725 AND (l.lat BETWEEN 56.407134 AND 56.413900 ) AND (l.lon BETWEEN 9.400834 AND 9.419974)",25,''),
 	'ARNSB'=> array('Arnsberg-Ruhrwiese',"l.rec='Arnsberg' AND l.alt < 884 AND (l.lat BETWEEN 51.38216 AND 51.39536 ) AND (l.lon BETWEEN 8.0522 AND 8.064)",184,''),
 	'LFNJ'=> array('ASPRES SUR BUECH',"l.rec='LFNJ' AND l.alt < 1531 AND (l.lat BETWEEN 44.51014 AND 44.52235 ) AND (l.lon BETWEEN 5.731327 AND 5.74493)",831,''),
 	'ASTO'=> array('Aston Down',"l.rec='UKAST' AND l.alt < 883 AND (l.lat BETWEEN 51.69562 AND 51.72154 ) AND (l.lon BETWEEN -2.15553 AND -2.11107)",183,''),
