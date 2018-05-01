@@ -12,6 +12,7 @@ if (isset($_GET['rec']))
 else
 {
     $recc = "\"\"";
+    $params[] = "";
 }
 
 if (isset($_GET['pw']))
