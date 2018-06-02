@@ -323,6 +323,7 @@ $aero = array (
 	'LIDH'=> array('THIENE',"l.rec='LIDH' AND l.alt < 802 AND (l.lat BETWEEN 45.6678 AND 45.68861 ) AND (l.lon BETWEEN 11.49012 AND 11.50059 )",102,''),
 	'LFCT'=> array('THOUARS',"l.rec='LFCT' AND l.alt < 804 AND (l.lat BETWEEN 46.95684 AND 46.97078 ) AND (l.lon BETWEEN -0.16245 AND -0.14613 )",104,''),
 	'TIRS'=> array('Tirschenreuth',"l.rec='Tirschenr' AND l.alt < 1190 AND (l.lat BETWEEN 49.871299 AND 49.879043 ) AND (l.lon BETWEEN 12.31411 AND 12.33368 )",490,''),
+ 	'TOPO'=> array('Topoloveni Airfield',"l.rec='LRTO' AND l.alt < 934 AND (l.lat BETWEEN 44.790247 AND 44.797830) AND (l.lon BETWEEN 25.08235 AND 25.09097)",234,''),
 	'LFIT'=> array('TOULOUSE Bourg Saint Bernard',"l.rec='LFIT' AND l.alt < 860 AND (l.lat BETWEEN 43.60555 AND 43.61604 ) AND (l.lon BETWEEN 1.71585 AND 1.73801 )",160,''),
 	'EBTY'=> array('TOURNAI/MAUBRAY',"l.rec='EBTY' AND l.alt < 749 AND (l.lat BETWEEN 50.5262 AND 50.53666 ) AND (l.lon BETWEEN 3.48087 AND 3.51177 )",49,''),
 	'LFJT'=> array('TOURS Le Louroux',"l.rec='LFJT' AND l.alt < 826 AND (l.lat BETWEEN 47.14304 AND 47.15574 ) AND (l.lon BETWEEN 0.70445 AND 0.71771 )",126,''),
