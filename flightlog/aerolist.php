@@ -7,6 +7,7 @@ $aero = array (
 				// airfield altitude (in meters),
 				// password
 				// )
+	'LIDT'=> array('TRENTO',"l.rec='LIDT' AND l.alt < 885 AND (l.lat BETWEEN 46.01 AND 46.03 ) AND (l.lon BETWEEN 11.12 AND 11.13 )",185,''),
 	'LFOI'=> array('ABBEVILLE',"l.rec='LFOI' AND l.alt < 767 AND (l.lat BETWEEN 50.13 AND 50.15 ) AND (l.lon BETWEEN 1.8 AND 1.86)",67,''),
 	'ABOY'=> array('Aboyne',"l.rec='UKABO' AND l.alt < 840 AND (l.lat BETWEEN 57.07191 AND 57.07745 ) AND (l.lon BETWEEN -2.85071 AND -2.83011)",140,''),
 	'LOXA'=> array('AIGEN IM ENNSTAL',"l.rec='LOXA' AND l.alt < 1340 AND (l.lat BETWEEN 47.53237 AND 47.53919 ) AND (l.lon BETWEEN 14.13251 AND 14.15038)",640,''),
