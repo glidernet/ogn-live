@@ -7,7 +7,6 @@ $aero = array (
 				// airfield altitude (in meters),
 				// password
 				// )
-	'LIDT'=> array('TRENTO',"l.rec='LIDT' AND l.alt < 885 AND (l.lat BETWEEN 46.01 AND 46.03 ) AND (l.lon BETWEEN 11.12 AND 11.13 )",185,''),
 	'LFOI'=> array('ABBEVILLE',"l.rec='LFOI' AND l.alt < 767 AND (l.lat BETWEEN 50.13 AND 50.15 ) AND (l.lon BETWEEN 1.8 AND 1.86)",67,''),
 	'ABOY'=> array('Aboyne',"l.rec='UKABO' AND l.alt < 840 AND (l.lat BETWEEN 57.07191 AND 57.07745 ) AND (l.lon BETWEEN -2.85071 AND -2.83011)",140,''),
 	'LOXA'=> array('AIGEN IM ENNSTAL',"l.rec='LOXA' AND l.alt < 1340 AND (l.lat BETWEEN 47.53237 AND 47.53919 ) AND (l.lon BETWEEN 14.13251 AND 14.15038)",640,''),
@@ -327,6 +326,7 @@ $aero = array (
 	'LFIT'=> array('TOULOUSE Bourg Saint Bernard',"l.rec='LFIT' AND l.alt < 860 AND (l.lat BETWEEN 43.60555 AND 43.61604 ) AND (l.lon BETWEEN 1.71585 AND 1.73801 )",160,''),
 	'EBTY'=> array('TOURNAI/MAUBRAY',"l.rec='EBTY' AND l.alt < 749 AND (l.lat BETWEEN 50.5262 AND 50.53666 ) AND (l.lon BETWEEN 3.48087 AND 3.51177 )",49,''),
 	'LFJT'=> array('TOURS Le Louroux',"l.rec='LFJT' AND l.alt < 826 AND (l.lat BETWEEN 47.14304 AND 47.15574 ) AND (l.lon BETWEEN 0.70445 AND 0.71771 )",126,''),
+	'LIDT'=> array('TRENTO',"l.rec='LIDT' AND l.alt < 885 AND (l.lat BETWEEN 46.01 AND 46.03 ) AND (l.lon BETWEEN 11.12 AND 11.13 )",185,''),
 	'LZTR'=> array('TRNAVA',"l.rec='LZTR' AND l.alt < 900 AND (l.lat BETWEEN 48.44083 AND 48.46192 ) AND (l.lon BETWEEN 17.51695 AND 17.54699)",200,''),
 	'LFQB'=> array('TROYES Barberey',"l.rec='LFQB' AND l.alt < 812 AND (l.lat BETWEEN 48.30495 AND 48.34176 ) AND (l.lon BETWEEN 3.98910 AND 4.03897 )",112,''),
 	'TRUE'=> array('True',"l.rec='True' AND l.alt < 768 AND (l.lat BETWEEN 56.17536 AND 56.18217 ) AND (l.lon BETWEEN 10.06477 AND 10.08825 )",68,''),
