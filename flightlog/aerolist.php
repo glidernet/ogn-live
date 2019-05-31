@@ -136,7 +136,7 @@ $aero = array (
 	'EDST'=> array('HAHNWEIDE',"l.rec='EDST' AND l.alt < 1056 AND (l.lat BETWEEN 48.6241 AND 48.6376 ) AND (l.lon BETWEEN 9.41047 AND 9.445 )",356,''),
 	'EGWN'=> array('HALTON',"l.rec='EGWN' AND l.alt < 810 AND (l.lat BETWEEN 51.78232 AND 51.80248 ) AND (l.lon BETWEEN -0.75555 AND -0.72229 )",110,''),
 	'LSZN'=> array('HAUSEN AM ALBIS',"(l.rec='LSZN' OR l.rec='Heisch') AND l.alt < 1288 AND (l.lat BETWEEN 47.23689 AND 47.24043 ) AND (l.lon BETWEEN 8.50887 AND 8.52246 )",588,''),
-	'EHHV'=> array('HILVERSUM',"l.rec='EHHV' AND l.alt < 701 AND (l.lat BETWEEN 52.18369 AND 52.20033 ) AND (l.lon BETWEEN 5.12943 AND 5.1626 )",1,''),
+	'EHHV'=> array('HILVERSUM',"l.rec='GoZC1' AND l.alt < 701 AND (l.lat BETWEEN 52.18369 AND 52.20033 ) AND (l.lon BETWEEN 5.12943 AND 5.1626 )",1,''),
 	'EDVH'=> array('HODENHAGEN',"l.rec='EDVH' AND l.alt < 724 AND (l.lat BETWEEN 52.75459 AND 52.77451 ) AND (l.lon BETWEEN 9.59434 AND 9.62983 )",24,''),
 	'EHHO'=> array('HOOGEVEEN',"l.rec='EHHO' AND l.alt < 712 AND (l.lat BETWEEN 52.72185 AND 52.74032 ) AND (l.lon BETWEEN 6.49315 AND 6.54207 )",12,''),
 	'HOYA'=> array('Hoya',"l.rec='HoyaFlpl' AND l.alt < 715 AND (l.lat BETWEEN 52.80523 AND 52.82069 ) AND (l.lon BETWEEN 9.14416 AND 9.18205 )",15,''),
