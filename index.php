@@ -1,13 +1,18 @@
 <?php
-require('sql.php');
 
-$q="select * from live where tim > 0";
+$prot = "http";
+
+if ( isset($_SERVER['HTTPS']) ) {
+  if ( 'on' == strtolower($_SERVER['HTTPS']) )
+    $prot = "https";
+  if ( '1' == $_SERVER['HTTPS'] )
+    $prot = "https";
+}
+
 
 if (isset($_GET['rec']))
 {
     $recc="'&r=".$_GET['rec']."'";
-    $q .=" AND rec=?";
-    $params[] = $_GET['rec'];
 }
 else
 {
@@ -23,42 +28,23 @@ else
     $parc = "\"\"";
 }
 
+$lat = 45;
+$lon = 5;
 
-$latmax=$latmin=$lonmax=$lonmin=0;
 
-$stmt = $dbh->prepare($q);
-$stmt->execute($params);
 
-if ($stmt->rowCount() == 0)
-{
-    $latmax=60;
-    $latmin=35;
-    $lonmax=30;
-    $lonmin=-10;
-    $lon=2;
-    $lat=45;
+
+
+if (isset($location->loc)) {
+	$latlon = explode(",", $location->loc);
+	if ($latlon[0]>-80 && $latlon[0]<80 && $latlon[1]>-180 && $latlon[1]<180) {
+		$lat = $latlon[0];
+		$lon = $latlon[1];
+	}
 }
-else
-{
-    $aa=0;
-    while($ligne = $stmt->fetch(PDO::FETCH_ASSOC))
-    {
-        extract($ligne);
-        if ($aa==0)
-        {
-            $latmax=$latmin=$lat;
-            $lonmax=$lonmin=$lon;
-            $aa=1;
-        }
-        else
-        {
-            if ($lat>$latmax) $latmax=$lat;
-            if ($lat<$latmin) $latmin=$lat;
-            if ($lon>$lonmax) $lonmax=$lon;
-            if ($lon<$lonmin) $lonmin=$lon;
-        }
-    }
-}?>
+
+
+?>
 <!DOCTYPE html>
 <!--
    ____                      _____ _ _     _             _   _      _                      _    
@@ -73,27 +59,22 @@ else
 <html>
 <head>
 <link rel="shortcut icon" href="favicon.gif"/>
-<link rel="icon" type="image/gif" href="favicon.gif"/>
+<link rel="icon" type="image/gif" href="favicon.png"/>
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
 <title>Spot the gliders!</title>
-<link href="cunimb.css" rel="stylesheet" type="text/css" />
-
-
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3&amp;libraries=geometry&amp;sensor=false"></script>
+<link href="ol.css" rel="stylesheet" type="text/css" />
+<link href="osm.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="ol.js"></script>
 <script type="text/javascript" src="util.js"></script>
 <script type="text/javascript">
 var cxml = "lxml.php";
 var cxml1 = "livexml1.php";
 var dxml = "dataxml.php";
 var rxml = "rec.php";
-var tld = "http://<?php echo $_SERVER['HTTP_HOST'];?>";
+var tld = "<?php echo $prot.'://'.$_SERVER['HTTP_HOST'];?>";
 var vlon = <?php echo $lon; ?>;
 var vlat = <?php echo $lat; ?>;
-var vlatmin = <?php echo $latmin;?>;
-var vlonmin = <?php echo $lonmin;?>;
-var vlatmax = <?php echo $latmax;?>;
-var vlonmax = <?php echo $lonmax;?>;
 var bound = false;
 var boundc = '';
 var amax = 85;
@@ -111,7 +92,7 @@ catch(e) {
 } 
 
 </script>
-<script type="text/javascript" src="cunimb.js"></script>
+<script type="text/javascript" src="ogn.js"></script>
 <script type="text/javascript" src="barogram.js"></script>
 <script type="text/javascript" src="horizZoomControl.js"></script>
 
@@ -120,6 +101,7 @@ catch(e) {
 	<div id="popup" onclick="cp('popup');"></div>
   <div id="map_canvas"></div>
   <div id="ac" class="acright" onclick="this.style.display='none';"></div>
+	<div id="lonlatoverlay" style="background-color: white; border-radius: 10px; border: 1px solid black; padding: 5px 10px; display: none;"></div>
   <div id="dlist" class="lright">
 		<DIV id="ett1" ></DIV>
 		<DIV id="ett2" ></DIV>
