@@ -1377,6 +1377,7 @@ function showTask(task) {
 
   tn = task.name || 'task ' + taskFeatures.length;
   tc = task.color || 'FF0000';
+  to = task.opacity || 0.1;
 
   for (var ii = 0; ii < task.turnpoints.length; ii++) {
     if ((task.turnpoints[ii].type == 'circle')) {
@@ -1388,7 +1389,7 @@ function showTask(task) {
         strokeOpacity: 0.5,
         strokeWeight: 2,
         fillColor: '#' + tc,
-        fillOpacity: 0.1,
+        fillOpacity: to,
         map: map,
         center: point,
         radius: task.turnpoints[ii].radius
