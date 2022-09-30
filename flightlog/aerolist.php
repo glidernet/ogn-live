@@ -361,6 +361,7 @@ $aero = array (
 	'LKZN'=> array('ZNOJMO',"l.rec='LKZN' AND l.alt < 952 AND (l.lat BETWEEN 48.81558 AND 48.82013 ) AND (l.lon BETWEEN 16.05637 AND 16.07446)",252,''),
 	'LKKR'=> array('KRNOV',"l.rec='LKKR' AND l.alt < 1074 AND (l.lat BETWEEN 50.07143 AND 50.0785 ) AND (l.lon BETWEEN 17.68805 AND 17.70232)",374,''),
 	'EBZR'=> array('ZOERSEL',"l.rec='EBZR' AND l.alt < 716 AND (l.lat BETWEEN 51.2511 AND 51.28014 ) AND (l.lon BETWEEN 4.72632 AND 4.78073)",16,'')
+	'WRM'=> array('WORMINGFORD',"l.rec='WRM' AND l.alt < 672 AND (l.lat BETWEEN 51.9334 AND 51.9450 ) AND (l.lon BETWEEN 0.776 AND 0.806)",72,'')
 	);
 
 ?>
