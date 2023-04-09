@@ -180,6 +180,7 @@ $aero = array (
 	'EHLW'=> array('LEEUWARDEN',"l.rec='EHLW' AND l.alt < 701 AND (l.lat BETWEEN 53.21586 AND 53.23501 ) AND (l.lon BETWEEN 5.73044 AND 5.77453 )",1,''),
 	'LFOY'=> array('LE HAVRE Saint-Romain',"l.rec='LFOY' AND l.alt < 829 AND (l.lat BETWEEN 49.53 AND 49.55 ) AND (l.lon BETWEEN 0.33 AND 0.39)",129,''),
 	'LFRM'=> array('LE MANS Arnage',"l.rec='LFRM' AND l.alt < 759 AND (l.lat BETWEEN 47.93939 AND 47.95926 ) AND (l.lon BETWEEN 0.19309 AND 0.2091)",59,''),
+	'LFRM2'=> array('LE MANS Arnage Tour',"l.rec='LFRM2' AND l.alt < 759 AND (l.lat BETWEEN 47.94669 AND 47.94672 ) AND (l.lon BETWEEN 0.1969 AND 0.1972)",59,''),
 	'LFNZ'=> array('LE MAZET DE ROMARIN',"l.rec='LFNZ' AND l.alt < 820 AND (l.lat BETWEEN 43.76067 AND 43.7817 ) AND (l.lon BETWEEN 4.88498 AND 4.90543)",120,''),
 	'EKLV'=> array('LEMVIG Flyveklub',"l.rec='EKLV' AND l.alt < 730 AND (l.lat BETWEEN 56.5001 AND 56.50646 ) AND (l.lon BETWEEN 8.29957 AND 8.32461)",30,''),
 	'LFHP'=> array('LE PUY Loudes',"l.rec='LFHP' AND l.alt < 1532 AND (l.lat BETWEEN 45.07211 AND 45.08963 ) AND (l.lon BETWEEN 3.75173 AND 3.77169)",832,''),
